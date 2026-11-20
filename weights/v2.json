@@ -1,0 +1,10 @@
+{
+  "version": "v2",
+  "description": "能力增强版：能力 55%，区域 10%，降低容量权重，优先覆盖需求能力。",
+  "weights": {
+    "capability": 0.55,
+    "industry": 0.25,
+    "region": 0.10,
+    "capacity": 0.10
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "description": "基础版：能力 45%，区域 20%，强调本地供给，容量只占 10%。",
+  "weights": {
+    "capability": 0.45,
+    "industry": 0.25,
+    "region": 0.20,
+    "capacity": 0.10
+  }
+}

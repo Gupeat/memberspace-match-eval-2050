@@ -1,0 +1,705 @@
+{
+  "schema_version": 1,
+  "companies": [
+    {
+      "id": "c001",
+      "name": "晨星会务",
+      "summary": "虚构会员企业，提供晨星会务相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "tech"
+      ],
+      "region": "east",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c011"
+      ]
+    },
+    {
+      "id": "c002",
+      "name": "云杉品牌",
+      "summary": "虚构会员企业，提供云杉品牌相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "south",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c003",
+      "name": "青石法务",
+      "summary": "虚构会员企业，提供青石法务相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "manufacturing"
+      ],
+      "region": "north",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c004",
+      "name": "远帆财务",
+      "summary": "虚构会员企业，提供远帆财务相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "west",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c022"
+      ]
+    },
+    {
+      "id": "c005",
+      "name": "拾光影像",
+      "summary": "虚构会员企业，提供拾光影像相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "healthcare"
+      ],
+      "region": "central",
+      "capacity": "medium",
+      "accepting": false,
+      "conflicts_with": []
+    },
+    {
+      "id": "c006",
+      "name": "栖梧人力",
+      "summary": "虚构会员企业，提供栖梧人力相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "culture"
+      ],
+      "region": "east",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c007",
+      "name": "澜图科技",
+      "summary": "虚构会员企业，提供澜图科技相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "retail"
+      ],
+      "region": "south",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c008",
+      "name": "禾木培训",
+      "summary": "虚构会员企业，提供禾木培训相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "energy"
+      ],
+      "region": "north",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": [
+        "c034"
+      ]
+    },
+    {
+      "id": "c009",
+      "name": "南北物流",
+      "summary": "虚构会员企业，提供南北物流相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "logistics"
+      ],
+      "region": "west",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c010",
+      "name": "译林翻译",
+      "summary": "虚构会员企业，提供译林翻译相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "real_estate"
+      ],
+      "region": "central",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c011",
+      "name": "山海策划",
+      "summary": "虚构会员企业，提供山海策划相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "tech"
+      ],
+      "region": "east",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": [
+        "c001"
+      ]
+    },
+    {
+      "id": "c012",
+      "name": "沐光设计",
+      "summary": "虚构会员企业，提供沐光设计相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "south",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c013",
+      "name": "澄明咨询",
+      "summary": "虚构会员企业，提供澄明咨询相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "manufacturing"
+      ],
+      "region": "north",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c029"
+      ]
+    },
+    {
+      "id": "c014",
+      "name": "松间餐饮",
+      "summary": "虚构会员企业，提供松间餐饮相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "west",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c015",
+      "name": "海盐传播",
+      "summary": "虚构会员企业，提供海盐传播相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "healthcare"
+      ],
+      "region": "central",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c016",
+      "name": "白露公关",
+      "summary": "虚构会员企业，提供白露公关相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "culture"
+      ],
+      "region": "east",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c017",
+      "name": "苍梧教育",
+      "summary": "虚构会员企业，提供苍梧教育相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "retail"
+      ],
+      "region": "south",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c018",
+      "name": "星野健康",
+      "summary": "虚构会员企业，提供星野健康相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "energy"
+      ],
+      "region": "north",
+      "capacity": "large",
+      "accepting": false,
+      "conflicts_with": []
+    },
+    {
+      "id": "c019",
+      "name": "溪谷文化",
+      "summary": "虚构会员企业，提供溪谷文化相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "logistics"
+      ],
+      "region": "west",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c037"
+      ]
+    },
+    {
+      "id": "c020",
+      "name": "暮山零售",
+      "summary": "虚构会员企业，提供暮山零售相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "real_estate"
+      ],
+      "region": "central",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c021",
+      "name": "长风能源",
+      "summary": "虚构会员企业，提供长风能源相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "tech"
+      ],
+      "region": "east",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c022",
+      "name": "元野地产",
+      "summary": "虚构会员企业，提供元野地产相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "south",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c004"
+      ]
+    },
+    {
+      "id": "c023",
+      "name": "清越制造",
+      "summary": "虚构会员企业，提供清越制造相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "manufacturing"
+      ],
+      "region": "north",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c024",
+      "name": "知微数据",
+      "summary": "虚构会员企业，提供知微数据相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "west",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c025",
+      "name": "半山活动",
+      "summary": "虚构会员企业，提供半山活动相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "healthcare"
+      ],
+      "region": "central",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c026",
+      "name": "竹影视觉",
+      "summary": "虚构会员企业，提供竹影视觉相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "culture"
+      ],
+      "region": "east",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c027",
+      "name": "安澜保险",
+      "summary": "虚构会员企业，提供安澜保险相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "retail"
+      ],
+      "region": "south",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c028",
+      "name": "一苇咨询",
+      "summary": "虚构会员企业，提供一苇咨询相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "energy"
+      ],
+      "region": "north",
+      "capacity": "small",
+      "accepting": false,
+      "conflicts_with": []
+    },
+    {
+      "id": "c029",
+      "name": "南枝旅行",
+      "summary": "虚构会员企业，提供南枝旅行相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "logistics"
+      ],
+      "region": "west",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": [
+        "c013"
+      ]
+    },
+    {
+      "id": "c030",
+      "name": "西窗印刷",
+      "summary": "虚构会员企业，提供西窗印刷相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "real_estate"
+      ],
+      "region": "central",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c031",
+      "name": "东篱安保",
+      "summary": "虚构会员企业，提供东篱安保相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "tech"
+      ],
+      "region": "east",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c032",
+      "name": "北岸会展",
+      "summary": "虚构会员企业，提供北岸会展相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "south",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c033",
+      "name": "林间茶事",
+      "summary": "虚构会员企业，提供林间茶事相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "manufacturing"
+      ],
+      "region": "north",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c034",
+      "name": "云上软件",
+      "summary": "虚构会员企业，提供云上软件相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "west",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c008"
+      ]
+    },
+    {
+      "id": "c035",
+      "name": "石桥广告",
+      "summary": "虚构会员企业，提供石桥广告相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "healthcare"
+      ],
+      "region": "central",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c036",
+      "name": "江畔摄影",
+      "summary": "虚构会员企业，提供江畔摄影相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "culture"
+      ],
+      "region": "east",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c037",
+      "name": "花间礼仪",
+      "summary": "虚构会员企业，提供花间礼仪相关服务。",
+      "capabilities": [
+        "event_planning",
+        "marketing",
+        "venue"
+      ],
+      "industries": [
+        "retail"
+      ],
+      "region": "south",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": [
+        "c019"
+      ]
+    },
+    {
+      "id": "c038",
+      "name": "木铎学院",
+      "summary": "虚构会员企业，提供木铎学院相关服务。",
+      "capabilities": [
+        "design",
+        "finance",
+        "media"
+      ],
+      "industries": [
+        "energy"
+      ],
+      "region": "north",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c039",
+      "name": "风铃翻译",
+      "summary": "虚构会员企业，提供风铃翻译相关服务。",
+      "capabilities": [
+        "hr",
+        "it",
+        "logistics"
+      ],
+      "industries": [
+        "logistics"
+      ],
+      "region": "west",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c040",
+      "name": "月湖康养",
+      "summary": "虚构会员企业，提供月湖康养相关服务。",
+      "capabilities": [
+        "av",
+        "training",
+        "translation"
+      ],
+      "industries": [
+        "real_estate"
+      ],
+      "region": "central",
+      "capacity": "small",
+      "accepting": true,
+      "conflicts_with": []
+    }
+  ]
+}
