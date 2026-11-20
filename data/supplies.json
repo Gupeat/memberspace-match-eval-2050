@@ -23,8 +23,8 @@
       "title": "云杉品牌 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "consulting",
+        "design"
       ],
       "industries": [
         "finance"
@@ -39,8 +39,8 @@
       "title": "青石法务 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "consulting",
+        "hr"
       ],
       "industries": [
         "manufacturing"
@@ -87,8 +87,8 @@
       "title": "栖梧人力 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "consulting",
+        "design"
       ],
       "industries": [
         "culture"
@@ -167,8 +167,8 @@
       "title": "山海策划 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "consulting",
+        "hr"
       ],
       "industries": [
         "tech"
@@ -215,8 +215,8 @@
       "title": "松间餐饮 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "consulting",
+        "design"
       ],
       "industries": [
         "education"
@@ -295,8 +295,8 @@
       "title": "溪谷文化 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "consulting",
+        "hr"
       ],
       "industries": [
         "logistics"
@@ -343,8 +343,8 @@
       "title": "元野地产 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "consulting",
+        "design"
       ],
       "industries": [
         "finance"
@@ -407,8 +407,8 @@
       "title": "竹影视觉 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "consulting",
+        "design"
       ],
       "industries": [
         "culture"
@@ -423,8 +423,8 @@
       "title": "安澜保险 · 标准服务包",
       "summary": "虚构供给条目，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "consulting",
+        "hr"
       ],
       "industries": [
         "retail"

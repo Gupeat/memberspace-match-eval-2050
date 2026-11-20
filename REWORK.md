@@ -19,9 +19,10 @@ It replaces the previous filebin-only submission that could not be opened or ver
     python -m match_eval evaluate --weights v2 --report artifacts/report-v2.md
     python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
     python scripts/run_acceptance.py
+    python scripts/manual_review.py
 
 All data is synthetic; no real companies, contacts or PII are included.
 
 ## Honest limits
 
-The labels are rule-generated synthetic fixtures, not human annotations. The v2 weights are identical to the annotation formula, so v2 NDCG@10=1.0 is a construction ceiling, not a generalization result. See docs/EVALUATION-LIMITS.md for details; do not cite the 1.0 as evidence of real-world ranking quality.
+The labels are rule-generated synthetic fixtures, not human annotations. Labels now require at least one matched required capability; v2 scoring has no such gate, so v2 NDCG@10=0.992774 and top6 47/60, not 1.0. It is still a synthetic-label consistency result, not a generalization result. scripts/manual_review.py produces a 600-label review pack with 0 label defects, but it is pending human sign-off. See docs/EVALUATION-LIMITS.md and docs/MANUAL-REVIEW.md; do not cite these numbers as evidence of real-world ranking quality.

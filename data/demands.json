@@ -19,8 +19,8 @@
       "region": "east",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c015",
-        "c006"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c021",
@@ -32,11 +32,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c006",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -67,8 +67,8 @@
       "region": "south",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c015",
-        "c009"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c006",
@@ -80,11 +80,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c009",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -115,24 +115,24 @@
       "region": "north",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c024",
-        "c027"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c019",
-        "c009",
+        "c027",
+        "c011",
+        "c006",
         "c008",
-        "c012",
-        "c015",
-        "c023"
+        "c012"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c024",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c027",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -163,33 +163,33 @@
       "region": "west",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c024",
-        "c029"
+        "c001",
+        "c007"
       ],
       "should_recommend": [
         "c014",
         "c002",
         "c006",
         "c026",
-        "c009",
-        "c019"
+        "c019",
+        "c003"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c024",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c029",
+          "company_id": "c007",
           "reason": "rejected"
-        },
-        {
-          "company_id": "c018",
-          "reason": "not_accepting"
         },
         {
           "company_id": "c022",
           "reason": "conflict"
+        },
+        {
+          "company_id": "c018",
+          "reason": "not_accepting"
         }
       ],
       "annotation_note": "synthetic fixture; fixed relevance rules; see README"
@@ -212,24 +212,24 @@
       "region": "central",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c002",
-        "c003"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c014",
         "c027",
         "c007",
         "c015",
-        "c017",
-        "c024"
+        "c002",
+        "c003"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c002",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c003",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -260,24 +260,24 @@
       "region": "east",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c024",
-        "c027"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c008",
         "c003",
         "c011",
-        "c012",
-        "c015",
-        "c016"
+        "c027",
+        "c008",
+        "c006",
+        "c019"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c024",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c027",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -308,20 +308,20 @@
       "region": "south",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c003",
+        "c001",
         "c004"
       ],
       "should_recommend": [
         "c019",
-        "c007",
-        "c012",
         "c027",
-        "c009",
-        "c029"
+        "c003",
+        "c011",
+        "c002",
+        "c007"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
@@ -356,8 +356,8 @@
       "region": "north",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c015",
-        "c017"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c003",
@@ -369,11 +369,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c017",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -405,8 +405,8 @@
       "region": "west",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c019",
-        "c027"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c009",
@@ -418,11 +418,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c019",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c027",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -453,8 +453,8 @@
       "region": "central",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c008",
-        "c001"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c002",
@@ -466,11 +466,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c001",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -501,24 +501,24 @@
       "region": "east",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c016",
-        "c023"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
-        "c012",
         "c011",
         "c002",
+        "c012",
         "c003",
-        "c008",
-        "c015"
+        "c027",
+        "c022"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c016",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c023",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -549,24 +549,24 @@
       "region": "south",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c027",
-        "c003"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c006",
         "c026",
         "c002",
         "c022",
-        "c016",
-        "c012"
+        "c027",
+        "c003"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c003",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -598,8 +598,8 @@
       "region": "north",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c017",
-        "c021"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c007",
@@ -607,15 +607,15 @@
         "c027",
         "c003",
         "c023",
-        "c001"
+        "c002"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c017",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c021",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -646,24 +646,24 @@
       "region": "west",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c012",
-        "c015"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c011",
-        "c024",
-        "c021",
         "c003",
-        "c004",
-        "c008"
+        "c019",
+        "c027",
+        "c014",
+        "c024"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c012",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -694,24 +694,24 @@
       "region": "central",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c004",
-        "c007"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c015",
-        "c025",
         "c003",
-        "c012",
-        "c024",
-        "c027"
+        "c027",
+        "c011",
+        "c019",
+        "c006"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c004",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c007",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -742,24 +742,24 @@
       "region": "east",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c003",
-        "c004"
+        "c002",
+        "c006"
       ],
       "should_recommend": [
         "c016",
-        "c006",
-        "c026",
         "c001",
         "c011",
-        "c021"
+        "c021",
+        "c003",
+        "c004"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c004",
+          "company_id": "c006",
           "reason": "rejected"
         },
         {
@@ -791,8 +791,8 @@
       "region": "south",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c003",
-        "c023"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c013",
@@ -804,11 +804,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c023",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -839,24 +839,24 @@
       "region": "north",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c013",
-        "c021"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c014",
         "c006",
         "c002",
         "c026",
-        "c024",
-        "c009"
+        "c009",
+        "c013"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c013",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c021",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -887,24 +887,24 @@
       "region": "west",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c007",
-        "c008"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c015",
-        "c004",
         "c019",
-        "c024",
-        "c025",
-        "c003"
+        "c015",
+        "c003",
+        "c011",
+        "c027",
+        "c004"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c007",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c008",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -935,24 +935,24 @@
       "region": "central",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c019",
-        "c015"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
-        "c009",
-        "c029",
         "c002",
         "c006",
         "c014",
-        "c026"
+        "c026",
+        "c019",
+        "c022"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c019",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -984,8 +984,8 @@
       "region": "east",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c027",
-        "c013"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c003",
@@ -997,11 +997,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c013",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1032,24 +1032,24 @@
       "region": "south",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c003",
-        "c008"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c004",
-        "c024",
-        "c007",
-        "c012",
         "c027",
-        "c014"
+        "c004",
+        "c014",
+        "c024",
+        "c003",
+        "c011"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c008",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1080,20 +1080,20 @@
       "region": "north",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c024",
+        "c001",
         "c004"
       ],
       "should_recommend": [
         "c008",
         "c003",
-        "c023",
         "c011",
-        "c012",
-        "c015"
+        "c023",
+        "c019",
+        "c002"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c024",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
@@ -1128,8 +1128,8 @@
       "region": "west",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c019",
-        "c021"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c012",
@@ -1141,11 +1141,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c019",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c021",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1177,8 +1177,8 @@
       "region": "central",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c003",
-        "c007"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c013",
@@ -1190,11 +1190,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c007",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -1225,8 +1225,8 @@
       "region": "east",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c027",
-        "c001"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c006",
@@ -1238,11 +1238,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c001",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -1273,24 +1273,24 @@
       "region": "south",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c024",
-        "c001"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c011",
-        "c012",
         "c027",
-        "c021",
-        "c007",
-        "c015"
+        "c012",
+        "c019",
+        "c002",
+        "c006"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c024",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c001",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -1321,24 +1321,24 @@
       "region": "north",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c008",
-        "c013"
+        "c001",
+        "c007"
       ],
       "should_recommend": [
         "c002",
-        "c012",
         "c006",
         "c014",
         "c026",
-        "c003"
+        "c003",
+        "c011"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c013",
+          "company_id": "c007",
           "reason": "rejected"
         },
         {
@@ -1370,24 +1370,24 @@
       "region": "west",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c003",
-        "c011"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c019",
         "c026",
-        "c009",
-        "c029",
         "c014",
-        "c002"
+        "c002",
+        "c003",
+        "c011"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c011",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -1418,24 +1418,24 @@
       "region": "central",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c008",
-        "c011"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c015",
         "c003",
-        "c012",
-        "c024",
         "c027",
-        "c004"
+        "c015",
+        "c011",
+        "c019",
+        "c006"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c011",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1466,24 +1466,24 @@
       "region": "east",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c007",
-        "c012"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c011",
-        "c001",
-        "c021",
-        "c016",
         "c003",
-        "c004"
+        "c019",
+        "c027",
+        "c006",
+        "c016"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c007",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1514,8 +1514,8 @@
       "region": "south",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c007",
-        "c008"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c015",
@@ -1527,11 +1527,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c007",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c008",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1563,7 +1563,7 @@
       "region": "north",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c019",
+        "c002",
         "c003"
       ],
       "should_recommend": [
@@ -1576,7 +1576,7 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c019",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1611,8 +1611,8 @@
       "region": "west",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c029",
-        "c001"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c014",
@@ -1624,11 +1624,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c029",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c001",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -1659,24 +1659,24 @@
       "region": "central",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c011",
-        "c012"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c024",
-        "c004",
-        "c015",
         "c014",
+        "c024",
         "c003",
-        "c008"
+        "c011",
+        "c027",
+        "c004"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c011",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1708,15 +1708,15 @@
       "capacity_need": "large",
       "rejected_company_ids": [
         "c001",
-        "c003"
+        "c004"
       ],
       "should_recommend": [
         "c006",
         "c026",
-        "c008",
-        "c021",
         "c002",
-        "c022"
+        "c022",
+        "c003",
+        "c011"
       ],
       "should_not_recommend": [
         {
@@ -1724,7 +1724,7 @@
           "reason": "rejected"
         },
         {
-          "company_id": "c003",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -1756,8 +1756,8 @@
       "region": "south",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c027",
-        "c009"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c003",
@@ -1769,11 +1769,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c009",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -1804,24 +1804,24 @@
       "region": "north",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c015",
-        "c024"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c003",
         "c023",
-        "c008",
-        "c013",
         "c011",
-        "c012"
+        "c027",
+        "c008",
+        "c019"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c024",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1852,24 +1852,24 @@
       "region": "west",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c015",
-        "c019"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c027",
+        "c003",
+        "c019",
         "c007",
         "c024",
-        "c003",
-        "c004",
-        "c012"
+        "c011"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c019",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -1900,8 +1900,8 @@
       "region": "central",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c007",
-        "c009"
+        "c002",
+        "c006"
       ],
       "should_recommend": [
         "c008",
@@ -1913,11 +1913,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c007",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c009",
+          "company_id": "c006",
           "reason": "rejected"
         },
         {
@@ -1950,7 +1950,7 @@
       "capacity_need": "medium",
       "rejected_company_ids": [
         "c002",
-        "c012"
+        "c003"
       ],
       "should_recommend": [
         "c025",
@@ -1966,7 +1966,7 @@
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -1997,8 +1997,8 @@
       "region": "south",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c021",
-        "c016"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c006",
@@ -2010,11 +2010,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c021",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c016",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2045,24 +2045,24 @@
       "region": "north",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c011",
-        "c012"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c007",
         "c027",
         "c003",
-        "c008",
-        "c017",
-        "c004"
+        "c007",
+        "c011",
+        "c019",
+        "c008"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c011",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2094,15 +2094,15 @@
       "capacity_need": "medium",
       "rejected_company_ids": [
         "c001",
-        "c009"
+        "c003"
       ],
       "should_recommend": [
         "c014",
         "c011",
-        "c021",
         "c002",
         "c006",
-        "c026"
+        "c026",
+        "c022"
       ],
       "should_not_recommend": [
         {
@@ -2110,7 +2110,7 @@
           "reason": "rejected"
         },
         {
-          "company_id": "c009",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2142,8 +2142,8 @@
       "region": "central",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c002",
-        "c011"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c015",
@@ -2151,15 +2151,15 @@
         "c007",
         "c003",
         "c006",
-        "c017"
+        "c002"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c002",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c011",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -2190,24 +2190,24 @@
       "region": "east",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c008",
-        "c012"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c016",
         "c006",
+        "c016",
         "c011",
         "c003",
-        "c004",
-        "c007"
+        "c019",
+        "c027"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2238,24 +2238,24 @@
       "region": "south",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c023",
-        "c024"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
-        "c012",
         "c003",
-        "c007",
-        "c008",
         "c011",
-        "c015"
+        "c002",
+        "c012",
+        "c019",
+        "c006"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c023",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c024",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -2286,8 +2286,8 @@
       "region": "north",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c015",
-        "c021"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c024",
@@ -2299,11 +2299,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c021",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2335,8 +2335,8 @@
       "region": "west",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c019",
-        "c015"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c009",
@@ -2348,11 +2348,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c019",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2383,8 +2383,8 @@
       "region": "central",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c017",
-        "c021"
+        "c001",
+        "c003"
       ],
       "should_recommend": [
         "c009",
@@ -2396,11 +2396,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c017",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c021",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2431,24 +2431,24 @@
       "region": "east",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c027",
-        "c013"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c023",
         "c011",
-        "c012",
-        "c015",
-        "c016",
-        "c024"
+        "c027",
+        "c023",
+        "c006",
+        "c019",
+        "c012"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c013",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2479,24 +2479,24 @@
       "region": "south",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c012",
-        "c017"
+        "c001",
+        "c007"
       ],
       "should_recommend": [
         "c014",
         "c002",
-        "c024",
         "c006",
         "c026",
-        "c007"
+        "c027",
+        "c003"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c012",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c017",
+          "company_id": "c007",
           "reason": "rejected"
         },
         {
@@ -2528,24 +2528,24 @@
       "region": "north",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c014",
-        "c015"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c011",
-        "c008",
         "c003",
         "c023",
-        "c021",
-        "c002"
+        "c002",
+        "c014",
+        "c015"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c014",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -2576,24 +2576,24 @@
       "region": "west",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c027",
-        "c002"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c012",
-        "c024",
         "c003",
-        "c004",
-        "c015",
-        "c019"
+        "c019",
+        "c027",
+        "c002",
+        "c022"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c027",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c002",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
@@ -2624,24 +2624,24 @@
       "region": "central",
       "capacity_need": "small",
       "rejected_company_ids": [
-        "c011",
-        "c012"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
         "c003",
         "c023",
-        "c015",
-        "c013",
-        "c004",
-        "c007"
+        "c011",
+        "c019",
+        "c027",
+        "c015"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c011",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2672,8 +2672,8 @@
       "region": "east",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c003",
-        "c008"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c017",
@@ -2685,11 +2685,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c008",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2721,8 +2721,8 @@
       "region": "south",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c003",
-        "c023"
+        "c002",
+        "c003"
       ],
       "should_recommend": [
         "c021",
@@ -2734,11 +2734,11 @@
       ],
       "should_not_recommend": [
         {
-          "company_id": "c003",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
-          "company_id": "c023",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2770,7 +2770,7 @@
       "capacity_need": "small",
       "rejected_company_ids": [
         "c001",
-        "c009"
+        "c003"
       ],
       "should_recommend": [
         "c002",
@@ -2786,7 +2786,7 @@
           "reason": "rejected"
         },
         {
-          "company_id": "c009",
+          "company_id": "c003",
           "reason": "rejected"
         },
         {
@@ -2817,24 +2817,24 @@
       "region": "west",
       "capacity_need": "medium",
       "rejected_company_ids": [
-        "c008",
-        "c011"
+        "c001",
+        "c002"
       ],
       "should_recommend": [
-        "c016",
-        "c024",
         "c006",
         "c026",
         "c003",
-        "c004"
+        "c011",
+        "c019",
+        "c027"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c011",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -2865,24 +2865,24 @@
       "region": "central",
       "capacity_need": "large",
       "rejected_company_ids": [
-        "c009",
-        "c012"
+        "c001",
+        "c004"
       ],
       "should_recommend": [
         "c006",
-        "c015",
         "c002",
         "c022",
         "c026",
-        "c003"
+        "c003",
+        "c027"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c009",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c012",
+          "company_id": "c004",
           "reason": "rejected"
         },
         {
