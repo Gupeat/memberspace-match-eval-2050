@@ -16,6 +16,7 @@
     python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
     python -m pytest tests
     python scripts/run_acceptance.py
+    python scripts/manual_review.py
 
 重新生成冻结数据（可选）：
 
@@ -45,8 +46,9 @@
     scripts/
       generate_dataset.py  确定性数据生成器
       run_acceptance.py    验收对照运行器
+      manual_review.py     60 条需求 / 600 个标签的复核包生成器
     tests/           55 个单元/集成测试（含 5 个指标各自的专用测试文件）
-    artifacts/       报告、验收报告、两轮日志、变异演练日志
+    artifacts/       报告、验收报告、两轮日志、变异演练日志、manual-review.json/csv
 
 ## 数据契约
 
@@ -72,7 +74,7 @@
 - 8 种类型：event、marketing、hiring、legal、finance、it、training、sourcing；每种 7 或 8 条。
 - 每条需求固定 6 个应推荐企业、4 个不应推荐标注。
 - 不应推荐原因覆盖 rejected（已拒绝组合）、not_accepting（暂不接受对接）、conflict（冲突关系）。
-- 标注文件是冻结的合成夹具标注：由固定相关性规则生成后写入 demands.json，不从运行时权重反向生成。它是可复核的合成标注，不是线上人工标注样本，不能用来估计线上效果。
+- 标注文件是冻结的合成夹具标注：由固定相关性规则生成后写入 demands.json，不从运行时权重反向生成。它是可复核的合成标注，不是线上人工标注样本，不能用来估计线上效果。scripts/manual_review.py 会逐条重放规则并生成待签字复核包；签字前不得称为“人工标注”。
 
 ## 标注与硬过滤
 
@@ -104,9 +106,9 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 
 两个版本都通过同一套数据、同一套硬过滤和同一套指标代码运行，只有权重不同。
 
-## 方法论警示：v2 的 1.0 不是泛化结果
+## 方法论警示：v2 的 0.9928 不是泛化结果
 
-v2 的权重（0.55/0.25/0.10/0.10）与标签生成公式完全相同，因此 v2 的 top6 与合成标签 60/60 一致、NDCG@10=1.0 是构造性上限，只表示“与同一规则标签完全一致”，不代表在独立数据或线上更好。v1 的 0.984795 也只表示另一组权重与同一规则标签的一致度。完整说明见 docs/EVALUATION-LIMITS.md。
+v2 的权重（0.55/0.25/0.10/0.10）与标签生成公式相同，但标签生成多了一道“正例至少命中一个 required capability”的门槛，而 v2 评分没有这道门槛。因此 v2 的 top6 与标签 47/60 一致、NDCG@10=0.992774，不是构造性的 1.0；它仍然只是同一批合成标签上的排序一致度，不代表在独立数据或线上更好。v1 的 0.970951 也只表示另一组权重与同一批标签的一致度。完整说明见 docs/EVALUATION-LIMITS.md。
 
 ## 当前冻结结果
 
@@ -115,15 +117,15 @@ v2 的权重（0.55/0.25/0.10/0.10）与标签生成公式完全相同，因此 
 | 需求条数 | 60 | 60 |
 | 覆盖需求类型数 | 8 | 8 |
 | Hit@5 | 1.0000 | 1.0000 |
-| NDCG@10 | 0.984795 | 1.000000 |
+| NDCG@10 | 0.970951 | 0.992774 |
 | 硬过滤违规数 | 0 | 0 |
 | 理由可追溯率 | 1.0000 | 1.0000 |
-| 前 5 名 HHI | 0.046733 | 0.048044 |
-| 前 5 名最高公司占比 | 0.076667 | 0.083333 |
+| 前 5 名 HHI | 0.050689 | 0.058578 |
+| 前 5 名最高公司占比 | 0.080000 | 0.103333 |
 
-对比结论：以 v1 为左、v2 为右，NDCG@10 变化为 -0.015205（即 v2 高 1.52 个百分点），没有超过 2 个百分点的退步阈值；两个版本硬过滤违规均为 0；对比退出码为 0。详见 artifacts/report-compare.md。
+对比结论：以 v1 为左、v2 为右，NDCG@10 变化为 -0.021823（即 v2 高 2.18 个百分点），没有超过 2 个百分点的退步阈值；两个版本硬过滤违规均为 0；对比退出码为 0。详见 artifacts/report-compare.md。
 
-这些数字是合成夹具上的回归结果，不是线上效果估计。标签是规则生成的合成标签，不是人工逐条标注；若客户把“人工标注”作为硬性验收项，需要外部人工复核或客户书面接受合成标签。详见 docs/EVALUATION-LIMITS.md。
+这些数字是合成夹具上的回归结果，不是线上效果估计。标签是规则生成的合成标签，不是人工逐条标注；scripts/manual_review.py 已生成 60 条需求、600 个标签的复核包，0 个标签缺陷；复核人签字前仍是 pending-human-signoff。若客户把“人工标注”作为硬性验收项，需要复核人签字或客户书面接受合成标签。详见 docs/EVALUATION-LIMITS.md 和 docs/MANUAL-REVIEW.md。
 
 ## 退出码
 
@@ -142,17 +144,17 @@ artifacts/ACCEPTANCE.md 记录 AC1–AC6 的命令、退出码和结果。当前
 
 - AC1：60 条需求，8 种类型；统计命令 python -m match_eval stats。
 - AC2：每个指标一个专用测试文件：tests/test_metric_hit_at_5.py、test_metric_ndcg_at_10.py、test_metric_filter_violations.py、test_metric_rationale_trace.py、test_metric_top5_concentration.py；tests/test_metrics.py 保留综合覆盖。
-- AC3：--no-hard-filter 诊断运行产生 265 个违规，进程退出码 2。
+- AC3：--no-hard-filter 诊断运行产生 206 个违规，进程退出码 2。
 - AC4：artifacts/report-compare.md 为 v1/v2 对比示例报告。
 - AC5：正式评测硬过滤违规 0，理由可追溯率 1.0。
 - AC6：全量测试 55 passed（含 5 个指标专用文件 14 passed）。
 
-两轮从零演练日志：artifacts/ac-round1.log、ac-round2.log。变异演练日志：artifacts/reverse-drill.log。
+两轮从零演练日志：artifacts/ac-round1.log、ac-round2.log。变异演练日志：artifacts/reverse-drill.log。人工复核包：artifacts/manual-review.json、artifacts/manual-review.csv、docs/MANUAL-REVIEW.md。
 
 ## 限制
 
-- 合成数据规模有限，标注由固定规则生成，不代表真实业务分布；本仓库没有人工标注记录。
-- v2 权重与标注公式相同，NDCG@10=1.0 是自证上限，不能当作泛化或线上效果证据。
+- 合成数据规模有限，标注由固定规则生成，不代表真实业务分布；复核包已生成但尚无人类复核人签字。
+- v2 权重与标注公式相同、标签还多了 capability 门槛，NDCG@10=0.992774 只是同一批合成标签上的一致度，不能当作泛化或线上效果证据。
 - 没有真实企业库、真实联系人、金额和线上反馈；不接入生产 AI 队列。
 - 只支持单机离线 JSON 数据；没有数据库、网络和外部服务依赖。
 - 集中度是观察指标，当前数据下 v2 的 HHI 略高于 v1，不代表线上一定更集中。

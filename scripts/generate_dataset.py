@@ -66,6 +66,12 @@ CONFLICT_PAIRS = [(0, 10), (3, 21), (7, 33), (12, 28), (18, 36)]
 NOT_ACCEPTING = {4, 17, 27}
 PAUSED_SUPPLY = {9, 19, 29}
 
+# These nine member companies are also consulting providers.  The extra
+# capability keeps every demand type supplied with at least six eligible
+# companies that match at least one required capability; without it the legal
+# demands have only four or five capability-matched candidates.
+CONSULTING_COMPANIES = {1, 2, 5, 10, 13, 18, 21, 25, 26}
+
 
 def capabilities_for(index: int) -> list[str]:
     primary = index % len(CAPABILITY_GROUPS)
@@ -83,12 +89,15 @@ def build_companies() -> list[dict]:
         conflicts[right].add(left)
     companies = []
     for index, name in enumerate(COMPANY_NAMES):
+        capabilities = capabilities_for(index)
+        if index in CONSULTING_COMPANIES:
+            capabilities = sorted(set(capabilities) | {"consulting"})
         companies.append(
             {
                 "id": f"c{index + 1:03d}",
                 "name": name,
                 "summary": f"虚构会员企业，提供{name}相关服务。",
-                "capabilities": capabilities_for(index),
+                "capabilities": capabilities,
                 "industries": [INDUSTRIES[index % len(INDUSTRIES)]],
                 "region": REGIONS[index % len(REGIONS)],
                 "capacity": CAPACITIES[index % len(CAPACITIES)],
@@ -166,16 +175,28 @@ def build_demands(companies: list[dict], supplies: list[dict]) -> list[dict]:
             "should_not_recommend": [],
             "annotation_note": "synthetic fixture; fixed relevance rules; see README",
         }
-        eligible = [
+        candidate_pool = [
             company
             for company in active_supply_companies
             if company["id"] != requester["id"]
             and company["accepting"]
             and not conflict(requester, company)
         ]
+        eligible = [
+            company
+            for company in candidate_pool
+            if set(required) & set(company["capabilities"])
+        ]
+        if len(eligible) < 6:
+            raise RuntimeError(
+                f"{demand['id']}: only {len(eligible)} eligible capability-matched companies"
+            )
         eligible.sort(key=lambda company: (-annotation_score(demand, company), company["id"]))
         should = eligible[:6]
-        rejected_pool = [company for company in eligible if company not in should]
+        should_ids = {company["id"] for company in should}
+        rejected_pool = [
+            company for company in candidate_pool if company["id"] not in should_ids
+        ]
         rejected = rejected_pool[:2]
         demand["should_recommend"] = [company["id"] for company in should]
         demand["rejected_company_ids"] = [company["id"] for company in rejected]

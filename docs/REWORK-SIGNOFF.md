@@ -13,8 +13,9 @@ This branch records the final rework state for ClawHunt #2050.
 ## Evidence and limits
 
 - `artifacts/ACCEPTANCE.md` records AC1–AC6 with commands and exit codes.
-- `docs/EVALUATION-LIMITS.md` explicitly states that labels are rule-generated, not human annotations, and that v2's NDCG@10=1.0 is a construct-validity ceiling because v2 weights equal the label formula.
+- `docs/EVALUATION-LIMITS.md` explicitly states that labels are rule-generated, not human annotations. Labels now require at least one matched required capability; v2 scoring has no such gate, so v2 NDCG@10=0.992774 and top6 47/60 — not 1.0. It is still a synthetic-label consistency result, not a generalization result.
 - `docs/REVIEWER-CHECKLIST.md` is included for reviewers.
+- `scripts/manual_review.py` produces `docs/MANUAL-REVIEW.md` with 60 demand rows and 600 labels; it reports 0 label defects and is pending human sign-off.
 - The two reproducibility logs are `artifacts/ac-round1.log` and `artifacts/ac-round2.log`; they contain no absolute local paths.
 
 ## Reproduction
@@ -26,4 +27,5 @@ python -m match_eval evaluate --weights v1 --report artifacts/report-v1.md
 python -m match_eval evaluate --weights v2 --report artifacts/report-v2.md
 python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
 python scripts/run_acceptance.py
+python scripts/manual_review.py
 ```

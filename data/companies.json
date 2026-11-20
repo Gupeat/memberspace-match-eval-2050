@@ -25,6 +25,7 @@
       "name": "云杉品牌",
       "summary": "虚构会员企业，提供云杉品牌相关服务。",
       "capabilities": [
+        "consulting",
         "design",
         "finance",
         "media"
@@ -42,6 +43,7 @@
       "name": "青石法务",
       "summary": "虚构会员企业，提供青石法务相关服务。",
       "capabilities": [
+        "consulting",
         "hr",
         "it",
         "logistics"
@@ -95,6 +97,7 @@
       "name": "栖梧人力",
       "summary": "虚构会员企业，提供栖梧人力相关服务。",
       "capabilities": [
+        "consulting",
         "design",
         "finance",
         "media"
@@ -182,6 +185,7 @@
       "name": "山海策划",
       "summary": "虚构会员企业，提供山海策划相关服务。",
       "capabilities": [
+        "consulting",
         "hr",
         "it",
         "logistics"
@@ -237,6 +241,7 @@
       "name": "松间餐饮",
       "summary": "虚构会员企业，提供松间餐饮相关服务。",
       "capabilities": [
+        "consulting",
         "design",
         "finance",
         "media"
@@ -322,6 +327,7 @@
       "name": "溪谷文化",
       "summary": "虚构会员企业，提供溪谷文化相关服务。",
       "capabilities": [
+        "consulting",
         "hr",
         "it",
         "logistics"
@@ -375,6 +381,7 @@
       "name": "元野地产",
       "summary": "虚构会员企业，提供元野地产相关服务。",
       "capabilities": [
+        "consulting",
         "design",
         "finance",
         "media"
@@ -445,6 +452,7 @@
       "name": "竹影视觉",
       "summary": "虚构会员企业，提供竹影视觉相关服务。",
       "capabilities": [
+        "consulting",
         "design",
         "finance",
         "media"
@@ -462,6 +470,7 @@
       "name": "安澜保险",
       "summary": "虚构会员企业，提供安澜保险相关服务。",
       "capabilities": [
+        "consulting",
         "hr",
         "it",
         "logistics"

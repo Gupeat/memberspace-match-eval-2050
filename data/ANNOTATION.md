@@ -23,7 +23,7 @@
 
 annotation_score = 0.55 * capability + 0.25 * industry + 0.10 * region + 0.10 * capacity。
 
-候选必须满足：有 active 供给、不是需求方、accepting=true、不在冲突关系中。按 annotation_score 降序取前 6 个作为 should_recommend；从剩余的合格候选中取前 2 个作为 rejected（已拒绝组合），再从“有 active 供给但 not_accepting 或与需求方冲突”的企业中按 annotation_score 取最多 2 个作为负例，合计 4 个 should_not_recommend。因此数据集整体覆盖 rejected、not_accepting、conflict 三类原因；单条需求不一定同时出现三类（当前 13/60 条需求同时有三类，其余 47 条为 rejected + not_accepting）。
+候选池必须满足：有 active 供给、不是需求方、accepting=true、不在冲突关系中。正例还要求至少命中一个 required capability，避免把零能力匹配的企业标成“应推荐”；为让每种需求都有足够候选，c002、c003、c006、c011、c014、c019、c022、c026、c027 同时具备 consulting 能力。按 annotation_score 降序取前 6 个 capability-matched 候选作为 should_recommend；rejected 从“候选池中未被选为正例”的企业里取前 2 个（不要求 capability 命中，因为“已拒绝组合”本身就可以是能力不匹配的企业），再从“有 active 供给但 not_accepting 或与需求方冲突”的企业中按 annotation_score 取最多 2 个作为负例，合计 4 个 should_not_recommend。因此数据集整体覆盖 rejected、not_accepting、conflict 三类原因；单条需求不一定同时出现三类。
 
 标注写入 demands.json 后冻结。评测运行时不再读取 annotation_score，也不根据评测权重反推标签；权重变化只影响排序结果，不会改变标注。
 
@@ -41,6 +41,7 @@ annotation_score = 0.55 * capability + 0.25 * industry + 0.10 * region + 0.10 * 
 2. 运行测试 tests/test_dataset.py，核对每条需求 6 正 4 负、负例原因覆盖、冲突对称、无手机号/邮箱等 PII 模式。
 3. 运行 python -m match_eval evaluate --weights v1 或 v2，核对正式评测违规为 0、理由可追溯率为 1.0。
 4. 运行 scripts/run_acceptance.py，生成 artifacts/ACCEPTANCE.md。
+5. 运行 python scripts/manual_review.py，生成 artifacts/manual-review.json、artifacts/manual-review.csv 和 docs/MANUAL-REVIEW.md；复核人签字前状态是 pending-human-signoff。
 
 ## 限制
 

@@ -31,11 +31,11 @@
 | 需求条数 | 60 | 至少 50 |
 | 覆盖需求类型数 | 8 | 统计脚本输出 |
 | Hit@5 | 1.0000 | 有至少一个应推荐进入前 5 的需求占比 |
-| NDCG@10 | 0.9848 | 二值相关性，应推荐=1 |
+| NDCG@10 | 0.9710 | 二值相关性，应推荐=1 |
 | 硬过滤违规数 | 0 | 目标 0；大于 0 时退出码非 0 |
 | 理由可追溯率 | 1.0000 | 目标 1.0000 |
-| 前 5 名集中度 HHI | 0.0467 | 所有需求前 5 名公司分布 |
-| 前 5 名最高公司占比 | 0.0767 | 观察值，不设硬门槛 |
+| 前 5 名集中度 HHI | 0.0507 | 所有需求前 5 名公司分布 |
+| 前 5 名最高公司占比 | 0.0800 | 观察值，不设硬门槛 |
 | 前 5 名覆盖公司数 | 24 | 观察值 |
 
 ## 需求类型覆盖
@@ -93,15 +93,15 @@
 
 ### d003 · 人才招聘需求 03
 
-类型：hiring；需求方：c003；可推荐标注：c019, c009, c008, c012, c015, c023
+类型：hiring；需求方：c003；可推荐标注：c019, c027, c011, c006, c008, c012
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c019 | 0.4000 | capabilities=hr; industry=yes; region=no; capacity=no; supplies=s019 | 应推荐 * |
-| 2 | c008 | 0.3500 | capabilities=training; industry=no; region=yes; capacity=no; supplies=s008 | 应推荐 * |
-| 3 | c009 | 0.3500 | capabilities=none; industry=yes; region=no; capacity=yes; supplies=s009 | 应推荐 * |
-| 4 | c023 | 0.3500 | capabilities=hr; industry=no; region=yes; capacity=no; supplies=s023 | 应推荐 * |
-| 5 | c012 | 0.2500 | capabilities=training; industry=no; region=no; capacity=yes; supplies=s012 | 应推荐 * |
+| 1 | c019 | 0.5500 | capabilities=consulting,hr; industry=yes; region=no; capacity=no; supplies=s019 | 应推荐 * |
+| 2 | c027 | 0.4000 | capabilities=consulting,hr; industry=no; region=no; capacity=yes; supplies=s027 | 应推荐 * |
+| 3 | c008 | 0.3500 | capabilities=training; industry=no; region=yes; capacity=no; supplies=s008 | 应推荐 * |
+| 4 | c009 | 0.3500 | capabilities=none; industry=yes; region=no; capacity=yes; supplies=s009 | 未标注 |
+| 5 | c023 | 0.3500 | capabilities=hr; industry=no; region=yes; capacity=no; supplies=s023 | 未标注 |
 
 ## 结论
 

@@ -31,14 +31,15 @@
 
 ## 4. 违规/退步时退出码非 0（major）
 
-- 违规：python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/diagnostic-no-filter.md → 硬过滤违规数 265，退出码 2。
+- 违规：python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/diagnostic-no-filter.md → 硬过滤违规数 206，退出码 2。
 - 退步：tests/test_cli.py::test_cli_compare_regression_exit_nonzero 使用只按 region 打分的坏权重，断言 NDCG@10 退步超过 2 个百分点时退出码 3。
 - 正常对比：python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md → 退出码 0。
 
 ## 5. 两个权重版本对比报告（major）
 
 - 文件：artifacts/report-compare.md（已提交到仓库，并在 PR 正文中引用）。
-- 结果：Hit@5 1.0000/1.0000；NDCG@10 0.9848/1.0000（右-左 +0.0152）；硬过滤违规 0/0；理由可追溯率 1.0/1.0；退步 -0.0152 < 0.02，判定通过。
+- 结果：Hit@5 1.0000/1.0000；NDCG@10 0.9710/0.9928（右-左 +0.0218）；硬过滤违规 0/0；理由可追溯率 1.0/1.0；退步 -0.0218 < 0.02，判定通过。
+- 标签生成增加了“正例至少命中一个 required capability”的门槛，v2 评分没有该门槛，因此 v2 的 top6 与标签只有 47/60 一致，NDCG@10=0.992774，不再是构造性的 1.0。
 - 命令：python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
 
 ## 复现
@@ -49,5 +50,8 @@
     python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/diagnostic-no-filter.md
     python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
     python scripts/run_acceptance.py
+    python scripts/manual_review.py
+
+人工复核：scripts/manual_review.py 逐条重放规则并生成 60 条需求、600 个标签的复核包（docs/MANUAL-REVIEW.md），0 个标签缺陷，当前 pending-human-signoff；签字前不得称为人工标注。
 
 所有数据均为合成数据，不含真实企业、联系人、金额或 PII。
