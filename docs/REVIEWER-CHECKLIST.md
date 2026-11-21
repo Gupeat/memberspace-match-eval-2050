@@ -17,19 +17,19 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 
 ## 2. Dataset, annotation and stats (major)
 
-- 60 demands, 8 types, 186 positives, 240 negatives. Each demand has 1-6 positives and
+- 60 demands, 8 types, 190 positives, 240 negatives. Each demand has 1-6 positives and
   exactly 4 negatives: 2 rejected, at least 1 not_accepting, plus 1 conflict when a
   conflicting company exists, otherwise a second not_accepting. Actual totals: rejected 120,
   not_accepting 104, conflict 16; 44/60 demands have no conflict.
 - Required capabilities are 2-3 per demand; all 16 capabilities appear in company cards.
   Company capability cards are hand-written to match company names; supplies and demand
   metadata are deterministically derived, not all hand-written.
-- Positives cover 3/3=57, 2/3=129, 1/3=0. The "at least two required capabilities" floor is
+- Positives cover 3/3=113, 2/3=77, 1/3=0. The "at least two required capabilities" floor is
   a disclosed business rule. It cannot be raised to 3/3 without changing the fixture: only
-  57 positives reach 3/3.
+  113 positives reach 3/3.
 - Command: `python -m match_eval stats`
 - Expected: companies 40, supplies 30 (active 27), demands 60, demand_type_count 8,
-  positive_labels 186, negative_labels 240.
+  positive_labels 190, negative_labels 240.
 
 ## 3. Metric unit tests (major)
 
@@ -39,7 +39,7 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 - Supporting suites: `tests/test_metrics.py`, `test_filters.py`, `test_scoring.py`,
   `test_evaluate.py`, `test_cli.py`, `test_dataset.py`, `test_labeling.py`,
   `test_report.py`.
-- Full suite: `python -m pytest tests` -> 66 passed.
+- Full suite: `python -m pytest tests` -> 68 passed.
 - Acceptance record: `artifacts/ACCEPTANCE.md`.
 
 ## 4. Non-zero exit code on violations or regression (major)
@@ -48,7 +48,7 @@ repository root with Python 3.11+; there are no network or third-party runtime d
   NDCG@10 regresses by more than 0.02.
 - Real diagnostic run:
   `python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/diagnostic-no-filter.md`
-  -> 222 violations, NDCG@10 0.818828, exit 2.
+  -> 222 violations, NDCG@10 0.808071, exit 2.
 - The diagnostic report's embedded reproduction command includes `--no-hard-filter` and its
   real output path; `tests/test_report.py` asserts this.
 - Normal run: exit 0 when violations are zero. The exit-2 evidence intentionally comes from
@@ -58,11 +58,11 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 
 - Committed report: `artifacts/report-compare.md`, linked from `README.md`.
 - Command: `python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md`
-- v1 NDCG@10=0.894126; v2=0.970246; v2-v1=+0.076120; compare left-minus-right
-  regression=-0.076120, below the 0.02 threshold; verdict=pass, exit 0.
+- v1 NDCG@10=0.890098; v2=0.965123; v2-v1=+0.075025; compare left-minus-right
+  regression=-0.075025, below the 0.02 threshold; verdict=pass, exit 0.
 - Formal builds: v1/v2 Hit@5 1.000000/1.000000, violations 0/0, traceability 1.0/1.0,
-  HHI 0.049556/0.050844, top1 0.080000/0.083333, 23 companies each.
-- Per demand, v2 is better on 31, equal on 29 and worse on 0. All 186 positives fall inside
+  HHI 0.051467/0.053333, top1 0.083333/0.096667, 23 companies each.
+- Per demand, v2 is better on 31, equal on 28 and worse on 1. All 190 positives fall inside
   v2's full top 10 (median rank 2, worst 8).
 
 ## 6. Label independence (this round's blocker)
@@ -76,7 +76,7 @@ repository root with Python 3.11+; there are no network or third-party runtime d
   that rewrites weights to arbitrary values, reruns both scripts, and asserts all four data
   files are byte-identical.
 - `scripts/manual_review.py` replays the six slots and four negatives with the same
-  `labeling` module; 60 demands / 426 labels, 0 defects, 0 replay mismatches, default status
+  `labeling` module; 60 demands / 430 labels, 0 defects, 0 replay mismatches, default status
   pending-human-signoff.
 - The six slots are lexicographic, with no weighted sum, and a slot abstains when no
   qualified candidate remains (hence 1-6 positives). Only `case_strength` (company-level
@@ -84,11 +84,18 @@ repository root with Python 3.11+; there are no network or third-party runtime d
   industry, region and capacity are different editorial aggregations of facts the evaluator
   also uses. Do not claim full orthogonality.
 - `scripts/weight_grid.py` enumerates all 1771 non-negative four-feature weights at 0.05
-  steps. A weight (0.60/0.10/0.15/0.15) makes every demand's top6 cover all 186 positives,
-  and the best NDCG@10 in the grid is 0.999187. Therefore the claim is "labels are not
-  generated from v1/v2 weights", not "no weighted sum can reproduce labels".
-- v2 top6 exact agreement is 1/1 (only the one demand with six positives can be exact),
-  54/60 demands fully covered, 180/186 positive ids in top6. The gap is a ranking-target
+  steps. The best weight in the grid covers 58/60 demands (capability 0.65 / industry 0.00 /
+  region 0.15 / capacity 0.20; positive recall 188/190), best NDCG@10=0.996243. This is not a
+  grid-resolution issue: in d052 the unlabelled but eligible c006 has features
+  capability 1.0 / industry 0 / region 0 / capacity 1, while the labelled c022 has
+  capability 2/3 / industry 0 / region 0 / capacity 1. c006 strictly dominates c022, so any
+  non-negative four-feature weight ranks c006 above c022; if c022 enters top6, c006 must too,
+  and six positives plus c006 need seven slots. `tests/test_label_independence.py` asserts
+  this over all 1771 grid weights and `artifacts/weight-grid.json` records the witness.
+  Therefore the claim is "no non-negative four-feature weight can reproduce every demand's
+  top6 label set", not full orthogonality with the business facts.
+- v2 top6 exact agreement is 2/4 (only demands with six positives can be exact),
+  51/60 demands fully covered, 180/190 positive ids in top6. The gap is a ranking-target
   difference (NDCG is position-weighted; top6 is a set), not a label defect and not proof of
   independence.
 
@@ -96,20 +103,20 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 
 - `scripts/label_sensitivity.py` (500 seeds, deterministic) replaces only the positives,
   preserving each demand's actual positive count.
-- With the production floor (coverage >= 2): median v2-v1=+0.076281, v2 wins 500/500; the
-  actual labels are at the 47.2nd percentile, i.e. not tuned to favour v2.
-- With coverage >= 1: median +0.026651, 491/500.
-- Without the floor: median +0.000717, v2 wins 256/500, 95% range crosses zero.
-- Therefore +0.076120 is not evidence that v2 generalizes better; see
+- With the production floor (coverage >= 2): median v2-v1=+0.075438, v2 wins 500/500; the
+  actual labels are at the 41.0st percentile, i.e. not tuned to favour v2.
+- With coverage >= 1: median +0.023730, 484/500.
+- Without the floor: median -0.000253, v2 wins 247/500, 95% range crosses zero.
+- Therefore +0.075025 is not evidence that v2 generalizes better; see
   `docs/LABEL-BASELINE.md` and `docs/EVALUATION-LIMITS.md`.
 
 ## 8. Honest limits
 
 - Labels are rule-generated synthetic editorial fixtures, not human annotations; the review
   pack is pending human sign-off.
-- NDCG@10=0.970246 is a consistency result on 60 synthetic demands, not a production-quality
+- NDCG@10=0.965123 is a consistency result on 60 synthetic demands, not a production-quality
   estimate.
-- 129/186 positives cover 2/3 required capabilities; 57 cover 3/3; none cover 1/3. The
+- 77/190 positives cover 2/3 required capabilities; 113 cover 3/3; none cover 1/3. The
   rationale is documented per label in `data/annotations.json` and in
   `docs/EVALUATION-LIMITS.md`.
 - `case_strength` verified-case counts are company-level, not split by capability.

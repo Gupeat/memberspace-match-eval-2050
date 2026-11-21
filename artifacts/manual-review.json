@@ -1,24 +1,24 @@
 {
   "task": 2050,
-  "generated_at": "2026-11-21T07:27:57Z",
+  "generated_at": "2026-11-21T10:25:18Z",
   "status": "pending-human-signoff",
   "reviewer": "",
   "reviewed_at": "",
   "notes": "",
-  "scope": "all 60 demands / 426 labels; up to six positive slots and four negatives replayed from scripts/labeling.py",
+  "scope": "all 60 demands / 430 labels; up to six positive slots and four negatives replayed from scripts/labeling.py",
   "totals": {
     "demands": 60,
-    "positive_labels": 186,
+    "positive_labels": 190,
     "negative_labels": 240,
     "demands_with_issues": 0,
     "label_issues": 0,
     "checks_failed": 0,
     "replay_mismatches": 0,
-    "v2_top6_exact": 1,
-    "v2_top6_exact_denominator": 1,
-    "v2_top6_covers_positives": 54,
+    "v2_top6_exact": 2,
+    "v2_top6_exact_denominator": 4,
+    "v2_top6_covers_positives": 51,
     "v2_top6_overlap_total": 180,
-    "observation_count": 65
+    "observation_count": 67
   },
   "rows": [
     {
@@ -138,7 +138,7 @@
       "negative_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -388,12 +388,12 @@
       "slot_coverage": {
         "capability_lead": 3,
         "case_strength": 3,
-        "responsiveness": 3
+        "regional_fit": 2
       },
       "v2_top6": [
-        "c006",
         "c008",
         "c017",
+        "c006",
         "c013",
         "c011",
         "c021"
@@ -411,7 +411,7 @@
           "c017"
         ],
         [
-          "responsiveness",
+          "regional_fit",
           "c006"
         ]
       ],
@@ -456,12 +456,11 @@
         },
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
-            "hr",
-            "training"
+            "hr"
           ]
         }
       ],
@@ -527,13 +526,14 @@
       ],
       "region": "north",
       "capacity_need": "medium",
-      "positive_count": 4,
+      "positive_count": 5,
       "negative_count": 4,
       "positive_ids": [
+        "c013",
         "c021",
         "c024",
         "c003",
-        "c013"
+        "c006"
       ],
       "negative_ids": [
         "c015",
@@ -548,28 +548,33 @@
       ],
       "slot_coverage": {
         "capability_lead": 3,
-        "case_strength": 2,
+        "case_strength": 3,
+        "responsiveness": 2,
         "industry_fit": 3,
         "capacity_fit": 3
       },
       "v2_top6": [
         "c003",
         "c013",
+        "c006",
         "c021",
         "c023",
-        "c024",
-        "c006"
+        "c024"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 4,
+      "v2_top6_overlap": 5,
       "replay_slots": [
         [
           "capability_lead",
-          "c021"
+          "c013"
         ],
         [
           "case_strength",
+          "c021"
+        ],
+        [
+          "responsiveness",
           "c024"
         ],
         [
@@ -578,7 +583,7 @@
         ],
         [
           "capacity_fit",
-          "c013"
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -600,6 +605,16 @@
         ]
       ],
       "positive_details": [
+        {
+          "company_id": "c013",
+          "name": "澄明咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "finance",
+            "legal"
+          ]
+        },
         {
           "company_id": "c021",
           "name": "长风能源",
@@ -630,8 +645,8 @@
           ]
         },
         {
-          "company_id": "c013",
-          "name": "澄明咨询",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -691,7 +706,7 @@
       "type": "finance",
       "title": "财税服务需求 05",
       "requester": "c006",
-      "requester_name": "栖梧人力",
+      "requester_name": "栖梧咨询",
       "required_capabilities": [
         "finance",
         "legal",
@@ -706,9 +721,9 @@
       "positive_count": 5,
       "negative_count": 4,
       "positive_ids": [
+        "c024",
         "c013",
         "c021",
-        "c024",
         "c004",
         "c003"
       ],
@@ -743,15 +758,15 @@
       "replay_slots": [
         [
           "capability_lead",
-          "c013"
+          "c024"
         ],
         [
           "case_strength",
-          "c021"
+          "c013"
         ],
         [
           "responsiveness",
-          "c024"
+          "c021"
         ],
         [
           "regional_fit",
@@ -782,6 +797,15 @@
       ],
       "positive_details": [
         {
+          "company_id": "c024",
+          "name": "知微数据",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "finance",
+            "it"
+          ]
+        },
+        {
           "company_id": "c013",
           "name": "澄明咨询",
           "hard_filter": "",
@@ -797,15 +821,6 @@
           "matched_capabilities": [
             "finance",
             "legal"
-          ]
-        },
-        {
-          "company_id": "c024",
-          "name": "知微数据",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "finance",
-            "it"
           ]
         },
         {
@@ -1063,12 +1078,12 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 3,
+        "capability_lead": 2,
         "regional_fit": 3
       },
       "v2_top6": [
-        "c006",
         "c017",
+        "c006",
         "c003",
         "c007",
         "c011",
@@ -1108,12 +1123,11 @@
       "positive_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
-            "hr",
-            "training"
+            "hr"
           ]
         },
         {
@@ -1213,7 +1227,7 @@
         "c001",
         "c011",
         "c032",
-        "c014"
+        "c006"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -1619,8 +1633,8 @@
       "negative_count": 4,
       "positive_ids": [
         "c008",
-        "c006",
-        "c017"
+        "c017",
+        "c006"
       ],
       "negative_ids": [
         "c012",
@@ -1634,7 +1648,7 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 2,
+        "responsiveness": 2,
         "regional_fit": 2,
         "capacity_fit": 2
       },
@@ -1651,16 +1665,16 @@
       "v2_top6_overlap": 3,
       "replay_slots": [
         [
-          "capability_lead",
+          "responsiveness",
           "c008"
         ],
         [
           "regional_fit",
-          "c006"
+          "c017"
         ],
         [
           "capacity_fit",
-          "c017"
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -1692,8 +1706,8 @@
           ]
         },
         {
-          "company_id": "c006",
-          "name": "栖梧人力",
+          "company_id": "c017",
+          "name": "苍梧教育",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -1701,8 +1715,8 @@
           ]
         },
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -1771,11 +1785,12 @@
       ],
       "region": "west",
       "capacity_need": "small",
-      "positive_count": 3,
+      "positive_count": 4,
       "negative_count": 4,
       "positive_ids": [
-        "c013",
         "c021",
+        "c006",
+        "c013",
         "c003"
       ],
       "negative_ids": [
@@ -1791,27 +1806,32 @@
       "slot_coverage": {
         "capability_lead": 2,
         "case_strength": 2,
+        "responsiveness": 2,
         "regional_fit": 2
       },
       "v2_top6": [
         "c003",
+        "c006",
         "c013",
         "c021",
         "c023",
-        "c004",
-        "c024"
+        "c004"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 4,
       "replay_slots": [
         [
           "capability_lead",
-          "c013"
+          "c021"
         ],
         [
           "case_strength",
-          "c021"
+          "c006"
+        ],
+        [
+          "responsiveness",
+          "c013"
         ],
         [
           "regional_fit",
@@ -1838,8 +1858,8 @@
       ],
       "positive_details": [
         {
-          "company_id": "c013",
-          "name": "澄明咨询",
+          "company_id": "c021",
+          "name": "长风能源",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -1847,8 +1867,17 @@
           ]
         },
         {
-          "company_id": "c021",
-          "name": "长风能源",
+          "company_id": "c006",
+          "name": "栖梧咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "legal"
+          ]
+        },
+        {
+          "company_id": "c013",
+          "name": "澄明咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -1934,8 +1963,8 @@
         "c004"
       ],
       "negative_ids": [
-        "c008",
-        "c017",
+        "c020",
+        "c002",
         "c005",
         "c016"
       ],
@@ -1953,7 +1982,7 @@
         "c013",
         "c023",
         "c024",
-        "c021"
+        "c006"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -1970,11 +1999,11 @@
       ],
       "replay_negatives": [
         [
-          "c008",
+          "c020",
           "rejected"
         ],
         [
-          "c017",
+          "c002",
           "rejected"
         ],
         [
@@ -2008,14 +2037,14 @@
       ],
       "negative_details": [
         {
-          "company_id": "c008",
-          "name": "禾木培训",
+          "company_id": "c020",
+          "name": "暮山零售",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
+          "company_id": "c002",
+          "name": "云杉品牌",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -2095,7 +2124,7 @@
         "c024",
         "c003",
         "c013",
-        "c008"
+        "c006"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -2222,10 +2251,9 @@
       ],
       "region": "central",
       "capacity_need": "small",
-      "positive_count": 3,
+      "positive_count": 2,
       "negative_count": 4,
       "positive_ids": [
-        "c006",
         "c008",
         "c017"
       ],
@@ -2241,31 +2269,26 @@
       ],
       "slot_coverage": {
         "capability_lead": 2,
-        "case_strength": 2,
-        "responsiveness": 2
+        "case_strength": 2
       },
       "v2_top6": [
-        "c006",
         "c008",
         "c017",
         "c010",
         "c003",
+        "c006",
         "c007"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 2,
       "replay_slots": [
         [
           "capability_lead",
-          "c006"
-        ],
-        [
-          "case_strength",
           "c008"
         ],
         [
-          "responsiveness",
+          "case_strength",
           "c017"
         ]
       ],
@@ -2288,15 +2311,6 @@
         ]
       ],
       "positive_details": [
-        {
-          "company_id": "c006",
-          "name": "栖梧人力",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "training"
-          ]
-        },
         {
           "company_id": "c008",
           "name": "禾木培训",
@@ -2600,7 +2614,7 @@
       "negative_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -2803,9 +2817,9 @@
       "positive_count": 3,
       "negative_count": 4,
       "positive_ids": [
-        "c017",
         "c008",
-        "c006"
+        "c006",
+        "c017"
       ],
       "negative_ids": [
         "c025",
@@ -2818,14 +2832,14 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 3,
-        "regional_fit": 3,
+        "responsiveness": 3,
+        "regional_fit": 2,
         "capacity_fit": 3
       },
       "v2_top6": [
-        "c006",
         "c008",
         "c017",
+        "c006",
         "c003",
         "c013",
         "c007"
@@ -2835,16 +2849,16 @@
       "v2_top6_overlap": 3,
       "replay_slots": [
         [
-          "capability_lead",
-          "c017"
-        ],
-        [
-          "regional_fit",
+          "responsiveness",
           "c008"
         ],
         [
-          "capacity_fit",
+          "regional_fit",
           "c006"
+        ],
+        [
+          "capacity_fit",
+          "c017"
         ]
       ],
       "replay_negatives": [
@@ -2867,16 +2881,6 @@
       ],
       "positive_details": [
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "hr",
-            "training"
-          ]
-        },
-        {
           "company_id": "c008",
           "name": "禾木培训",
           "hard_filter": "",
@@ -2888,7 +2892,16 @@
         },
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "hr"
+          ]
+        },
+        {
+          "company_id": "c017",
+          "name": "苍梧教育",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -2959,11 +2972,12 @@
       ],
       "region": "central",
       "capacity_need": "large",
-      "positive_count": 5,
+      "positive_count": 6,
       "negative_count": 4,
       "positive_ids": [
         "c013",
         "c021",
+        "c006",
         "c022",
         "c004",
         "c003"
@@ -2981,21 +2995,22 @@
       "slot_coverage": {
         "capability_lead": 3,
         "case_strength": 3,
+        "responsiveness": 3,
         "industry_fit": 2,
         "regional_fit": 2,
         "capacity_fit": 3
       },
       "v2_top6": [
         "c003",
+        "c006",
         "c013",
         "c021",
         "c022",
-        "c004",
-        "c007"
+        "c004"
       ],
-      "v2_top6_exact": false,
+      "v2_top6_exact": true,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 5,
+      "v2_top6_overlap": 6,
       "replay_slots": [
         [
           "capability_lead",
@@ -3004,6 +3019,10 @@
         [
           "case_strength",
           "c021"
+        ],
+        [
+          "responsiveness",
+          "c006"
         ],
         [
           "industry_fit",
@@ -3050,6 +3069,16 @@
         {
           "company_id": "c021",
           "name": "长风能源",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "finance",
+            "legal"
+          ]
+        },
+        {
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -3121,14 +3150,12 @@
         "positive_slots_replayed": true,
         "negatives_replayed": true,
         "negative_reasons_valid": true,
-        "v2_top6_exact": false,
+        "v2_top6_exact": true,
         "v2_top6_covers_positives": true,
         "rationale_complete": true
       },
       "issues": [],
-      "observations": [
-        "v2_top6_set_differs"
-      ],
+      "observations": [],
       "machine_decision": "pass",
       "decision": "pending"
     },
@@ -3149,18 +3176,19 @@
       ],
       "region": "south",
       "capacity_need": "small",
-      "positive_count": 5,
+      "positive_count": 6,
       "negative_count": 4,
       "positive_ids": [
-        "c003",
         "c013",
-        "c024",
+        "c021",
+        "c003",
         "c004",
-        "c021"
+        "c024",
+        "c006"
       ],
       "negative_ids": [
-        "c008",
-        "c015",
+        "c001",
+        "c012",
         "c005",
         "c016"
       ],
@@ -3173,31 +3201,32 @@
         "case_strength": 2,
         "responsiveness": 2,
         "industry_fit": 3,
-        "regional_fit": 2
+        "regional_fit": 2,
+        "capacity_fit": 2
       },
       "v2_top6": [
         "c004",
         "c003",
         "c013",
+        "c006",
         "c021",
-        "c024",
-        "c002"
+        "c024"
       ],
-      "v2_top6_exact": false,
+      "v2_top6_exact": true,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 5,
+      "v2_top6_overlap": 6,
       "replay_slots": [
         [
           "capability_lead",
-          "c003"
-        ],
-        [
-          "case_strength",
           "c013"
         ],
         [
+          "case_strength",
+          "c021"
+        ],
+        [
           "responsiveness",
-          "c024"
+          "c003"
         ],
         [
           "industry_fit",
@@ -3205,16 +3234,20 @@
         ],
         [
           "regional_fit",
-          "c021"
+          "c024"
+        ],
+        [
+          "capacity_fit",
+          "c006"
         ]
       ],
       "replay_negatives": [
         [
-          "c008",
+          "c001",
           "rejected"
         ],
         [
-          "c015",
+          "c012",
           "rejected"
         ],
         [
@@ -3228,15 +3261,6 @@
       ],
       "positive_details": [
         {
-          "company_id": "c003",
-          "name": "青石法务",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "finance",
-            "legal"
-          ]
-        },
-        {
           "company_id": "c013",
           "name": "澄明咨询",
           "hard_filter": "",
@@ -3246,12 +3270,21 @@
           ]
         },
         {
-          "company_id": "c024",
-          "name": "知微数据",
+          "company_id": "c021",
+          "name": "长风能源",
           "hard_filter": "",
           "matched_capabilities": [
             "finance",
-            "it"
+            "legal"
+          ]
+        },
+        {
+          "company_id": "c003",
+          "name": "青石法务",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "finance",
+            "legal"
           ]
         },
         {
@@ -3265,8 +3298,17 @@
           ]
         },
         {
-          "company_id": "c021",
-          "name": "长风能源",
+          "company_id": "c024",
+          "name": "知微数据",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "finance",
+            "it"
+          ]
+        },
+        {
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "finance",
@@ -3276,14 +3318,14 @@
       ],
       "negative_details": [
         {
-          "company_id": "c008",
-          "name": "禾木培训",
+          "company_id": "c001",
+          "name": "晨星会务",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
         {
-          "company_id": "c015",
-          "name": "海盐传播",
+          "company_id": "c012",
+          "name": "沐光设计",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -3309,14 +3351,12 @@
         "positive_slots_replayed": true,
         "negatives_replayed": true,
         "negative_reasons_valid": true,
-        "v2_top6_exact": false,
+        "v2_top6_exact": true,
         "v2_top6_covers_positives": true,
         "rationale_complete": true
       },
       "issues": [],
-      "observations": [
-        "v2_top6_set_differs"
-      ],
+      "observations": [],
       "machine_decision": "pass",
       "decision": "pending"
     },
@@ -3528,12 +3568,12 @@
       ],
       "slot_coverage": {
         "capability_lead": 3,
-        "responsiveness": 3,
+        "case_strength": 2,
         "capacity_fit": 3
       },
       "v2_top6": [
-        "c006",
         "c017",
+        "c006",
         "c008",
         "c003",
         "c013",
@@ -3548,7 +3588,7 @@
           "c008"
         ],
         [
-          "responsiveness",
+          "case_strength",
           "c006"
         ],
         [
@@ -3587,12 +3627,11 @@
         },
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
-            "hr",
-            "training"
+            "hr"
           ]
         },
         {
@@ -4161,8 +4200,8 @@
       "positive_count": 3,
       "negative_count": 4,
       "positive_ids": [
-        "c006",
         "c017",
+        "c006",
         "c008"
       ],
       "negative_ids": [
@@ -4195,11 +4234,11 @@
       "replay_slots": [
         [
           "capability_lead",
-          "c006"
+          "c017"
         ],
         [
           "case_strength",
-          "c017"
+          "c006"
         ],
         [
           "regional_fit",
@@ -4226,8 +4265,8 @@
       ],
       "positive_details": [
         {
-          "company_id": "c006",
-          "name": "栖梧人力",
+          "company_id": "c017",
+          "name": "苍梧教育",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -4235,8 +4274,8 @@
           ]
         },
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -4304,7 +4343,7 @@
       "type": "legal",
       "title": "法律合规需求 28",
       "requester": "c006",
-      "requester_name": "栖梧人力",
+      "requester_name": "栖梧咨询",
       "required_capabilities": [
         "legal",
         "consulting"
@@ -4496,7 +4535,7 @@
         "c024",
         "c003",
         "c013",
-        "c021"
+        "c006"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -4765,12 +4804,11 @@
       ],
       "region": "south",
       "capacity_need": "medium",
-      "positive_count": 3,
+      "positive_count": 2,
       "negative_count": 4,
       "positive_ids": [
         "c008",
-        "c017",
-        "c006"
+        "c017"
       ],
       "negative_ids": [
         "c014",
@@ -4784,20 +4822,19 @@
       ],
       "slot_coverage": {
         "capability_lead": 2,
-        "regional_fit": 2,
-        "capacity_fit": 2
+        "regional_fit": 2
       },
       "v2_top6": [
         "c017",
-        "c006",
         "c008",
+        "c006",
         "c007",
         "c022",
         "c003"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 2,
       "replay_slots": [
         [
           "capability_lead",
@@ -4806,10 +4843,6 @@
         [
           "regional_fit",
           "c017"
-        ],
-        [
-          "capacity_fit",
-          "c006"
         ]
       ],
       "replay_negatives": [
@@ -4843,15 +4876,6 @@
         {
           "company_id": "c017",
           "name": "苍梧教育",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "training"
-          ]
-        },
-        {
-          "company_id": "c006",
-          "name": "栖梧人力",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -5161,7 +5185,7 @@
       "negative_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -5396,15 +5420,15 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 3,
-        "case_strength": 3,
+        "capability_lead": 2,
+        "responsiveness": 3,
         "capacity_fit": 3
       },
       "v2_top6": [
         "c017",
-        "c006",
         "c008",
         "c007",
+        "c006",
         "c024",
         "c003"
       ],
@@ -5417,7 +5441,7 @@
           "c006"
         ],
         [
-          "case_strength",
+          "responsiveness",
           "c008"
         ],
         [
@@ -5446,12 +5470,11 @@
       "positive_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
-            "hr",
-            "training"
+            "hr"
           ]
         },
         {
@@ -5565,15 +5588,15 @@
       },
       "v2_top6": [
         "c003",
+        "c006",
         "c013",
         "c021",
         "c022",
-        "c023",
-        "c004"
+        "c023"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": false,
-      "v2_top6_overlap": 4,
+      "v2_top6_overlap": 3,
       "replay_slots": [
         [
           "capability_lead",
@@ -5727,18 +5750,19 @@
       ],
       "region": "west",
       "capacity_need": "medium",
-      "positive_count": 5,
+      "positive_count": 6,
       "negative_count": 4,
       "positive_ids": [
+        "c013",
         "c021",
         "c003",
         "c004",
         "c024",
-        "c013"
+        "c006"
       ],
       "negative_ids": [
-        "c008",
-        "c015",
+        "c019",
+        "c001",
         "c005",
         "c016"
       ],
@@ -5748,6 +5772,7 @@
       ],
       "slot_coverage": {
         "capability_lead": 2,
+        "case_strength": 2,
         "responsiveness": 2,
         "industry_fit": 3,
         "regional_fit": 2,
@@ -5758,15 +5783,19 @@
         "c003",
         "c013",
         "c023",
-        "c021",
-        "c024"
+        "c006",
+        "c021"
       ],
       "v2_top6_exact": false,
-      "v2_top6_covers_positives": true,
+      "v2_top6_covers_positives": false,
       "v2_top6_overlap": 5,
       "replay_slots": [
         [
           "capability_lead",
+          "c013"
+        ],
+        [
+          "case_strength",
           "c021"
         ],
         [
@@ -5783,16 +5812,16 @@
         ],
         [
           "capacity_fit",
-          "c013"
+          "c006"
         ]
       ],
       "replay_negatives": [
         [
-          "c008",
+          "c019",
           "rejected"
         ],
         [
-          "c015",
+          "c001",
           "rejected"
         ],
         [
@@ -5805,6 +5834,15 @@
         ]
       ],
       "positive_details": [
+        {
+          "company_id": "c013",
+          "name": "澄明咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "finance",
+            "legal"
+          ]
+        },
         {
           "company_id": "c021",
           "name": "长风能源",
@@ -5843,8 +5881,8 @@
           ]
         },
         {
-          "company_id": "c013",
-          "name": "澄明咨询",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "finance",
@@ -5854,14 +5892,14 @@
       ],
       "negative_details": [
         {
-          "company_id": "c008",
-          "name": "禾木培训",
+          "company_id": "c019",
+          "name": "溪谷文化",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
         {
-          "company_id": "c015",
-          "name": "海盐传播",
+          "company_id": "c001",
+          "name": "晨星会务",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -5888,11 +5926,12 @@
         "negatives_replayed": true,
         "negative_reasons_valid": true,
         "v2_top6_exact": false,
-        "v2_top6_covers_positives": true,
+        "v2_top6_covers_positives": false,
         "rationale_complete": true
       },
       "issues": [],
       "observations": [
+        "v2_top6_misses_positive",
         "v2_top6_set_differs"
       ],
       "machine_decision": "pass",
@@ -5941,10 +5980,10 @@
       "v2_top6": [
         "c007",
         "c023",
+        "c006",
         "c021",
         "c022",
-        "c024",
-        "c003"
+        "c024"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -6089,9 +6128,9 @@
       "positive_count": 3,
       "negative_count": 4,
       "positive_ids": [
-        "c006",
         "c017",
-        "c008"
+        "c008",
+        "c006"
       ],
       "negative_ids": [
         "c032",
@@ -6105,13 +6144,13 @@
       ],
       "slot_coverage": {
         "capability_lead": 3,
-        "case_strength": 3,
-        "regional_fit": 3
+        "responsiveness": 3,
+        "regional_fit": 2
       },
       "v2_top6": [
         "c008",
-        "c006",
         "c017",
+        "c006",
         "c003",
         "c013",
         "c023"
@@ -6122,15 +6161,15 @@
       "replay_slots": [
         [
           "capability_lead",
-          "c006"
-        ],
-        [
-          "case_strength",
           "c017"
         ],
         [
-          "regional_fit",
+          "responsiveness",
           "c008"
+        ],
+        [
+          "regional_fit",
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -6153,16 +6192,6 @@
       ],
       "positive_details": [
         {
-          "company_id": "c006",
-          "name": "栖梧人力",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "hr",
-            "training"
-          ]
-        },
-        {
           "company_id": "c017",
           "name": "苍梧教育",
           "hard_filter": "",
@@ -6180,6 +6209,15 @@
             "consulting",
             "hr",
             "training"
+          ]
+        },
+        {
+          "company_id": "c006",
+          "name": "栖梧咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "hr"
           ]
         }
       ],
@@ -6476,7 +6514,7 @@
         },
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -6672,8 +6710,8 @@
       "negative_count": 4,
       "positive_ids": [
         "c008",
-        "c006",
-        "c017"
+        "c017",
+        "c006"
       ],
       "negative_ids": [
         "c001",
@@ -6687,7 +6725,7 @@
       ],
       "slot_coverage": {
         "capability_lead": 2,
-        "responsiveness": 2,
+        "case_strength": 2,
         "capacity_fit": 2
       },
       "v2_top6": [
@@ -6707,12 +6745,12 @@
           "c008"
         ],
         [
-          "responsiveness",
-          "c006"
+          "case_strength",
+          "c017"
         ],
         [
           "capacity_fit",
-          "c017"
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -6744,8 +6782,8 @@
           ]
         },
         {
-          "company_id": "c006",
-          "name": "栖梧人力",
+          "company_id": "c017",
+          "name": "苍梧教育",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -6753,8 +6791,8 @@
           ]
         },
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -6823,12 +6861,13 @@
       ],
       "region": "north",
       "capacity_need": "large",
-      "positive_count": 3,
+      "positive_count": 4,
       "negative_count": 4,
       "positive_ids": [
         "c003",
         "c013",
-        "c021"
+        "c021",
+        "c006"
       ],
       "negative_ids": [
         "c029",
@@ -6843,19 +6882,20 @@
       "slot_coverage": {
         "capability_lead": 2,
         "case_strength": 2,
-        "responsiveness": 2
+        "responsiveness": 2,
+        "regional_fit": 2
       },
       "v2_top6": [
         "c003",
         "c013",
+        "c006",
         "c021",
         "c022",
-        "c023",
-        "c007"
+        "c023"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 4,
       "replay_slots": [
         [
           "capability_lead",
@@ -6868,6 +6908,10 @@
         [
           "responsiveness",
           "c021"
+        ],
+        [
+          "regional_fit",
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -6910,6 +6954,15 @@
         {
           "company_id": "c021",
           "name": "长风能源",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "legal"
+          ]
+        },
+        {
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -6986,8 +7039,8 @@
         "c004"
       ],
       "negative_ids": [
-        "c008",
-        "c015",
+        "c032",
+        "c011",
         "c005",
         "c013"
       ],
@@ -7005,8 +7058,8 @@
         "c024",
         "c003",
         "c020",
-        "c007",
-        "c021"
+        "c006",
+        "c007"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
@@ -7023,11 +7076,11 @@
       ],
       "replay_negatives": [
         [
-          "c008",
+          "c032",
           "rejected"
         ],
         [
-          "c015",
+          "c011",
           "rejected"
         ],
         [
@@ -7061,14 +7114,14 @@
       ],
       "negative_details": [
         {
-          "company_id": "c008",
-          "name": "禾木培训",
+          "company_id": "c032",
+          "name": "北岸会展",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
         {
-          "company_id": "c015",
-          "name": "海盐传播",
+          "company_id": "c011",
+          "name": "山海策划",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -7275,10 +7328,9 @@
       ],
       "region": "west",
       "capacity_need": "large",
-      "positive_count": 3,
+      "positive_count": 2,
       "negative_count": 4,
       "positive_ids": [
-        "c006",
         "c008",
         "c017"
       ],
@@ -7295,27 +7347,22 @@
       ],
       "slot_coverage": {
         "capability_lead": 2,
-        "regional_fit": 2,
         "capacity_fit": 2
       },
       "v2_top6": [
         "c017",
         "c003",
         "c013",
-        "c006",
         "c008",
+        "c006",
         "c007"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 2,
       "replay_slots": [
         [
           "capability_lead",
-          "c006"
-        ],
-        [
-          "regional_fit",
           "c008"
         ],
         [
@@ -7342,15 +7389,6 @@
         ]
       ],
       "positive_details": [
-        {
-          "company_id": "c006",
-          "name": "栖梧人力",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "training"
-          ]
-        },
         {
           "company_id": "c008",
           "name": "禾木培训",
@@ -7910,7 +7948,7 @@
       "type": "hiring",
       "title": "人才招聘需求 51",
       "requester": "c006",
-      "requester_name": "栖梧人力",
+      "requester_name": "栖梧咨询",
       "required_capabilities": [
         "hr",
         "training",
@@ -8096,13 +8134,13 @@
         "c003",
         "c013",
         "c004",
+        "c006",
         "c021",
-        "c022",
-        "c024"
+        "c022"
       ],
-      "v2_top6_exact": true,
-      "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 6,
+      "v2_top6_exact": false,
+      "v2_top6_covers_positives": false,
+      "v2_top6_overlap": 5,
       "replay_slots": [
         [
           "capability_lead",
@@ -8241,12 +8279,15 @@
         "positive_slots_replayed": true,
         "negatives_replayed": true,
         "negative_reasons_valid": true,
-        "v2_top6_exact": true,
-        "v2_top6_covers_positives": true,
+        "v2_top6_exact": false,
+        "v2_top6_covers_positives": false,
         "rationale_complete": true
       },
       "issues": [],
-      "observations": [],
+      "observations": [
+        "v2_top6_misses_positive",
+        "v2_top6_set_differs"
+      ],
       "machine_decision": "pass",
       "decision": "pending"
     },
@@ -8277,8 +8318,8 @@
         "c003"
       ],
       "negative_ids": [
-        "c010",
-        "c017",
+        "c011",
+        "c019",
         "c005",
         "c016"
       ],
@@ -8294,16 +8335,16 @@
         "capacity_fit": 2
       },
       "v2_top6": [
+        "c006",
         "c021",
         "c004",
         "c023",
         "c003",
-        "c013",
-        "c024"
+        "c013"
       ],
       "v2_top6_exact": false,
-      "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 5,
+      "v2_top6_covers_positives": false,
+      "v2_top6_overlap": 4,
       "replay_slots": [
         [
           "capability_lead",
@@ -8328,11 +8369,11 @@
       ],
       "replay_negatives": [
         [
-          "c010",
+          "c011",
           "rejected"
         ],
         [
-          "c017",
+          "c019",
           "rejected"
         ],
         [
@@ -8394,14 +8435,14 @@
       ],
       "negative_details": [
         {
-          "company_id": "c010",
-          "name": "译林翻译",
+          "company_id": "c011",
+          "name": "山海策划",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
         {
-          "company_id": "c017",
-          "name": "苍梧教育",
+          "company_id": "c019",
+          "name": "溪谷文化",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -8428,11 +8469,12 @@
         "negatives_replayed": true,
         "negative_reasons_valid": true,
         "v2_top6_exact": false,
-        "v2_top6_covers_positives": true,
+        "v2_top6_covers_positives": false,
         "rationale_complete": true
       },
       "issues": [],
       "observations": [
+        "v2_top6_misses_positive",
         "v2_top6_set_differs"
       ],
       "machine_decision": "pass",
@@ -8630,9 +8672,9 @@
       "positive_count": 3,
       "negative_count": 4,
       "positive_ids": [
+        "c006",
         "c008",
-        "c017",
-        "c006"
+        "c017"
       ],
       "negative_ids": [
         "c004",
@@ -8646,14 +8688,14 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 3,
-        "case_strength": 3,
+        "capability_lead": 2,
+        "responsiveness": 3,
         "capacity_fit": 3
       },
       "v2_top6": [
-        "c006",
         "c017",
         "c008",
+        "c006",
         "c003",
         "c007",
         "c010"
@@ -8664,15 +8706,15 @@
       "replay_slots": [
         [
           "capability_lead",
+          "c006"
+        ],
+        [
+          "responsiveness",
           "c008"
         ],
         [
-          "case_strength",
-          "c017"
-        ],
-        [
           "capacity_fit",
-          "c006"
+          "c017"
         ]
       ],
       "replay_negatives": [
@@ -8695,6 +8737,15 @@
       ],
       "positive_details": [
         {
+          "company_id": "c006",
+          "name": "栖梧咨询",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "hr"
+          ]
+        },
+        {
           "company_id": "c008",
           "name": "禾木培训",
           "hard_filter": "",
@@ -8707,16 +8758,6 @@
         {
           "company_id": "c017",
           "name": "苍梧教育",
-          "hard_filter": "",
-          "matched_capabilities": [
-            "consulting",
-            "hr",
-            "training"
-          ]
-        },
-        {
-          "company_id": "c006",
-          "name": "栖梧人力",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -8855,7 +8896,7 @@
       "negative_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -9029,7 +9070,7 @@
       "negative_details": [
         {
           "company_id": "c006",
-          "name": "栖梧人力",
+          "name": "栖梧咨询",
           "reason": "rejected",
           "actual_hard_filter": "rejected"
         },
@@ -9247,8 +9288,8 @@
       "positive_count": 3,
       "negative_count": 4,
       "positive_ids": [
-        "c006",
         "c008",
+        "c006",
         "c017"
       ],
       "negative_ids": [
@@ -9262,15 +9303,15 @@
         "rejected"
       ],
       "slot_coverage": {
-        "capability_lead": 2,
+        "responsiveness": 2,
         "regional_fit": 2,
         "capacity_fit": 2
       },
       "v2_top6": [
+        "c006",
         "c008",
         "c017",
         "c007",
-        "c006",
         "c024",
         "c003"
       ],
@@ -9279,12 +9320,12 @@
       "v2_top6_overlap": 3,
       "replay_slots": [
         [
-          "capability_lead",
-          "c006"
+          "responsiveness",
+          "c008"
         ],
         [
           "regional_fit",
-          "c008"
+          "c006"
         ],
         [
           "capacity_fit",
@@ -9311,8 +9352,8 @@
       ],
       "positive_details": [
         {
-          "company_id": "c006",
-          "name": "栖梧人力",
+          "company_id": "c008",
+          "name": "禾木培训",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -9320,8 +9361,8 @@
           ]
         },
         {
-          "company_id": "c008",
-          "name": "禾木培训",
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",
@@ -9399,12 +9440,13 @@
       ],
       "region": "central",
       "capacity_need": "small",
-      "positive_count": 3,
+      "positive_count": 4,
       "negative_count": 4,
       "positive_ids": [
         "c003",
         "c013",
-        "c021"
+        "c021",
+        "c006"
       ],
       "negative_ids": [
         "c020",
@@ -9419,19 +9461,20 @@
       "slot_coverage": {
         "capability_lead": 2,
         "case_strength": 2,
-        "responsiveness": 2
+        "responsiveness": 2,
+        "capacity_fit": 2
       },
       "v2_top6": [
         "c003",
+        "c006",
         "c013",
         "c021",
         "c023",
-        "c010",
-        "c004"
+        "c010"
       ],
       "v2_top6_exact": false,
       "v2_top6_covers_positives": true,
-      "v2_top6_overlap": 3,
+      "v2_top6_overlap": 4,
       "replay_slots": [
         [
           "capability_lead",
@@ -9444,6 +9487,10 @@
         [
           "responsiveness",
           "c021"
+        ],
+        [
+          "capacity_fit",
+          "c006"
         ]
       ],
       "replay_negatives": [
@@ -9486,6 +9533,15 @@
         {
           "company_id": "c021",
           "name": "长风能源",
+          "hard_filter": "",
+          "matched_capabilities": [
+            "consulting",
+            "legal"
+          ]
+        },
+        {
+          "company_id": "c006",
+          "name": "栖梧咨询",
           "hard_filter": "",
           "matched_capabilities": [
             "consulting",

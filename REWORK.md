@@ -19,8 +19,8 @@ data-level review, so this round rebuilds the fixture and the labeling method.
    all 16 capabilities represented. The 30 supplies are derived from the companies
    (c001-c029 + c032; s009/s018/s028 paused); the 60 demand metadata rows are derived from
    eight demand types and 2-3 capability variants. Each demand requires two or three
-   capabilities, so 3/3 coverage is possible; 57 of 186 positive labels now have 3/3 and
-   129 have 2/3.
+   capabilities, so 3/3 coverage is possible; 113 of 190 positive labels now have 3/3 and
+   77 have 2/3.
 2. **Six editorial slots with abstention** - `scripts/labeling.py` selects at most one
    company per slot: capability_lead (IDF rarity density), case_strength (curated verified
    cases), responsiveness (curated response days vs the demand tolerance), industry_fit,
@@ -47,52 +47,60 @@ data-level review, so this round rebuilds the fixture and the labeling method.
 - `tests/test_labeling.py` has golden SHA-256 values, replays every one of the 60 demands
   through the six slots, and rewrites v1/v2 weights to arbitrary values, reruns both scripts,
   and asserts all four data files are byte-identical.
+- `tests/test_label_independence.py` replays the d052 dominance witness and exhausts all
+  1771 grid weights to assert that no non-negative four-feature weight can place all six
+  positives of d052 in top6.
 - `scripts/manual_review.py` replays the six slots and the four negatives with the same
   `labeling` module and compares each `(slot, company_id)` and `(company_id, reason)`; it is
   not a self-check against fields the builder itself wrote. Default status is
   `pending-human-signoff`; only `--reviewer` plus `--attest` records `human-reviewed`.
 - `scripts/label_sensitivity.py` replaces only the positives with random draws, using each
   demand's actual positive count. Under the production floor (coverage >= 2), random labels
-  favour v2 500/500 with median +0.076281; the actual labels are at the 47.2nd percentile
-  (+0.076120), i.e. not tuned to favour v2. Under coverage >= 1, v2 wins 491/500; with no
-  floor, only 256/500. This is why the delivery does not claim that +0.076120 proves v2 is
+  favour v2 500/500 with median +0.075438; the actual labels are at the 41.0th percentile
+  (+0.075025), i.e. not tuned to favour v2. Under coverage >= 1, v2 wins 484/500; with no
+  floor, only 247/500. This is why the delivery does not claim that +0.075025 proves v2 is
   better.
 - `scripts/weight_grid.py` enumerates all 1771 non-negative four-feature weights at 0.05
-  steps. A grid weight (0.60/0.10/0.15/0.15) makes every demand's top6 cover all 186
-  positives. The repository therefore claims only "labels are not generated from v1/v2
-  weights", not "labels are orthogonal to the evaluator's feature space".
+  steps. The best weight in the grid covers only 58/60 demands (capability 0.65 / industry
+  0.00 / region 0.15 / capacity 0.20; positive recall 188/190), with best NDCG@10=0.996243.
+  This is not a grid-resolution issue: in d052 the unlabelled but eligible c006 strictly
+  dominates the labelled c022 (capability 1.0 vs 2/3; industry, region and capacity equal),
+  so any non-negative weight ranks c006 above c022; if c022 enters top6, c006 must too, and
+  six positives plus c006 need seven slots. The repository therefore claims "labels are not
+  generated from v1/v2 weights, and their top6 set cannot be reproduced by any non-negative
+  four-feature weight", but not orthogonality with the evaluator's business facts.
 
 ## Current results
 
 | Item | v1 | v2 |
 | --- | ---: | ---: |
 | Hit@5 | 1.000000 | 1.000000 |
-| NDCG@10 | 0.894126 | 0.970246 |
+| NDCG@10 | 0.890098 | 0.965123 |
 | Hard-filter violations | 0 | 0 |
 | Rationale traceability | 1.000000 | 1.000000 |
-| Top-5 HHI | 0.049556 | 0.050844 |
-| Top-1 share | 0.080000 | 0.083333 |
+| Top-5 HHI | 0.051467 | 0.053333 |
+| Top-1 share | 0.083333 | 0.096667 |
 | Unique companies | 23 | 23 |
 
-v2 - v1 = +0.076120; compare records a left-minus-right regression of -0.076120, below
-the 0.02 threshold, verdict=pass, exit 0. Per demand, v2 is better on 31, equal on 29 and
-worse on 0. All 186 positive labels fall inside v2's full top 10 (median rank 2, worst 8).
-v2's top6 covers every label in 54/60 demands with 180/186 total overlap; exact top6 set
-equality is only meaningful where a demand has six positives, which is 1/1 here. NDCG is
+v2 - v1 = +0.075025; compare records a left-minus-right regression of -0.075025, below
+the 0.02 threshold, verdict=pass, exit 0. Per demand, v2 is better on 31, equal on 28 and
+worse on 1. All 190 positive labels fall inside v2's full top 10 (median rank 2, worst 8).
+v2's top6 covers every label in 51/60 demands with 180/190 total overlap; exact top6 set
+equality is only meaningful where a demand has six positives, which is 2/4 here. NDCG is
 position-weighted while top6 is a set, so the numbers are not contradictory.
 
-The no-filter diagnostic produces 222 violations, NDCG@10=0.818828 and exit 2. The full
-suite is 66 passed; acceptance is all_passed True with AC1-AC6 and five data hashes
+The no-filter diagnostic produces 222 violations, NDCG@10=0.808071 and exit 2. The full
+suite is 68 passed; acceptance is all_passed True with AC1-AC6 and five data hashes
 recorded in `artifacts/ACCEPTANCE.md`.
 
 ## Other review items
 
 1. Public code repository - source, tests, data, weights and reports are here; README.md
    gives the run and test commands.
-2. Dataset + stats - 40 companies, 30 supplies (27 active), 60 demands, 8 types, 186
+2. Dataset + stats - 40 companies, 30 supplies (27 active), 60 demands, 8 types, 190
    positives and 240 negatives; the full JSON is printed by `python -m match_eval stats`.
 3. Metric unit tests - one dedicated file per metric: Hit@5, NDCG@10, hard-filter
-   violations, rationale traceability, top-5 concentration; full suite 66 passed.
+   violations, rationale traceability, top-5 concentration; full suite 68 passed.
 4. Exit-code test - `tests/test_cli.py` asserts exit 2 for hard-filter violations and exit 3
    for an NDCG@10 regression greater than 0.02; `artifacts/diagnostic-no-filter.md` records
    the real diagnostic run. The exit-2 evidence intentionally comes from the
@@ -124,9 +132,9 @@ The labels are synthetic editorial fixtures generated by a documented rule; they
 human annotations. The review pack is pending human sign-off. The capability floor
 ("at least two required capabilities") is a business rule, not a scoring weight; it
 systematically raises v2 under random label sets with the same floor. The actual label set
-is not tuned to v2, but that still does not make 0.970246 a generalization result.
+is not tuned to v2, but that still does not make 0.965123 a generalization result.
 `case_strength` uses company-level case counts, not capability-specific cases. The labels
-share company capability, industry, region and capacity facts with the evaluator, and a
-four-feature weighted sum can cover all labels, so independence is limited to "not generated
-from v1/v2 weights". See `data/ANNOTATION.md`, `docs/LABEL-BASELINE.md` and
-`docs/EVALUATION-LIMITS.md`.
+share company capability, industry, region and capacity facts with the evaluator; no
+non-negative four-feature weight can cover every demand's top6 (best 58/60, witness d052),
+but that is not the same as independence from those business facts. See
+`data/ANNOTATION.md`, `docs/LABEL-BASELINE.md` and `docs/EVALUATION-LIMITS.md`.

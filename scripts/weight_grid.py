@@ -18,9 +18,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from match_eval.dataset import load_dataset
-from match_eval.filters import build_filter_context
+from match_eval.filters import build_filter_context, hard_filter_reason
 from match_eval.metrics import ndcg_at_k
-from match_eval.scoring import FEATURE_KEYS, Weights, load_weights, rank_demand
+from match_eval.scoring import FEATURE_KEYS, Weights, features_for, load_weights, rank_demand
 
 STEP = 20
 
@@ -72,6 +72,46 @@ def measure(dataset, context, labels, weights: Weights) -> dict:
     }
 
 
+def dominance_witnesses(dataset, context, annotations) -> list[dict]:
+    """Find unlabeled qualified candidates that strictly dominate a positive.
+
+    A dominance witness on a six-positive demand proves that no non-negative
+    four-feature weight vector can put all six positives in a top-6: the
+    unlabeled candidate outranks the dominated positive on every feature, so it
+    must also appear in any top-6 that contains that positive, leaving seven
+    candidates for six slots.
+    """
+    labels = {record["demand_id"]: list(record["should_recommend"]) for record in annotations}
+    companies = dataset.company_map()
+    witnesses = []
+    for demand in dataset.demands:
+        positives = labels[demand.id]
+        if len(positives) != 6:
+            continue
+        positive_set = set(positives)
+        for company in dataset.companies:
+            if company.id in positive_set:
+                continue
+            if hard_filter_reason(context, demand, company) is not None:
+                continue
+            candidate_features = features_for(context, demand, company)
+            for positive_id in positives:
+                positive_features = features_for(context, demand, companies[positive_id])
+                if all(candidate_features[key] >= positive_features[key] for key in FEATURE_KEYS) and any(
+                    candidate_features[key] > positive_features[key] for key in FEATURE_KEYS
+                ):
+                    witnesses.append(
+                        {
+                            "demand_id": demand.id,
+                            "unlabeled_candidate": company.id,
+                            "dominated_positive": positive_id,
+                            "candidate_features": candidate_features,
+                            "positive_features": positive_features,
+                        }
+                    )
+    return witnesses
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", action="store_true")
@@ -112,6 +152,7 @@ def main() -> int:
         "best_positive_recall": best_recall,
         "best_ndcg": best_ndcg,
         "named_weights": named,
+        "dominance_witnesses": dominance_witnesses(dataset, context, annotations),
     }
     out = ROOT / "artifacts" / "weight-grid.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -122,6 +163,7 @@ def main() -> int:
         print("best_top6_covers_all", best["top6_covers_all"], best["weights"])
         print("best_positive_recall", best_recall["positive_recall"], best_recall["weights"])
         print("best_ndcg", best_ndcg["ndcg_at_10"], best_ndcg["weights"])
+        print("dominance_witnesses", len(payload["dominance_witnesses"]))
         for name, row in named.items():
             print(name, row)
         print("wrote", out)

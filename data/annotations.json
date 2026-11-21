@@ -8,7 +8,7 @@
   "generated_by": "scripts/build_annotations.py",
   "fixture_source": "scripts/fixture_spec.py",
   "signal_source": "data/editorial-signals.json",
-  "signal_source_sha256": "e77329acc3e157e625e87876eaadc3aa23cadd079f71bb7e6a887565b0960dd1",
+  "signal_source_sha256": "bf8491c6ef1d20e1fe21e0343e98c429c629526718cd5c43e1ec426d7276d032",
   "feature_notes": {
     "capability_lead": "average IDF rarity density of matched capabilities; no evaluator weights",
     "case_strength": "verified_cases from data/editorial-signals.json",
@@ -172,7 +172,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.67；公司级已核实案例 8 个。"
         },
         {
           "slot": "case_strength",
@@ -180,9 +180,9 @@
           "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
         },
         {
-          "slot": "responsiveness",
+          "slot": "regional_fit",
           "company_id": "c006",
-          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 3/3 项必需能力。"
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -190,10 +190,11 @@
     {
       "demand_id": "d004",
       "should_recommend": [
+        "c013",
         "c021",
         "c024",
         "c003",
-        "c013"
+        "c006"
       ],
       "rejected_company_ids": [
         "c015",
@@ -220,13 +221,18 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c021",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 11 个。"
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
         },
         {
           "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
           "company_id": "c024",
-          "reason": "交付记录（主槽位）：10 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "industry_fit",
@@ -235,7 +241,7 @@
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c013",
+          "company_id": "c006",
           "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
         }
       ],
@@ -244,9 +250,9 @@
     {
       "demand_id": "d005",
       "should_recommend": [
+        "c024",
         "c013",
         "c021",
-        "c024",
         "c004",
         "c003"
       ],
@@ -275,17 +281,17 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c013",
-          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 13 个。"
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.79；公司级已核实案例 10 个。"
         },
         {
           "slot": "case_strength",
-          "company_id": "c021",
-          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+          "company_id": "c013",
+          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "responsiveness",
-          "company_id": "c024",
+          "company_id": "c021",
           "reason": "响应时效（主槽位）：2 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
         },
         {
@@ -381,7 +387,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 1 个。"
         },
         {
           "slot": "regional_fit",
@@ -521,8 +527,8 @@
       "demand_id": "d011",
       "should_recommend": [
         "c008",
-        "c006",
-        "c017"
+        "c017",
+        "c006"
       ],
       "rejected_company_ids": [
         "c012",
@@ -548,18 +554,18 @@
       ],
       "positive_slots": [
         {
-          "slot": "capability_lead",
+          "slot": "responsiveness",
           "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "regional_fit",
-          "company_id": "c006",
-          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+          "company_id": "c017",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c017",
+          "company_id": "c006",
           "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
         }
       ],
@@ -568,8 +574,9 @@
     {
       "demand_id": "d012",
       "should_recommend": [
-        "c013",
         "c021",
+        "c006",
+        "c013",
         "c003"
       ],
       "rejected_company_ids": [
@@ -597,13 +604,18 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c013",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
+          "company_id": "c021",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.32；公司级已核实案例 11 个。"
         },
         {
           "slot": "case_strength",
-          "company_id": "c021",
-          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+          "company_id": "c006",
+          "reason": "交付记录（主槽位）：1 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c013",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "regional_fit",
@@ -620,16 +632,16 @@
         "c004"
       ],
       "rejected_company_ids": [
-        "c008",
-        "c017"
+        "c020",
+        "c002"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c020",
           "reason": "rejected"
         },
         {
-          "company_id": "c017",
+          "company_id": "c002",
           "reason": "rejected"
         },
         {
@@ -645,7 +657,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c024",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.79；公司级已核实案例 10 个。"
         },
         {
           "slot": "industry_fit",
@@ -706,7 +718,6 @@
     {
       "demand_id": "d015",
       "should_recommend": [
-        "c006",
         "c008",
         "c017"
       ],
@@ -735,18 +746,13 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 8 个。"
         },
         {
           "slot": "case_strength",
-          "company_id": "c008",
-          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
-        },
-        {
-          "slot": "responsiveness",
           "company_id": "c017",
-          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/2 项必需能力。"
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -880,9 +886,9 @@
     {
       "demand_id": "d019",
       "should_recommend": [
-        "c017",
         "c008",
-        "c006"
+        "c006",
+        "c017"
       ],
       "rejected_company_ids": [
         "c025",
@@ -908,19 +914,19 @@
       ],
       "positive_slots": [
         {
-          "slot": "capability_lead",
-          "company_id": "c017",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+          "slot": "responsiveness",
+          "company_id": "c008",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 3/3 项必需能力。"
         },
         {
           "slot": "regional_fit",
-          "company_id": "c008",
-          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+          "company_id": "c006",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c006",
-          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 3/3 项必需能力。"
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -930,6 +936,7 @@
       "should_recommend": [
         "c013",
         "c021",
+        "c006",
         "c022",
         "c004",
         "c003"
@@ -960,12 +967,17 @@
         {
           "slot": "capability_lead",
           "company_id": "c013",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 13 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
         },
         {
           "slot": "case_strength",
           "company_id": "c021",
           "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c006",
+          "reason": "响应时效（主槽位）：5 天响应，需求上限 5 天；覆盖 3/3 项必需能力。"
         },
         {
           "slot": "industry_fit",
@@ -988,23 +1000,24 @@
     {
       "demand_id": "d021",
       "should_recommend": [
-        "c003",
         "c013",
-        "c024",
+        "c021",
+        "c003",
         "c004",
-        "c021"
+        "c024",
+        "c006"
       ],
       "rejected_company_ids": [
-        "c008",
-        "c015"
+        "c001",
+        "c012"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c012",
           "reason": "rejected"
         },
         {
@@ -1019,18 +1032,18 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c003",
-          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 14 个。"
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.71；公司级已核实案例 13 个。"
         },
         {
           "slot": "case_strength",
-          "company_id": "c013",
-          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "responsiveness",
-          "company_id": "c024",
-          "reason": "响应时效（主槽位）：2 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
+          "company_id": "c003",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "industry_fit",
@@ -1039,8 +1052,13 @@
         },
         {
           "slot": "regional_fit",
-          "company_id": "c021",
+          "company_id": "c024",
           "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c006",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -1132,12 +1150,12 @@
         {
           "slot": "capability_lead",
           "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.67；公司级已核实案例 8 个。"
         },
         {
-          "slot": "responsiveness",
+          "slot": "case_strength",
           "company_id": "c006",
-          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 3/3 项必需能力。"
+          "reason": "交付记录（主槽位）：1 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "capacity_fit",
@@ -1300,8 +1318,8 @@
     {
       "demand_id": "d027",
       "should_recommend": [
-        "c006",
         "c017",
+        "c006",
         "c008"
       ],
       "rejected_company_ids": [
@@ -1329,13 +1347,13 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+          "company_id": "c017",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
         },
         {
           "slot": "case_strength",
-          "company_id": "c017",
-          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+          "company_id": "c006",
+          "reason": "交付记录（主槽位）：1 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "regional_fit",
@@ -1378,7 +1396,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c013",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.32；公司级已核实案例 13 个。"
         },
         {
           "slot": "case_strength",
@@ -1425,7 +1443,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c024",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.79；公司级已核实案例 10 个。"
         },
         {
           "slot": "case_strength",
@@ -1487,8 +1505,7 @@
       "demand_id": "d031",
       "should_recommend": [
         "c008",
-        "c017",
-        "c006"
+        "c017"
       ],
       "rejected_company_ids": [
         "c014",
@@ -1516,17 +1533,12 @@
         {
           "slot": "capability_lead",
           "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 8 个。"
         },
         {
           "slot": "regional_fit",
           "company_id": "c017",
           "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
-        },
-        {
-          "slot": "capacity_fit",
-          "company_id": "c006",
-          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 2/2 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -1702,12 +1714,12 @@
         {
           "slot": "capability_lead",
           "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 1 个。"
         },
         {
-          "slot": "case_strength",
+          "slot": "responsiveness",
           "company_id": "c008",
-          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 3/3 项必需能力。"
         },
         {
           "slot": "capacity_fit",
@@ -1752,7 +1764,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c004",
-          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 9 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.71；公司级已核实案例 9 个。"
         },
         {
           "slot": "case_strength",
@@ -1780,23 +1792,24 @@
     {
       "demand_id": "d037",
       "should_recommend": [
+        "c013",
         "c021",
         "c003",
         "c004",
         "c024",
-        "c013"
+        "c006"
       ],
       "rejected_company_ids": [
-        "c008",
-        "c015"
+        "c019",
+        "c001"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c019",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c001",
           "reason": "rejected"
         },
         {
@@ -1811,8 +1824,13 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.71；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
           "company_id": "c021",
-          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 11 个。"
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
         },
         {
           "slot": "responsiveness",
@@ -1831,7 +1849,7 @@
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c013",
+          "company_id": "c006",
           "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
         }
       ],
@@ -1894,9 +1912,9 @@
     {
       "demand_id": "d039",
       "should_recommend": [
-        "c006",
         "c017",
-        "c008"
+        "c008",
+        "c006"
       ],
       "rejected_company_ids": [
         "c032",
@@ -1923,18 +1941,18 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+          "company_id": "c017",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.67；公司级已核实案例 8 个。"
         },
         {
-          "slot": "case_strength",
-          "company_id": "c017",
-          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+          "slot": "responsiveness",
+          "company_id": "c008",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 3/3 项必需能力。"
         },
         {
           "slot": "regional_fit",
-          "company_id": "c008",
-          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+          "company_id": "c006",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -2069,8 +2087,8 @@
       "demand_id": "d043",
       "should_recommend": [
         "c008",
-        "c006",
-        "c017"
+        "c017",
+        "c006"
       ],
       "rejected_company_ids": [
         "c001",
@@ -2101,13 +2119,13 @@
           "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
         },
         {
-          "slot": "responsiveness",
-          "company_id": "c006",
-          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 2/2 项必需能力。"
+          "slot": "case_strength",
+          "company_id": "c017",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c017",
+          "company_id": "c006",
           "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
         }
       ],
@@ -2118,7 +2136,8 @@
       "should_recommend": [
         "c003",
         "c013",
-        "c021"
+        "c021",
+        "c006"
       ],
       "rejected_company_ids": [
         "c029",
@@ -2146,7 +2165,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c003",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 14 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.32；公司级已核实案例 14 个。"
         },
         {
           "slot": "case_strength",
@@ -2157,6 +2176,11 @@
           "slot": "responsiveness",
           "company_id": "c021",
           "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c006",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -2168,16 +2192,16 @@
         "c004"
       ],
       "rejected_company_ids": [
-        "c008",
-        "c015"
+        "c032",
+        "c011"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c008",
+          "company_id": "c032",
           "reason": "rejected"
         },
         {
-          "company_id": "c015",
+          "company_id": "c011",
           "reason": "rejected"
         },
         {
@@ -2193,7 +2217,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c024",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.79；公司级已核实案例 10 个。"
         },
         {
           "slot": "industry_fit",
@@ -2254,7 +2278,6 @@
     {
       "demand_id": "d047",
       "should_recommend": [
-        "c006",
         "c008",
         "c017"
       ],
@@ -2283,13 +2306,8 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
-        },
-        {
-          "slot": "regional_fit",
           "company_id": "c008",
-          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 8 个。"
         },
         {
           "slot": "capacity_fit",
@@ -2481,7 +2499,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.67；公司级已核实案例 8 个。"
         },
         {
           "slot": "regional_fit",
@@ -2527,7 +2545,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c013",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 13 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
         },
         {
           "slot": "case_strength",
@@ -2567,16 +2585,16 @@
         "c003"
       ],
       "rejected_company_ids": [
-        "c010",
-        "c017"
+        "c011",
+        "c019"
       ],
       "should_not_recommend": [
         {
-          "company_id": "c010",
+          "company_id": "c011",
           "reason": "rejected"
         },
         {
-          "company_id": "c017",
+          "company_id": "c019",
           "reason": "rejected"
         },
         {
@@ -2592,7 +2610,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c004",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.91；公司级已核实案例 9 个。"
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.81；公司级已核实案例 9 个。"
         },
         {
           "slot": "case_strength",
@@ -2674,9 +2692,9 @@
     {
       "demand_id": "d055",
       "should_recommend": [
+        "c006",
         "c008",
-        "c017",
-        "c006"
+        "c017"
       ],
       "rejected_company_ids": [
         "c004",
@@ -2703,18 +2721,18 @@
       "positive_slots": [
         {
           "slot": "capability_lead",
-          "company_id": "c008",
-          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 1 个。"
         },
         {
-          "slot": "case_strength",
-          "company_id": "c017",
-          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+          "slot": "responsiveness",
+          "company_id": "c008",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 3/3 项必需能力。"
         },
         {
           "slot": "capacity_fit",
-          "company_id": "c006",
-          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 3/3 项必需能力。"
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
@@ -2860,8 +2878,8 @@
     {
       "demand_id": "d059",
       "should_recommend": [
-        "c006",
         "c008",
+        "c006",
         "c017"
       ],
       "rejected_company_ids": [
@@ -2888,14 +2906,14 @@
       ],
       "positive_slots": [
         {
-          "slot": "capability_lead",
-          "company_id": "c006",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+          "slot": "responsiveness",
+          "company_id": "c008",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "regional_fit",
-          "company_id": "c008",
-          "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
+          "company_id": "c006",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
         },
         {
           "slot": "capacity_fit",
@@ -2910,7 +2928,8 @@
       "should_recommend": [
         "c003",
         "c013",
-        "c021"
+        "c021",
+        "c006"
       ],
       "rejected_company_ids": [
         "c020",
@@ -2938,7 +2957,7 @@
         {
           "slot": "capability_lead",
           "company_id": "c003",
-          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 14 个。"
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.32；公司级已核实案例 14 个。"
         },
         {
           "slot": "case_strength",
@@ -2949,6 +2968,11 @@
           "slot": "responsiveness",
           "company_id": "c021",
           "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c006",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
         }
       ],
       "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"

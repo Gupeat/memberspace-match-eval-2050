@@ -4,67 +4,86 @@
   "grid_size_expected": 1771,
   "best_top6_covers_all": {
     "weights": {
-      "capability": 0.6,
-      "industry": 0.1,
+      "capability": 0.65,
+      "industry": 0.0,
       "region": 0.15,
-      "capacity": 0.15
+      "capacity": 0.2
     },
-    "ndcg_at_10": 0.980459,
-    "top6_exact": 1,
-    "top6_exact_denominator": 1,
-    "top6_covers_all": 60,
-    "positive_total": 186,
-    "overlap_total": 186,
-    "positive_recall": 1.0
+    "ndcg_at_10": 0.964344,
+    "top6_exact": 3,
+    "top6_exact_denominator": 4,
+    "top6_covers_all": 58,
+    "positive_total": 190,
+    "overlap_total": 188,
+    "positive_recall": 0.989474
   },
   "best_positive_recall": {
     "weights": {
-      "capability": 0.6,
-      "industry": 0.1,
+      "capability": 0.65,
+      "industry": 0.0,
       "region": 0.15,
-      "capacity": 0.15
+      "capacity": 0.2
     },
-    "ndcg_at_10": 0.980459,
-    "top6_exact": 1,
-    "top6_exact_denominator": 1,
-    "top6_covers_all": 60,
-    "positive_total": 186,
-    "overlap_total": 186,
-    "positive_recall": 1.0
+    "ndcg_at_10": 0.964344,
+    "top6_exact": 3,
+    "top6_exact_denominator": 4,
+    "top6_covers_all": 58,
+    "positive_total": 190,
+    "overlap_total": 188,
+    "positive_recall": 0.989474
   },
   "best_ndcg": {
     "weights": {
-      "capability": 0.7,
-      "industry": 0.1,
-      "region": 0.1,
-      "capacity": 0.1
+      "capability": 0.8,
+      "industry": 0.05,
+      "region": 0.0,
+      "capacity": 0.15
     },
-    "ndcg_at_10": 0.999187,
-    "top6_exact": 1,
-    "top6_exact_denominator": 1,
-    "top6_covers_all": 60,
-    "positive_total": 186,
-    "overlap_total": 186,
-    "positive_recall": 1.0
+    "ndcg_at_10": 0.996243,
+    "top6_exact": 3,
+    "top6_exact_denominator": 4,
+    "top6_covers_all": 58,
+    "positive_total": 190,
+    "overlap_total": 188,
+    "positive_recall": 0.989474
   },
   "named_weights": {
     "v1": {
-      "ndcg_at_10": 0.894126,
-      "top6_exact": 1,
-      "top6_exact_denominator": 1,
-      "top6_covers_all": 48,
-      "positive_total": 186,
-      "overlap_total": 170,
-      "positive_recall": 0.913978
+      "ndcg_at_10": 0.890098,
+      "top6_exact": 0,
+      "top6_exact_denominator": 4,
+      "top6_covers_all": 44,
+      "positive_total": 190,
+      "overlap_total": 169,
+      "positive_recall": 0.889474
     },
     "v2": {
-      "ndcg_at_10": 0.970246,
-      "top6_exact": 1,
-      "top6_exact_denominator": 1,
-      "top6_covers_all": 54,
-      "positive_total": 186,
+      "ndcg_at_10": 0.965123,
+      "top6_exact": 2,
+      "top6_exact_denominator": 4,
+      "top6_covers_all": 51,
+      "positive_total": 190,
       "overlap_total": 180,
-      "positive_recall": 0.967742
+      "positive_recall": 0.947368
     }
-  }
+  },
+  "dominance_witnesses": [
+    {
+      "demand_id": "d052",
+      "unlabeled_candidate": "c006",
+      "dominated_positive": "c022",
+      "candidate_features": {
+        "capability": 1.0,
+        "industry": 0.0,
+        "region": 0.0,
+        "capacity": 1.0
+      },
+      "positive_features": {
+        "capability": 0.6666666666666666,
+        "industry": 0.0,
+        "region": 0.0,
+        "capacity": 1.0
+      }
+    }
+  ]
 }

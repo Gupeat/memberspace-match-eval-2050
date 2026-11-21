@@ -10,17 +10,17 @@
 | --- | ---: |
 | 企业 / 供给 / 需求 | 40 / 30（27 active）/ 60 |
 | 需求类型数 | 8 |
-| 正例 / 负例 | 186 / 240 |
-| v1 NDCG@10 | 0.894126 |
-| v2 NDCG@10 | 0.970246 |
-| v2−v1 | +0.076120 |
-| compare 退步（左−右） | -0.076120，阈值 0.02，verdict=pass |
+| 正例 / 负例 | 190 / 240 |
+| v1 NDCG@10 | 0.890098 |
+| v2 NDCG@10 | 0.965123 |
+| v2−v1 | +0.075025 |
+| compare 退步（左−右） | -0.075025，阈值 0.02，verdict=pass |
 | 正式评测违规 | 0 / 0 |
 | 理由可追溯率 | 1.0 / 1.0 |
 | 诊断（关闭硬过滤）违规 | 222，exit 2 |
-| 全量测试 | 66 passed |
+| 全量测试 | 68 passed |
 | 标签复核 | 0 缺陷、0 重放不一致、pending-human-signoff |
-| v2 top6 与标签集合 | 精确 1/1（仅 6 正例需求），覆盖全部标签 54/60，交集 180/186 |
+| v2 top6 与标签集合 | 精确 2/4（仅 6 正例需求），覆盖全部标签 51/60，交集 180/190 |
 
 ## AC1：需求条数 ≥ 50，且统计脚本输出类型数
 
@@ -28,7 +28,7 @@
 python -m match_eval stats
 ```
 
-期望：退出码 0；输出包含 `"demands": 60`、`"demand_type_count": 8`，以及 companies 40、supplies 30、active_supplies 27、positive_labels 186、negative_labels 240。
+期望：退出码 0；输出包含 `"demands": 60`、`"demand_type_count": 8`，以及 companies 40、supplies 30、active_supplies 27、positive_labels 190、negative_labels 240。
 
 证据：`artifacts/ACCEPTANCE.md` 的 AC1 行；`data/demands.json` 应有 60 条记录。
 
@@ -48,7 +48,7 @@ python -m pytest tests/test_metric_hit_at_5.py tests/test_metric_ndcg_at_10.py t
 python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/diagnostic-no-filter.md
 ```
 
-期望：退出码 **2**；输出 `"hard_filter_violations": 222`、`"ndcg_at_10": 0.818828`。
+期望：退出码 **2**；输出 `"hard_filter_violations": 222`、`"ndcg_at_10": 0.808071`。
 
 说明：`--no-hard-filter` 故意关闭硬过滤，用来制造违规并验证退出码；这是诊断运行，不是对外推荐结果，不能引用它的 NDCG 作为成绩。
 
@@ -60,7 +60,7 @@ python -m match_eval evaluate --weights v2 --no-hard-filter --report artifacts/d
 python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/report-compare.md
 ```
 
-期望：退出码 0；输出 `"ndcg_regression": -0.076120`、`"verdict": "pass"`。
+期望：退出码 0；输出 `"ndcg_regression": -0.075025`、`"verdict": "pass"`。
 
 证据：`artifacts/report-compare.md`，含 v1/v2 并排指标、差值（右−左）、退步（左−右）、阈值说明和可复现命令。
 
@@ -81,9 +81,9 @@ python -m match_eval evaluate --weights v2 --report artifacts/report-v2.md
 python -m pytest tests
 ```
 
-期望：退出码 0；`66 passed`。
+期望：退出码 0；`68 passed`。
 
-覆盖：数据规模与正负例约束、六槽位重放、AST import 独立性、golden hash、权重重跑不变性、理由语义回算、报告复现命令、CLI 退出码。
+覆盖：数据规模与正负例约束、六槽位重放、AST import 独立性、golden hash、权重重跑不变性、支配反例、理由语义回算、报告复现命令、CLI 退出码。
 
 ## 全量验收
 
@@ -101,7 +101,7 @@ python scripts/generate_dataset.py
 python scripts/manual_review.py
 python scripts/label_sensitivity.py
 python scripts/weight_grid.py
-python -m pytest tests/test_dataset.py tests/test_labeling.py
+python -m pytest tests/test_dataset.py tests/test_labeling.py tests/test_label_independence.py
 ```
 
 核对点：
@@ -110,20 +110,20 @@ python -m pytest tests/test_dataset.py tests/test_labeling.py
 2. 六槽位是词典序，没有 0.40/0.20/0.20/0.20 或 0.55/0.25/0.10/0.10 加权和；
 3. `data/editorial-signals.json` 的案例数/响应天数不被 `match_eval` 读取；
 4. `tests/test_labeling.py` 在临时目录改写 v1/v2 权重后重跑 builder+generator，四个数据文件逐字节不变；
-5. `scripts/manual_review.py` 用同一 `labeling` 重放六槽位，覆盖 60 条需求 / 426 个标签，输出 0 缺陷、0 重放不一致、pending-human-signoff；
-6. `scripts/label_sensitivity.py` 的随机化基线：与正式标签同一“覆盖 ≥2”底线时，随机标签中位 +0.076281、v2 胜 500/500，实际标签在第 47.2 百分位；覆盖 ≥1 时中位 +0.026651、491/500；去掉底线时中位 +0.000717、v2 仅 256/500。实际 +0.076120 因此不是泛化证据。
-7. `scripts/weight_grid.py` 枚举 1771 组四特征权重；存在权重 0.60/0.10/0.15/0.15 使每需求 top6 覆盖全部 186 个正例。因此只声称“标签不由 v1/v2 权重生成”，不声称“任何加权和都复现不了标签”。
+5. `scripts/manual_review.py` 用同一 `labeling` 重放六槽位，覆盖 60 条需求 / 430 个标签，输出 0 缺陷、0 重放不一致、pending-human-signoff；
+6. `scripts/label_sensitivity.py` 的随机化基线：与正式标签同一“覆盖 ≥2”底线时，随机标签中位 +0.075438、v2 胜 500/500，实际标签在第 41.0 百分位；覆盖 ≥1 时中位 +0.023730、484/500；去掉底线时中位 -0.000253、v2 仅 247/500。实际 +0.075025 因此不是泛化证据。
+7. `scripts/weight_grid.py` 枚举 1771 组四特征权重；网格内最好的权重也只能让 58/60 条需求的 top6 覆盖全部正例。d052 的未标注候选 c006 逐特征支配正例 c022，因此任何非负权重都无法让该需求的 6 个正例全进 top6；`tests/test_label_independence.py` 对此穷举断言。能声称“top6 标签集合不能被任何非负四特征权重完整复现”，但不声称与业务事实正交。
 
 完整口径见 `data/ANNOTATION.md` 与 `docs/LABEL-BASELINE.md`。
 
 ## 常见误读
 
-- “1/1”不是全部 60 条都精确一致：只有 1 条需求恰有 6 个正例，精确集合比较只在 6 正例时有意义；其余用“top6 覆盖全部标签 54/60、交集 180/186”衡量。
-- “186 个正例都在前 10”与“top6 只覆盖 54/60”不矛盾：NDCG 按位置加权，top6 是集合；186 个正例全量排名中位第 2、最差第 8，但第 7–10 名不计入 top6。v2 在 31 条需求上更好、29 条持平、0 条更差。
-- “+0.076120”不是泛化证据：与正式标签同底线时随机标签几乎都会让 v2 略高；去掉底线后 v2 仅 256/500。详见 `docs/EVALUATION-LIMITS.md`。
+- “2/4”不是全部 60 条都精确一致：只有 4 条需求恰有 6 个正例，精确集合比较只在 6 正例时有意义；其余用“top6 覆盖全部标签 51/60、交集 180/190”衡量。
+- “190 个正例都在前 10”与“top6 只覆盖 51/60”不矛盾：NDCG 按位置加权，top6 是集合；190 个正例全量排名中位第 2、最差第 8，但第 7–10 名不计入 top6。v2 在 31 条需求上更好、28 条持平、1 条更差。
+- “+0.075025”不是泛化证据：与正式标签同底线时随机标签几乎都会让 v2 略高；去掉底线后 v2 仅 247/500。详见 `docs/EVALUATION-LIMITS.md`。
 - “人工标注”尚未完成：复核包是机器可复算的合成标签，等待人类签字；签字前不得称人工标注。
-- “0.970246”是 60 条合成需求的回归结果，不是线上效果或模型优劣结论。
-- 标签覆盖是 3/3=57、2/3=129、1/3=0；如果评审要求 1/3 正例也进入应推荐集，需改业务底线并重做标签，不能只改文档。
+- “0.965123”是 60 条合成需求的回归结果，不是线上效果或模型优劣结论。
+- 标签覆盖是 3/3=113、2/3=77、1/3=0；如果评审要求 1/3 正例也进入应推荐集，需改业务底线并重做标签，不能只改文档。
 
 ## 历史文件
 

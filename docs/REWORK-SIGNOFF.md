@@ -21,22 +21,27 @@ The labels are no longer produced by any v1/v2 weighted formula:
   bootstrap cycle (builder reads generated demands) is removed.
 - `tests/test_dataset.py` uses AST import checks; `tests/test_labeling.py` has golden hashes,
   replays all 60 demands, and rewrites weights to arbitrary values, reruns builder+generator,
-  and asserts the four data files are byte-identical.
+  and asserts the four data files are byte-identical. `tests/test_label_independence.py`
+  replays the d052 dominance witness and exhausts all 1771 grid weights.
 - `data/ANNOTATION.md` and `docs/LABEL-BASELINE.md` document the method, the independence
-  evidence and its limits. A 1771-weight grid over the evaluator's four features includes a
-  weight (0.60/0.10/0.15/0.15) whose top6 covers all 186 positives; labels therefore are not
-  generated from v1/v2 weights, but they are not orthogonal to the evaluator's feature space.
+  evidence and its limits. A 1771-weight grid over the evaluator's four features cannot make
+  every demand's top6 cover all positives: the best weight reaches 58/60. In d052 the
+  unlabelled, eligible c006 strictly dominates the labelled c022 on the four features
+  (capability 1.0 vs 2/3; industry, region and capacity equal), so any non-negative weight
+  ranks c006 first and the six positives plus c006 need seven slots. Labels are therefore
+  not generated from v1/v2 weights and their top6 set cannot be reproduced by any
+  non-negative four-feature weight, though they still share the evaluator's business facts.
 
-Reports are regenerated: v1 NDCG@10=0.894126, v2=0.970246, v2-v1=+0.076120,
+Reports are regenerated: v1 NDCG@10=0.890098, v2=0.965123, v2-v1=+0.075025,
 verdict=pass, exit 0.
 
 ## Other rework items
 
 1. Public code repository: source, tests, data, weights, reports and docs; `README.md` and
    `docs/REVIEW-GUIDE.md` give the reproduction commands.
-2. Dataset and stats: 40 companies, 30 supplies (27 active), 60 demands, 8 types, 186
+2. Dataset and stats: 40 companies, 30 supplies (27 active), 60 demands, 8 types, 190
    positives, 240 negatives; print with `python -m match_eval stats`.
-3. Metric tests: one dedicated file per metric; 14 passed in the five metric files, 66 passed
+3. Metric tests: one dedicated file per metric; 14 passed in the five metric files, 68 passed
    in the full suite.
 4. Exit codes: violations exit 2; an NDCG@10 regression greater than 0.02 exits 3; data/weight
    errors exit 1. Formal evaluation has zero violations; the exit-2 evidence intentionally
@@ -47,28 +52,28 @@ verdict=pass, exit 0.
 ## Evidence
 
 - `artifacts/ACCEPTANCE.md`: AC1-AC6, commands, exit codes, five data SHA-256 values; all
-  passed (66 tests).
-- `artifacts/diagnostic-no-filter.md`: 222 violations, NDCG@10 0.818828, exit 2; its embedded
+  passed (68 tests).
+- `artifacts/diagnostic-no-filter.md`: 222 violations, NDCG@10 0.808071, exit 2; its embedded
   reproduction command includes `--no-hard-filter`.
-- `artifacts/report-v1.md` and `report-v2.md`: 0 violations, 1.0 traceability, HHI 0.049556
-  and 0.050844, 23 companies each.
-- `docs/MANUAL-REVIEW.md`: 60 demand rows, 426 labels, 0 defects, 0 replay mismatches;
+- `artifacts/report-v1.md` and `report-v2.md`: 0 violations, 1.0 traceability, HHI 0.051467
+  and 0.053333, 23 companies each.
+- `docs/MANUAL-REVIEW.md`: 60 demand rows, 430 labels, 0 defects, 0 replay mismatches;
   status is pending-human-signoff.
 - `docs/LABEL-BASELINE.md`: 500-seed randomisation baseline; with the production floor the
-  actual labels are at the 47.2nd percentile (+0.076120 vs median +0.076281, v2 wins 500/500);
-  with coverage >=1, 491/500; with no floor, only 256/500.
+  actual labels are at the 41.0th percentile (+0.075025 vs median +0.075438, v2 wins 500/500);
+  with coverage >=1, 484/500; with no floor, only 247/500.
 - Historical round-1/round-2 logs are archived under `artifacts/history/`; their numbers are
   superseded and must not be cited as current.
 
 ## Limits
 
 The labels are rule-generated synthetic editorial fixtures, not human annotations; the review
-pack still needs a human signature. NDCG@10=0.970246 is a consistency result on 60 synthetic
-demands, not a generalisation or production-quality claim. 129/186 positives cover 2/3
-required capabilities and 57 cover 3/3; none cover 1/3; per-label reasons are in
+pack still needs a human signature. NDCG@10=0.965123 is a consistency result on 60 synthetic
+demands, not a generalisation or production-quality claim. 77/190 positives cover 2/3
+required capabilities and 113 cover 3/3; none cover 1/3; per-label reasons are in
 `data/annotations.json`. `case_strength` verified-case counts are company-level, not split by
 capability. The capability floor systematically raises v2 under random labels with the same
-floor, which is why the baseline is published and +0.076120 is not presented as proof that v2
+floor, which is why the baseline is published and +0.075025 is not presented as proof that v2
 is better. Labels share capabilities, industry, region and capacity with the evaluator; only
 `case_strength` and `responsiveness` are wholly new signals.
 
