@@ -29,7 +29,7 @@ python scripts/label_sensitivity.py
 
 第 2 轮审核的 blocker 是“标签由 v2 同系数公式生成，排序器在评自己”。本轮不是改文档措辞，而是重写夹具与标注，并修掉数据层缺陷：
 
-1. **手写企业、确定性派生供给与需求**：40 家企业的名称、能力卡、行业、区域、容量、冲突关系由 `scripts/fixture_spec.py` 逐家手写，能力卡与名称语义一致（青石法务=legal/finance/consulting，松间餐饮=catering/venue/event_planning 等），16 个能力全部出现；30 条供给由企业列表派生（覆盖 c001–c029 + c032，s009/s018/s028 为 paused）；60 条需求按 8 种类型和 2–3 个能力变体确定性生成。每需求 required 2–3 个，preferred 1–2 个；本数据可出现 3/3 覆盖（113 条正例），不再是上一版“最多 2/3”。
+1. **手写企业、确定性派生供给与需求**：40 家企业的名称、能力卡、行业、区域、容量、冲突关系由 `scripts/fixture_spec.py` 逐家手写，能力卡与名称语义一致（青石法务=legal/finance/consulting，松间餐饮=catering/venue/event_planning 等），16 个能力全部出现；30 条供给由企业列表派生（覆盖 c001–c029 + c032，s009/s018/s028 为 paused）；60 条需求按 8 种类型和 2–3 个能力变体确定性生成。每需求 required 2–3 个，preferred 1–2 个；本数据可出现全覆盖（113 条正例完全覆盖 required，其中 52 条 3/3、61 条 2/2），不再是上一版“最多 2/3”。
 2. **六编辑槽位**：`scripts/labeling.py` 的 capability_lead / case_strength / responsiveness / industry_fit / regional_fit / capacity_fit 各用主信号词典序选人；全程无加权和。槽位可以弃权，因此每条需求 1–6 个正例，而不是强行凑满 6 个。
 3. **两个真正的新信号**：`data/editorial-signals.json` 的 `verified_cases`、`response_days`、`max_response_days` 只给标注用，评测器从不读取；capability_lead 用 IDF 稀缺度密度，不是评测器的覆盖比例。行业、区域、产能三个槽位是对评测器也使用的业务事实的**另一种编辑口径**，不声称是独立信号。
 4. **可复算、可复现**：`scripts/manual_review.py` 用同一 `labeling` 逐条重放六槽位与四负例；`tests/test_labeling.py` 做 golden hash、逐条重放、任意权重重跑后数据逐字节不变；`scripts/label_sensitivity.py` 做随机化基线；`scripts/weight_grid.py` 枚举 1771 组四特征权重；`docs/LABEL-BASELINE.md` 披露结果。
@@ -102,7 +102,7 @@ artifacts/               报告、验收、复核包；history/ 为历史存档
 | --- | ---: |
 | 应推荐正例 | 190 |
 | 不应推荐负例 | 240 |
-| 正例覆盖 | 3/3 = 113；2/3 = 77；1/3 = 0 |
+| 正例覆盖 | 全覆盖 = 113（52 条 3/3 + 61 条 2/2）；2/3 = 77；无更低覆盖 |
 | 每需求正例数 | 1 条=7；2 条=11；3 条=21；4 条=11；5 条=6；6 条=4 |
 
 可推荐底线是“至少覆盖两个 required capability”。这既是业务口径，也是本轮对上一版“只命中一个能力也算正例”的修正；它不读取 v1/v2 权重，但会系统性影响指标，详见 `docs/EVALUATION-LIMITS.md`。
