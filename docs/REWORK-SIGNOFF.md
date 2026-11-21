@@ -69,8 +69,8 @@ verdict=pass, exit 0.
 
 The labels are rule-generated synthetic editorial fixtures, not human annotations; the review
 pack still needs a human signature. NDCG@10=0.965123 is a consistency result on 60 synthetic
-demands, not a generalisation or production-quality claim. 77/190 positives cover 2/3
-required capabilities and 113 cover 3/3; none cover 1/3; per-label reasons are in
+demands, not a generalisation or production-quality claim. 77/190 positives cover 2/3;
+113 fully cover the required set (52 at 3/3, 61 at 2/2); none fall below the floor; per-label reasons are in
 `data/annotations.json`. `case_strength` verified-case counts are company-level, not split by
 capability. The capability floor systematically raises v2 under random labels with the same
 floor, which is why the baseline is published and +0.075025 is not presented as proof that v2

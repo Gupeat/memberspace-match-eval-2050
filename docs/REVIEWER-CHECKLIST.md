@@ -24,9 +24,9 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 - Required capabilities are 2-3 per demand; all 16 capabilities appear in company cards.
   Company capability cards are hand-written to match company names; supplies and demand
   metadata are deterministically derived, not all hand-written.
-- Positives cover 3/3=113, 2/3=77, 1/3=0. The "at least two required capabilities" floor is
-  a disclosed business rule. It cannot be raised to 3/3 without changing the fixture: only
-  113 positives reach 3/3.
+- Positives: 113 fully cover the required set (52 at 3/3, 61 at 2/2); 77 cover 2/3; none
+  below the floor. The "at least two required capabilities" floor is a disclosed business
+  rule. It cannot be raised to 3/3 without changing the fixture: only 52 positives reach 3/3.
 - Command: `python -m match_eval stats`
 - Expected: companies 40, supplies 30 (active 27), demands 60, demand_type_count 8,
   positive_labels 190, negative_labels 240.
@@ -116,8 +116,8 @@ repository root with Python 3.11+; there are no network or third-party runtime d
   pack is pending human sign-off.
 - NDCG@10=0.965123 is a consistency result on 60 synthetic demands, not a production-quality
   estimate.
-- 77/190 positives cover 2/3 required capabilities; 113 cover 3/3; none cover 1/3. The
-  rationale is documented per label in `data/annotations.json` and in
+- 77/190 positives cover 2/3; 113 fully cover the required set (52 at 3/3, 61 at 2/2); none
+  fall below the floor. The rationale is documented per label in `data/annotations.json` and in
   `docs/EVALUATION-LIMITS.md`.
 - `case_strength` verified-case counts are company-level, not split by capability.
 - Data contains no real companies, contacts, API keys, PII or monetary values.

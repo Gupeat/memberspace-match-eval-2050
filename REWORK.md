@@ -19,8 +19,8 @@ data-level review, so this round rebuilds the fixture and the labeling method.
    all 16 capabilities represented. The 30 supplies are derived from the companies
    (c001-c029 + c032; s009/s018/s028 paused); the 60 demand metadata rows are derived from
    eight demand types and 2-3 capability variants. Each demand requires two or three
-   capabilities, so 3/3 coverage is possible; 113 of 190 positive labels now have 3/3 and
-   77 have 2/3.
+   capabilities, so full coverage is possible; 113 of 190 positive labels fully cover the
+   required set (52 at 3/3 and 61 at 2/2), and 77 cover 2/3.
 2. **Six editorial slots with abstention** - `scripts/labeling.py` selects at most one
    company per slot: capability_lead (IDF rarity density), case_strength (curated verified
    cases), responsiveness (curated response days vs the demand tolerance), industry_fit,

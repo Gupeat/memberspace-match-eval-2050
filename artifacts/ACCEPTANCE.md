@@ -1,6 +1,6 @@
 # 验收对照报告
 
-- 生成时间：2026-11-21T10:40:16Z
+- 生成时间：2026-11-21T10:50:58Z
 - 结论：全部通过
 - 运行目录：.
 
@@ -9,11 +9,11 @@
 | 编号 | 验收项 | 结果 | 证据 |
 | --- | --- | --- | --- |
 | AC1 | 评测集需求条数 >= 50，统计脚本输出覆盖需求类型数 | PASS | demands=60; demand_type_count=8 |
-| AC2 | 每个指标函数都有单元测试 | PASS | 14 passed in 0.09s |
+| AC2 | 每个指标函数都有单元测试 | PASS | 14 passed in 0.08s |
 | AC3 | 硬过滤违规数 > 0 时退出码非 0 | PASS | exit=2; hard_filter_violations=222 |
 | AC4 | 两个权重版本的对比示例报告 | PASS | report=artifacts/report-compare.md; verdict=pass |
 | AC5 | 正式评测硬过滤违规为 0，理由可追溯率为 1.0 | PASS | v1 violations=0, trace=1.0; v2 violations=0, trace=1.0 |
-| AC6 | 全量单元测试通过 | PASS | 68 passed in 1.79s |
+| AC6 | 全量单元测试通过 | PASS | 68 passed in 1.76s |
 
 ## 数据哈希（sha256）
 
