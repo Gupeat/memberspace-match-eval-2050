@@ -1,0 +1,2957 @@
+{
+  "schema_version": 1,
+  "method": "six-editor-panel-v2",
+  "independent_of_weights": [
+    "v1",
+    "v2"
+  ],
+  "generated_by": "scripts/build_annotations.py",
+  "fixture_source": "scripts/fixture_spec.py",
+  "signal_source": "data/editorial-signals.json",
+  "signal_source_sha256": "e77329acc3e157e625e87876eaadc3aa23cadd079f71bb7e6a887565b0960dd1",
+  "feature_notes": {
+    "capability_lead": "average IDF rarity density of matched capabilities; no evaluator weights",
+    "case_strength": "verified_cases from data/editorial-signals.json",
+    "responsiveness": "response_days vs max_response_days from data/editorial-signals.json",
+    "industry_fit": "count of preferred industries matched",
+    "regional_fit": "same / adjacent / distant region band",
+    "capacity_fit": "capacity meets need first, then smallest sufficient excess",
+    "capability_floor": "each positive covers at least two required capabilities",
+    "positive_count": "1-6; a slot abstains when no remaining candidate meets its condition",
+    "aggregation": "one lexicographic key per slot; no weighted sum anywhere"
+  },
+  "slot_order": [
+    "capability_lead",
+    "case_strength",
+    "responsiveness",
+    "industry_fit",
+    "regional_fit",
+    "capacity_fit"
+  ],
+  "slot_notes": {
+    "capability_lead": "average IDF rarity per matched capability, then coverage",
+    "case_strength": "curated verified_cases; capability coverage is only a tie-break",
+    "responsiveness": "curated response_days against max_response_days; capability coverage is only a tie-break",
+    "industry_fit": "count of preferred industries matched",
+    "regional_fit": "same=0, adjacent=1, distant=2 band",
+    "capacity_fit": "capacity meets the need first, then smallest sufficient excess"
+  },
+  "demands": [
+    {
+      "demand_id": "d001",
+      "should_recommend": [
+        "c025",
+        "c014",
+        "c032"
+      ],
+      "rejected_company_ids": [
+        "c006",
+        "c013"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c013",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c011",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c025",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.27；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c014",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 3 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c032",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d002",
+      "should_recommend": [
+        "c020",
+        "c019",
+        "c012",
+        "c015"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c003"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c003",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c020",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.44；公司级已核实案例 5 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c019",
+          "reason": "交付记录（主槽位）：6 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c012",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c015",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d003",
+      "should_recommend": [
+        "c008",
+        "c017",
+        "c006"
+      ],
+      "rejected_company_ids": [
+        "c019",
+        "c001"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c017",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c006",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d004",
+      "should_recommend": [
+        "c021",
+        "c024",
+        "c003",
+        "c013"
+      ],
+      "rejected_company_ids": [
+        "c015",
+        "c032"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c032",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c022",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c021",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c024",
+          "reason": "交付记录（主槽位）：10 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c003",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c013",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d005",
+      "should_recommend": [
+        "c013",
+        "c021",
+        "c024",
+        "c004",
+        "c003"
+      ],
+      "rejected_company_ids": [
+        "c010",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c010",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c024",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c004",
+          "reason": "区域可达（主槽位）：邻区；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c003",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d006",
+      "should_recommend": [
+        "c024",
+        "c023",
+        "c022"
+      ],
+      "rejected_company_ids": [
+        "c015",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c023",
+          "reason": "交付记录（主槽位）：9 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c022",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d007",
+      "should_recommend": [
+        "c006",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c002",
+        "c019"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c017",
+          "reason": "区域可达（主槽位）：邻区；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d008",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c007",
+        "c021"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c021",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.73；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d009",
+      "should_recommend": [
+        "c032",
+        "c025",
+        "c014"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c007"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c001",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "responsiveness",
+          "company_id": "c032",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c025",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c014",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d010",
+      "should_recommend": [
+        "c002",
+        "c020"
+      ],
+      "rejected_company_ids": [
+        "c013",
+        "c024"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c013",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "responsiveness",
+          "company_id": "c002",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c020",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d011",
+      "should_recommend": [
+        "c008",
+        "c006",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c012",
+        "c025"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c012",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c025",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c029",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c006",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d012",
+      "should_recommend": [
+        "c013",
+        "c021",
+        "c003"
+      ],
+      "rejected_company_ids": [
+        "c032",
+        "c019"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c032",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c003",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d013",
+      "should_recommend": [
+        "c024",
+        "c004"
+      ],
+      "rejected_company_ids": [
+        "c008",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c008",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c004",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d014",
+      "should_recommend": [
+        "c024",
+        "c023",
+        "c007"
+      ],
+      "rejected_company_ids": [
+        "c015",
+        "c032"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c032",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c023",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c007",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d015",
+      "should_recommend": [
+        "c006",
+        "c008",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c002",
+        "c020"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c008",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c017",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d016",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c007",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.49；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d017",
+      "should_recommend": [
+        "c001",
+        "c014",
+        "c032"
+      ],
+      "rejected_company_ids": [
+        "c006",
+        "c013"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c013",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c001",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.34；公司级已核实案例 12 个。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c014",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c032",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d018",
+      "should_recommend": [
+        "c015",
+        "c002"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c003"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c003",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c004",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c015",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.44；公司级已核实案例 7 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c002",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d019",
+      "should_recommend": [
+        "c017",
+        "c008",
+        "c006"
+      ],
+      "rejected_company_ids": [
+        "c025",
+        "c004"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c025",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c004",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c017",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c008",
+          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c006",
+          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d020",
+      "should_recommend": [
+        "c013",
+        "c021",
+        "c022",
+        "c004",
+        "c003"
+      ],
+      "rejected_company_ids": [
+        "c020",
+        "c002"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c022",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c004",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c003",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d021",
+      "should_recommend": [
+        "c003",
+        "c013",
+        "c024",
+        "c004",
+        "c021"
+      ],
+      "rejected_company_ids": [
+        "c008",
+        "c015"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c008",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c003",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 14 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c013",
+          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c024",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c004",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c021",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d022",
+      "should_recommend": [
+        "c023",
+        "c007",
+        "c024",
+        "c022"
+      ],
+      "rejected_company_ids": [
+        "c001",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c013",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c023",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 9 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c007",
+          "reason": "交付记录（主槽位）：10 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c024",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c022",
+          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d023",
+      "should_recommend": [
+        "c008",
+        "c006",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c020",
+        "c004"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c004",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c006",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d024",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c017",
+        "c003"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c003",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c011",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.73；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d025",
+      "should_recommend": [
+        "c032",
+        "c014",
+        "c001",
+        "c025"
+      ],
+      "rejected_company_ids": [
+        "c007",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c032",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.41；公司级已核实案例 9 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c014",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 3 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c001",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c025",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d026",
+      "should_recommend": [
+        "c020",
+        "c019",
+        "c012",
+        "c015",
+        "c002"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c004"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c004",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c020",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.44；公司级已核实案例 5 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c019",
+          "reason": "交付记录（主槽位）：6 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c012",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c015",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c002",
+          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d027",
+      "should_recommend": [
+        "c006",
+        "c017",
+        "c008"
+      ],
+      "rejected_company_ids": [
+        "c019",
+        "c001"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c022",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c017",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c008",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d028",
+      "should_recommend": [
+        "c013",
+        "c021",
+        "c003"
+      ],
+      "rejected_company_ids": [
+        "c012",
+        "c025"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c012",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c025",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c003",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d029",
+      "should_recommend": [
+        "c024",
+        "c004"
+      ],
+      "rejected_company_ids": [
+        "c010",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c010",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c004",
+          "reason": "交付记录（主槽位）：9 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d030",
+      "should_recommend": [
+        "c007",
+        "c023",
+        "c024"
+      ],
+      "rejected_company_ids": [
+        "c020",
+        "c002"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c007",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c023",
+          "reason": "交付记录（主槽位）：9 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c024",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d031",
+      "should_recommend": [
+        "c008",
+        "c017",
+        "c006"
+      ],
+      "rejected_company_ids": [
+        "c014",
+        "c029"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c029",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c017",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c006",
+          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d032",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c007"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c001",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.49；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d033",
+      "should_recommend": [
+        "c014",
+        "c032",
+        "c025",
+        "c001"
+      ],
+      "rejected_company_ids": [
+        "c006",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c014",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.27；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c032",
+          "reason": "交付记录（主槽位）：9 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c025",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c001",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d034",
+      "should_recommend": [
+        "c012",
+        "c002",
+        "c020"
+      ],
+      "rejected_company_ids": [
+        "c001",
+        "c010"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c010",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c029",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c012",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.70；公司级已核实案例 6 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c002",
+          "reason": "交付记录（主槽位）：7 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c020",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d035",
+      "should_recommend": [
+        "c006",
+        "c008",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c002",
+        "c020"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c008",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d036",
+      "should_recommend": [
+        "c004",
+        "c003",
+        "c013",
+        "c022",
+        "c024"
+      ],
+      "rejected_company_ids": [
+        "c020",
+        "c002"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c004",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 9 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c003",
+          "reason": "交付记录（主槽位）：14 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c013",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c022",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c024",
+          "reason": "产能匹配（主槽位）：小型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d037",
+      "should_recommend": [
+        "c021",
+        "c003",
+        "c004",
+        "c024",
+        "c013"
+      ],
+      "rejected_company_ids": [
+        "c008",
+        "c015"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c008",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c021",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c003",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 2 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c004",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c024",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c013",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d038",
+      "should_recommend": [
+        "c024",
+        "c022",
+        "c007",
+        "c023"
+      ],
+      "rejected_company_ids": [
+        "c029",
+        "c025"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c029",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c025",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c022",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c007",
+          "reason": "区域可达（主槽位）：邻区；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c023",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d039",
+      "should_recommend": [
+        "c006",
+        "c017",
+        "c008"
+      ],
+      "rejected_company_ids": [
+        "c032",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c032",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c017",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c008",
+          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d040",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c003",
+        "c012"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c003",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c012",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.73；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d041",
+      "should_recommend": [
+        "c001",
+        "c014",
+        "c032"
+      ],
+      "rejected_company_ids": [
+        "c021",
+        "c006"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c021",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c004",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c001",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.34；公司级已核实案例 12 个。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c014",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c032",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d042",
+      "should_recommend": [
+        "c002",
+        "c015"
+      ],
+      "rejected_company_ids": [
+        "c008",
+        "c022"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c008",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c022",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c002",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.44；公司级已核实案例 7 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c015",
+          "reason": "交付记录（主槽位）：7 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d043",
+      "should_recommend": [
+        "c008",
+        "c006",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c001",
+        "c015"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c006",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 2 天；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d044",
+      "should_recommend": [
+        "c003",
+        "c013",
+        "c021"
+      ],
+      "rejected_company_ids": [
+        "c029",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c029",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c003",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 14 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c013",
+          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c021",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d045",
+      "should_recommend": [
+        "c024",
+        "c004"
+      ],
+      "rejected_company_ids": [
+        "c008",
+        "c015"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c008",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c013",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.85；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c004",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d046",
+      "should_recommend": [
+        "c007",
+        "c024",
+        "c023"
+      ],
+      "rejected_company_ids": [
+        "c014",
+        "c029"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c029",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "industry_fit",
+          "company_id": "c007",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c024",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c023",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d047",
+      "should_recommend": [
+        "c006",
+        "c008",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c019",
+        "c002"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c011",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c008",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d048",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c017",
+        "c004"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c004",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.49；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d049",
+      "should_recommend": [
+        "c025",
+        "c014",
+        "c032",
+        "c001"
+      ],
+      "rejected_company_ids": [
+        "c007",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c007",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c025",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.27；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c014",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 3 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c032",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c001",
+          "reason": "区域可达（主槽位）：邻区；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d050",
+      "should_recommend": [
+        "c012",
+        "c019",
+        "c002",
+        "c015",
+        "c020"
+      ],
+      "rejected_company_ids": [
+        "c023",
+        "c001"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c023",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c022",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c012",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.19；公司级已核实案例 6 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c019",
+          "reason": "交付记录（主槽位）：6 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c002",
+          "reason": "响应时效（主槽位）：4 天响应，需求上限 4 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c015",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c020",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d051",
+      "should_recommend": [
+        "c008",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c002",
+        "c019"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c017",
+          "reason": "区域可达（主槽位）：同区；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d052",
+      "should_recommend": [
+        "c013",
+        "c021",
+        "c003",
+        "c004",
+        "c024",
+        "c022"
+      ],
+      "rejected_company_ids": [
+        "c001",
+        "c019"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c001",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c019",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c013",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.50；公司级已核实案例 13 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c021",
+          "reason": "交付记录（主槽位）：11 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c003",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 2 天；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c004",
+          "reason": "行业匹配（主槽位）：命中 1/1 个偏好行业；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c024",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c022",
+          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d053",
+      "should_recommend": [
+        "c004",
+        "c013",
+        "c024",
+        "c021",
+        "c003"
+      ],
+      "rejected_company_ids": [
+        "c010",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c010",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c004",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.91；公司级已核实案例 9 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c013",
+          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c024",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c021",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c003",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d054",
+      "should_recommend": [
+        "c024",
+        "c007",
+        "c022",
+        "c023"
+      ],
+      "rejected_company_ids": [
+        "c015",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c015",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c024",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 10 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c007",
+          "reason": "交付记录（主槽位）：10 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c022",
+          "reason": "响应时效（主槽位）：3 天响应，需求上限 3 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c023",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d055",
+      "should_recommend": [
+        "c008",
+        "c017",
+        "c006"
+      ],
+      "rejected_company_ids": [
+        "c004",
+        "c020"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c004",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c001",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c008",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.60；公司级已核实案例 8 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c017",
+          "reason": "交付记录（主槽位）：8 个公司级已核实案例（不按能力拆分）；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c006",
+          "reason": "产能匹配（主槽位）：中型容量，满足需求；覆盖 3/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d056",
+      "should_recommend": [
+        "c029"
+      ],
+      "rejected_company_ids": [
+        "c006",
+        "c021"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c021",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c029",
+          "reason": "能力匹配（主槽位）：覆盖 3/3 项必需能力，平均 IDF 稀缺度 2.73；公司级已核实案例 7 个。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d057",
+      "should_recommend": [
+        "c001",
+        "c014",
+        "c025",
+        "c032"
+      ],
+      "rejected_company_ids": [
+        "c006",
+        "c017"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c006",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c017",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c029",
+          "reason": "conflict"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c001",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.27；公司级已核实案例 12 个。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c014",
+          "reason": "响应时效（主槽位）：1 天响应，需求上限 2 天；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "industry_fit",
+          "company_id": "c025",
+          "reason": "行业匹配（主槽位）：命中 1/2 个偏好行业；覆盖 3/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c032",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d058",
+      "should_recommend": [
+        "c002",
+        "c020",
+        "c012"
+      ],
+      "rejected_company_ids": [
+        "c024",
+        "c003"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c024",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c003",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c002",
+          "reason": "能力匹配（主槽位）：覆盖 2/3 项必需能力，平均 IDF 稀缺度 2.44；公司级已核实案例 7 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c020",
+          "reason": "交付记录（主槽位）：5 个公司级已核实案例（不按能力拆分）；覆盖 2/3 项必需能力。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c012",
+          "reason": "区域可达（主槽位）：邻区；覆盖 2/3 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d059",
+      "should_recommend": [
+        "c006",
+        "c008",
+        "c017"
+      ],
+      "rejected_company_ids": [
+        "c032",
+        "c014"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c032",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c014",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c006",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 11 个。"
+        },
+        {
+          "slot": "regional_fit",
+          "company_id": "c008",
+          "reason": "区域可达（主槽位）：同区；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "capacity_fit",
+          "company_id": "c017",
+          "reason": "产能匹配（主槽位）：大型容量，满足需求；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    },
+    {
+      "demand_id": "d060",
+      "should_recommend": [
+        "c003",
+        "c013",
+        "c021"
+      ],
+      "rejected_company_ids": [
+        "c020",
+        "c002"
+      ],
+      "should_not_recommend": [
+        {
+          "company_id": "c020",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c002",
+          "reason": "rejected"
+        },
+        {
+          "company_id": "c005",
+          "reason": "not_accepting"
+        },
+        {
+          "company_id": "c016",
+          "reason": "not_accepting"
+        }
+      ],
+      "positive_slots": [
+        {
+          "slot": "capability_lead",
+          "company_id": "c003",
+          "reason": "能力匹配（主槽位）：覆盖 2/2 项必需能力，平均 IDF 稀缺度 2.40；公司级已核实案例 14 个。"
+        },
+        {
+          "slot": "case_strength",
+          "company_id": "c013",
+          "reason": "交付记录（主槽位）：13 个公司级已核实案例（不按能力拆分）；覆盖 2/2 项必需能力。"
+        },
+        {
+          "slot": "responsiveness",
+          "company_id": "c021",
+          "reason": "响应时效（主槽位）：2 天响应，需求上限 5 天；覆盖 2/2 项必需能力。"
+        }
+      ],
+      "annotation_note": "six editor lenses, each may abstain; positive floor is at least two of the required capabilities; signals 2-3 are label-only; no evaluator weights are read"
+    }
+  ]
+}

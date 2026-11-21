@@ -10,7 +10,7 @@
 | 供给条目 | 30 |
 | 其中活跃供给 | 27 |
 | 需求条目 | 60 |
-| 应推荐标注数 | 360 |
+| 应推荐标注数 | 186 |
 | 不应推荐标注数 | 240 |
 
 ## 权重版本
@@ -30,13 +30,13 @@
 | --- | ---: | --- |
 | 需求条数 | 60 | 至少 50 |
 | 覆盖需求类型数 | 8 | 统计脚本输出 |
-| Hit@5 | 1.0000 | 有至少一个应推荐进入前 5 的需求占比 |
-| NDCG@10 | 0.9710 | 二值相关性，应推荐=1 |
+| Hit@5 | 1.000000 | 有至少一个应推荐进入前 5 的需求占比 |
+| NDCG@10 | 0.894126 | 二值相关性，应推荐=1 |
 | 硬过滤违规数 | 0 | 目标 0；大于 0 时退出码非 0 |
-| 理由可追溯率 | 1.0000 | 目标 1.0000 |
-| 前 5 名集中度 HHI | 0.0507 | 所有需求前 5 名公司分布 |
-| 前 5 名最高公司占比 | 0.0800 | 观察值，不设硬门槛 |
-| 前 5 名覆盖公司数 | 24 | 观察值 |
+| 理由可追溯率 | 1.000000 | 目标 1.000000 |
+| 前 5 名集中度 HHI | 0.049556 | 所有需求前 5 名公司分布 |
+| 前 5 名最高公司占比 | 0.080000 | 观察值，不设硬门槛 |
+| 前 5 名覆盖公司数 | 23 | 观察值 |
 
 ## 需求类型覆盖
 
@@ -59,7 +59,7 @@
 | --- | ---: |
 | conflict | 21 |
 | no_active_supply | 775 |
-| not_accepting | 180 |
+| not_accepting | 240 |
 | rejected | 120 |
 | self | 60 |
 
@@ -69,39 +69,39 @@
 
 ### d001 · 活动执行需求 01
 
-类型：event；需求方：c001；可推荐标注：c021, c025, c009, c013, c017, c029
+类型：event；需求方：c001；可推荐标注：c025, c014, c032
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c021 | 0.8500 | capabilities=event_planning,venue; industry=yes; region=yes; capacity=yes; supplies=s021 | 应推荐 * |
+| 1 | c032 | 1.0000 | capabilities=catering,event_planning,venue; industry=yes; region=yes; capacity=yes; supplies=s030 | 应推荐 * |
 | 2 | c025 | 0.6500 | capabilities=event_planning,venue; industry=yes; region=no; capacity=yes; supplies=s025 | 应推荐 * |
-| 3 | c009 | 0.4000 | capabilities=event_planning,venue; industry=no; region=no; capacity=yes; supplies=s009 | 应推荐 * |
-| 4 | c013 | 0.4000 | capabilities=event_planning,venue; industry=no; region=no; capacity=yes; supplies=s013 | 应推荐 * |
-| 5 | c017 | 0.4000 | capabilities=event_planning,venue; industry=no; region=no; capacity=yes; supplies=s017 | 应推荐 * |
+| 3 | c014 | 0.5500 | capabilities=catering,event_planning,venue; industry=no; region=no; capacity=yes; supplies=s014 | 应推荐 * |
+| 4 | c019 | 0.5000 | capabilities=event_planning; industry=yes; region=no; capacity=yes; supplies=s019 | 未标注 |
+| 5 | c002 | 0.4500 | capabilities=none; industry=yes; region=yes; capacity=no; supplies=s002 | 未标注 |
 
 ### d002 · 品牌营销需求 02
 
-类型：marketing；需求方：c002；可推荐标注：c006, c014, c022, c026, c025, c017
+类型：marketing；需求方：c002；可推荐标注：c020, c019, c012, c015
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c022 | 0.5000 | capabilities=design,media; industry=no; region=yes; capacity=no; supplies=s022 | 应推荐 * |
-| 2 | c017 | 0.4500 | capabilities=marketing; industry=no; region=yes; capacity=yes; supplies=s017 | 应推荐 * |
-| 3 | c006 | 0.4000 | capabilities=design,media; industry=no; region=no; capacity=yes; supplies=s006 | 应推荐 * |
-| 4 | c014 | 0.4000 | capabilities=design,media; industry=no; region=no; capacity=yes; supplies=s014 | 应推荐 * |
-| 5 | c025 | 0.4000 | capabilities=marketing; industry=yes; region=no; capacity=no; supplies=s025 | 应推荐 * |
+| 1 | c019 | 0.7500 | capabilities=design,media; industry=yes; region=yes; capacity=no; supplies=s019 | 应推荐 * |
+| 2 | c015 | 0.5500 | capabilities=marketing,media; industry=yes; region=no; capacity=no; supplies=s015 | 应推荐 * |
+| 3 | c010 | 0.4000 | capabilities=media; industry=yes; region=no; capacity=no; supplies=s010 | 未标注 |
+| 4 | c011 | 0.4000 | capabilities=marketing; industry=yes; region=no; capacity=no; supplies=s011 | 未标注 |
+| 5 | c012 | 0.3000 | capabilities=design,media; industry=no; region=no; capacity=no; supplies=s012 | 应推荐 * |
 
 ### d003 · 人才招聘需求 03
 
-类型：hiring；需求方：c003；可推荐标注：c019, c027, c011, c006, c008, c012
+类型：hiring；需求方：c003；可推荐标注：c008, c017, c006
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c019 | 0.5500 | capabilities=consulting,hr; industry=yes; region=no; capacity=no; supplies=s019 | 应推荐 * |
-| 2 | c027 | 0.4000 | capabilities=consulting,hr; industry=no; region=no; capacity=yes; supplies=s027 | 应推荐 * |
-| 3 | c008 | 0.3500 | capabilities=training; industry=no; region=yes; capacity=no; supplies=s008 | 应推荐 * |
-| 4 | c009 | 0.3500 | capabilities=none; industry=yes; region=no; capacity=yes; supplies=s009 | 未标注 |
-| 5 | c023 | 0.3500 | capabilities=hr; industry=no; region=yes; capacity=no; supplies=s023 | 未标注 |
+| 1 | c006 | 0.7500 | capabilities=consulting,hr,training; industry=no; region=yes; capacity=yes; supplies=s006 | 应推荐 * |
+| 2 | c008 | 0.5500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s008 | 应推荐 * |
+| 3 | c017 | 0.5500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s017 | 应推荐 * |
+| 4 | c013 | 0.5000 | capabilities=consulting; industry=yes; region=no; capacity=yes; supplies=s013 | 未标注 |
+| 5 | c011 | 0.4500 | capabilities=consulting; industry=no; region=yes; capacity=yes; supplies=s011 | 未标注 |
 
 ## 结论
 

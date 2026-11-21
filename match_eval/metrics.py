@@ -36,16 +36,64 @@ def hard_filter_violations(ranked_ids: Sequence[str], excluded_ids: Iterable[str
     return sum(1 for company_id in ranked_ids if company_id in excluded)
 
 
-def rationale_traceability(ranked_items: Sequence[dict[str, Any]]) -> float:
+def rationale_traceability(
+    ranked_items: Sequence[dict[str, Any]],
+    *,
+    context: Any | None = None,
+    demand: Any | None = None,
+    companies: dict[str, Any] | None = None,
+) -> float:
+    """Share of rankings whose rationale matches the candidate's actual features.
+
+    With only ranked_items this is a field-completeness check.  When context,
+    demand and companies are supplied (the evaluation path), every rationale
+    value is recomputed from the dataset: matched capabilities must be a subset
+    of the candidate's effective capabilities and of the request, the three
+    boolean feature claims must match features_for(), and active_supply_ids must
+    equal the candidate's active supplies.  A fabricated or stale rationale
+    therefore counts as untraceable.
+    """
     if not ranked_items:
         return 0.0
+    semantic = context is not None and demand is not None and companies is not None
     traceable = 0
     for item in ranked_items:
         rationale = item.get("rationale")
         if not isinstance(rationale, dict):
             continue
-        if all(key in rationale for key in RATIONALE_KEYS) and isinstance(rationale.get("summary"), str) and rationale["summary"]:
+        if not (all(key in rationale for key in RATIONALE_KEYS) and isinstance(rationale.get("summary"), str) and rationale["summary"]):
+            continue
+        if not semantic:
             traceable += 1
+            continue
+        company = companies.get(str(item.get("company_id")))
+        if company is None:
+            continue
+        from .scoring import features_for
+
+        features = features_for(context, demand, company)
+        supplies = context.active_supplies.get(company.id, ())
+        if list(rationale.get("active_supply_ids", [])) != [supply.id for supply in supplies]:
+            continue
+        if bool(rationale.get("industry_match")) != bool(features["industry"]):
+            continue
+        if bool(rationale.get("region_match")) != bool(features["region"]):
+            continue
+        if bool(rationale.get("capacity_fit")) != bool(features["capacity"]):
+            continue
+        matched = rationale.get("matched_capabilities")
+        if not isinstance(matched, list) or not all(isinstance(value, str) for value in matched):
+            continue
+        if set(matched) - set(demand.required_capabilities):
+            continue
+        effective = set(company.capabilities)
+        for supply in supplies:
+            effective.update(supply.capabilities)
+        if set(matched) - effective:
+            continue
+        if features["capability"] > 0 and not matched:
+            continue
+        traceable += 1
     return traceable / len(ranked_items)
 
 

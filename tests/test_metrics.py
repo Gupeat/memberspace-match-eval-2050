@@ -56,6 +56,29 @@ def test_rationale_traceability():
     assert rationale_traceability([]) == 0.0
 
 
+def test_rationale_traceability_recomputes_features_from_dataset():
+    from pathlib import Path
+
+    from match_eval.dataset import load_dataset
+    from match_eval.filters import build_filter_context
+    from match_eval.scoring import load_weights, rank_demand
+
+    root = Path(__file__).resolve().parents[1]
+    dataset = load_dataset(root / "data")
+    demand = dataset.demands[0]
+    context = build_filter_context(dataset)
+    companies = {company.id: company for company in dataset.companies}
+    ranked = rank_demand(dataset, demand, load_weights("v2"), context=context)
+    assert rationale_traceability(ranked, context=context, demand=demand, companies=companies) == 1.0
+
+    ranked[0]["rationale"]["region_match"] = not ranked[0]["rationale"]["region_match"]
+    assert rationale_traceability(ranked, context=context, demand=demand, companies=companies) < 1.0
+
+    ranked[0]["rationale"]["region_match"] = not ranked[0]["rationale"]["region_match"]
+    ranked[0]["rationale"]["active_supply_ids"] = ["s999"]
+    assert rationale_traceability(ranked, context=context, demand=demand, companies=companies) < 1.0
+
+
 def test_top5_concentration():
     result = top5_concentration(
         [

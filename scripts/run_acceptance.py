@@ -7,6 +7,7 @@ code, not only a unit-level return value.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -177,7 +178,7 @@ def main() -> int:
             + ", trace=" + str(v1_payload.get("rationale_traceability"))
             + "; v2 violations=" + str(v2_payload.get("hard_filter_violations"))
             + ", trace=" + str(v2_payload.get("rationale_traceability")),
-            "command": v1,
+            "commands": [v1, v2],
         }
     )
 
@@ -193,6 +194,16 @@ def main() -> int:
     )
 
     all_passed = all(check["passed"] for check in checks)
+    data_hashes = {
+        name: hashlib.sha256((ROOT / "data" / name).read_bytes()).hexdigest()
+        for name in (
+            "companies.json",
+            "supplies.json",
+            "demands.json",
+            "annotations.json",
+            "editorial-signals.json",
+        )
+    }
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     lines = [
         "# 验收对照报告",
@@ -211,16 +222,24 @@ def main() -> int:
             "| " + check["id"] + " | " + check["title"] + " | "
             + ("PASS" if check["passed"] else "FAIL") + " | " + check["evidence"] + " |"
         )
+    lines.extend(["", "## 数据哈希（sha256）", ""])
+    lines.append("| 文件 | sha256 |")
+    lines.append("| --- | --- |")
+    for name, digest in data_hashes.items():
+        lines.append("| data/" + name + " | " + digest + " |")
     lines.extend(["", "## 命令与退出码", ""])
     for check in checks:
-        command = check["command"]
         lines.append("### " + check["id"])
         lines.append("")
-        lines.append("- 命令：" + command["command"])
-        lines.append("- 期望退出码：" + str(command["expected"]) + "；实际退出码：" + str(command["actual"]))
+        commands = check.get("commands")
+        if commands is None:
+            commands = [check["command"]]
+        for command in commands:
+            lines.append("- 命令：" + command["command"])
+            lines.append("- 期望退出码：" + str(command["expected"]) + "；实际退出码：" + str(command["actual"]))
+            if command["stderr"].strip():
+                lines.append("- stderr 摘要：" + command["stderr"].strip().splitlines()[-1])
         lines.append("- 结果：" + ("PASS" if check["passed"] else "FAIL"))
-        if command["stderr"].strip():
-            lines.append("- stderr 摘要：" + command["stderr"].strip().splitlines()[-1])
         lines.append("")
     lines.extend(
         [

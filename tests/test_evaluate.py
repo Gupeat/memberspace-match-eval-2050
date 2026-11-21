@@ -7,7 +7,7 @@ def test_full_v2_evaluation(dataset, weights_v2):
     assert metrics["demand_count"] == 60
     assert metrics["demand_type_count"] == 8
     assert metrics["hit_at_5"] == 1.0
-    assert metrics["ndcg_at_10"] >= 0.95
+    assert 0.90 <= metrics["ndcg_at_10"] < 1.0
     assert metrics["hard_filter_violations"] == 0
     assert metrics["rationale_traceability"] == 1.0
     assert metrics["top5_concentration"]["slots"] == 300

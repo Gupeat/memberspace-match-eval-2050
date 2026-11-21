@@ -1,12 +1,10 @@
 """Generate the synthetic match-ranking evaluation fixture.
 
-The fixture is deterministic: same script -> same JSON bytes. It contains only
-fictional companies, fictional people-free text, and no production data.
-
-The annotations are curated by the fixed relevance rules in this file and then
-frozen into demands.json; they are not derived from the evaluator weights at
-runtime. Evaluator weights live in weights/*.json and are intentionally separate
-from the annotation score.
+The fixture is deterministic: same specification -> same JSON bytes.  Company,
+supply and demand metadata come from scripts/fixture_spec.py.  Labels are
+frozen in data/annotations.json by scripts/build_annotations.py this generator
+only validates and applies those frozen labels; it does not select labels and
+does not read any evaluator weight file.
 """
 
 from __future__ import annotations
@@ -14,217 +12,143 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import fixture_spec
+import labeling
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 
-CAPABILITY_GROUPS = [
-    ["event_planning", "venue", "catering", "av"],
-    ["marketing", "design", "media", "photography"],
-    ["legal", "finance", "hr", "it"],
-    ["training", "consulting", "logistics", "translation"],
-]
-INDUSTRIES = [
-    "tech",
-    "finance",
-    "manufacturing",
-    "education",
-    "healthcare",
-    "culture",
-    "retail",
-    "energy",
-    "logistics",
-    "real_estate",
-]
-REGIONS = ["east", "south", "north", "west", "central"]
-CAPACITIES = ["small", "medium", "large"]
-CAPACITY_RANK = {value: index for index, value in enumerate(CAPACITIES)}
 
-COMPANY_NAMES = [
-    "晨星会务", "云杉品牌", "青石法务", "远帆财务", "拾光影像", "栖梧人力",
-    "澜图科技", "禾木培训", "南北物流", "译林翻译", "山海策划", "沐光设计",
-    "澄明咨询", "松间餐饮", "海盐传播", "白露公关", "苍梧教育", "星野健康",
-    "溪谷文化", "暮山零售", "长风能源", "元野地产", "清越制造", "知微数据",
-    "半山活动", "竹影视觉", "安澜保险", "一苇咨询", "南枝旅行", "西窗印刷",
-    "东篱安保", "北岸会展", "林间茶事", "云上软件", "石桥广告", "江畔摄影",
-    "花间礼仪", "木铎学院", "风铃翻译", "月湖康养",
-]
-
-DEMAND_TYPES = {
-    "event": ("活动执行", ["event_planning", "venue", "catering"]),
-    "marketing": ("品牌营销", ["marketing", "design", "media"]),
-    "hiring": ("人才招聘", ["hr", "training", "consulting"]),
-    "legal": ("法律合规", ["legal", "finance", "consulting"]),
-    "finance": ("财税服务", ["finance", "legal", "it"]),
-    "it": ("数字化建设", ["it", "consulting", "translation"]),
-    "training": ("企业培训", ["training", "consulting", "hr"]),
-    "sourcing": ("资源采购", ["logistics", "translation", "event_planning"]),
-}
-
-# Symmetric conflict pairs; an excluded company is a hard-filter case, not a
-# training label for the scorer.
-CONFLICT_PAIRS = [(0, 10), (3, 21), (7, 33), (12, 28), (18, 36)]
-NOT_ACCEPTING = {4, 17, 27}
-PAUSED_SUPPLY = {9, 19, 29}
-
-# These nine member companies are also consulting providers.  The extra
-# capability keeps every demand type supplied with at least six eligible
-# companies that match at least one required capability; without it the legal
-# demands have only four or five capability-matched candidates.
-CONSULTING_COMPANIES = {1, 2, 5, 10, 13, 18, 21, 25, 26}
-
-
-def capabilities_for(index: int) -> list[str]:
-    primary = index % len(CAPABILITY_GROUPS)
-    secondary = (primary + 1) % len(CAPABILITY_GROUPS)
-    first = CAPABILITY_GROUPS[primary][index % len(CAPABILITY_GROUPS[primary])]
-    second = CAPABILITY_GROUPS[primary][(index + 1) % len(CAPABILITY_GROUPS[primary])]
-    third = CAPABILITY_GROUPS[secondary][index % len(CAPABILITY_GROUPS[secondary])]
-    return sorted({first, second, third})
-
-
-def build_companies() -> list[dict]:
-    conflicts: dict[int, set[int]] = {index: set() for index in range(40)}
-    for left, right in CONFLICT_PAIRS:
-        conflicts[left].add(right)
-        conflicts[right].add(left)
-    companies = []
-    for index, name in enumerate(COMPANY_NAMES):
-        capabilities = capabilities_for(index)
-        if index in CONSULTING_COMPANIES:
-            capabilities = sorted(set(capabilities) | {"consulting"})
-        companies.append(
-            {
-                "id": f"c{index + 1:03d}",
-                "name": name,
-                "summary": f"虚构会员企业，提供{name}相关服务。",
-                "capabilities": capabilities,
-                "industries": [INDUSTRIES[index % len(INDUSTRIES)]],
-                "region": REGIONS[index % len(REGIONS)],
-                "capacity": CAPACITIES[index % len(CAPACITIES)],
-                "accepting": index not in NOT_ACCEPTING,
-                "conflicts_with": [f"c{other + 1:03d}" for other in sorted(conflicts[index])],
-            }
+def load_annotations() -> dict[str, dict]:
+    path = DATA / "annotations.json"
+    if not path.is_file():
+        raise RuntimeError(
+            "data/annotations.json is missing; run scripts/build_annotations.py first"
         )
-    return companies
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema_version") != 1:
+        raise RuntimeError("data/annotations.json has an unsupported schema_version")
+    if payload.get("method") != "six-editor-panel-v2":
+        raise RuntimeError("data/annotations.json has an unexpected method")
+    records = payload.get("demands")
+    if not isinstance(records, list) or not records:
+        raise RuntimeError("data/annotations.json has no demand records")
+    result: dict[str, dict] = {}
+    for record in records:
+        if not isinstance(record, dict):
+            raise RuntimeError("annotation record is not an object")
+        demand_id = record.get("demand_id")
+        if not isinstance(demand_id, str) or not demand_id:
+            raise RuntimeError("annotation record has no demand_id")
+        if demand_id in result:
+            raise RuntimeError("duplicate annotation record: " + demand_id)
+        result[demand_id] = record
+    return result
 
 
-def build_supplies(companies: list[dict]) -> list[dict]:
-    supplies = []
-    for index in range(30):
-        company = companies[index]
-        status = "paused" if index in PAUSED_SUPPLY else "active"
-        supplies.append(
-            {
-                "id": f"s{index + 1:03d}",
-                "company_id": company["id"],
-                "title": company["name"] + " · 标准服务包",
-                "summary": "虚构供给条目，仅用于离线评测。",
-                "capabilities": company["capabilities"][:2],
-                "industries": company["industries"],
-                "region": company["region"],
-                "capacity": company["capacity"],
-                "status": status,
-            }
-        )
-    return supplies
-
-
-def annotation_score(demand: dict, company: dict) -> float:
-    required = set(demand["required_capabilities"])
-    capabilities = set(company["capabilities"])
-    capability = len(required & capabilities) / len(required)
-    industry = 1.0 if set(demand["preferred_industries"]) & set(company["industries"]) else 0.0
-    region = 1.0 if demand["region"] == company["region"] else 0.0
-    capacity = 1.0 if CAPACITY_RANK[company["capacity"]] >= CAPACITY_RANK[demand["capacity_need"]] else 0.0
-    return 0.55 * capability + 0.25 * industry + 0.10 * region + 0.10 * capacity
-
-
-def conflict(a: dict, b: dict) -> bool:
-    return b["id"] in a["conflicts_with"] or a["id"] in b["conflicts_with"]
-
-
-def build_demands(companies: list[dict], supplies: list[dict]) -> list[dict]:
+def validate_annotation_record(
+    demand: dict,
+    record: dict,
+    companies: list[dict],
+    supplies: list[dict],
+    eligible_ids: set[str],
+) -> None:
     by_id = {company["id"]: company for company in companies}
-    active_supply_companies = [
-        by_id[supply["company_id"]]
-        for supply in supplies
-        if supply["status"] == "active"
-    ]
-    accepting_pool = [company for company in active_supply_companies if company["accepting"]]
-    type_names = list(DEMAND_TYPES)
-    demands = []
-    for index in range(60):
-        demand_type = type_names[index % len(type_names)]
-        label, required = DEMAND_TYPES[demand_type]
-        requester = accepting_pool[index % len(accepting_pool)]
-        preferred = [INDUSTRIES[(index * 3 + index % 3) % len(INDUSTRIES)]]
-        if index % 4 == 0:
-            preferred.append(INDUSTRIES[(index * 3 + 4) % len(INDUSTRIES)])
-        demand = {
-            "id": f"d{index + 1:03d}",
-            "type": demand_type,
-            "title": f"{label}需求 {index + 1:02d}",
-            "summary": f"虚构会员企业寻找{label}合作方；仅用于离线评测。",
-            "requester_company_id": requester["id"],
-            "required_capabilities": required,
-            "preferred_industries": sorted(set(preferred)),
-            "region": REGIONS[index % len(REGIONS)],
-            "capacity_need": CAPACITIES[index % len(CAPACITIES)],
-            "rejected_company_ids": [],
-            "should_recommend": [],
-            "should_not_recommend": [],
-            "annotation_note": "synthetic fixture; fixed relevance rules; see README",
-        }
-        candidate_pool = [
-            company
-            for company in active_supply_companies
-            if company["id"] != requester["id"]
-            and company["accepting"]
-            and not conflict(requester, company)
-        ]
-        eligible = [
-            company
-            for company in candidate_pool
-            if set(required) & set(company["capabilities"])
-        ]
-        if len(eligible) < 6:
+    requester = by_id[demand["requester_company_id"]]
+    supply_caps = labeling.active_supply_capabilities(supplies)
+    required = set(demand["required_capabilities"])
+    should_ids = record.get("should_recommend")
+    rejected_ids = record.get("rejected_company_ids")
+    negatives = record.get("should_not_recommend")
+    slots = record.get("positive_slots")
+    if (
+        not isinstance(should_ids, list)
+        or not 1 <= len(should_ids) <= len(labeling.SLOT_ORDER)
+        or len(set(should_ids)) != len(should_ids)
+    ):
+        raise RuntimeError(demand["id"] + ": should_recommend must have 1-6 unique ids")
+    if not isinstance(rejected_ids, list) or len(rejected_ids) != 2 or len(set(rejected_ids)) != 2:
+        raise RuntimeError(demand["id"] + ": rejected_company_ids must have two unique ids")
+    if not isinstance(negatives, list) or len(negatives) != 4:
+        raise RuntimeError(demand["id"] + ": should_not_recommend must have four rows")
+    if not isinstance(slots, list) or not 1 <= len(slots) <= len(labeling.SLOT_ORDER):
+        raise RuntimeError(demand["id"] + ": positive_slots must have 1-6 rows")
+    if not set(should_ids) <= eligible_ids:
+        raise RuntimeError(demand["id"] + ": frozen positive id is not in the eligible pool")
+    if not set(rejected_ids) <= eligible_ids:
+        raise RuntimeError(demand["id"] + ": frozen rejected id is not in the eligible pool")
+    if set(rejected_ids) & set(should_ids):
+        raise RuntimeError(demand["id"] + ": frozen rejected id overlaps positives")
+    slot_ids = [row.get("company_id") for row in slots]
+    slot_names = [row.get("slot") for row in slots]
+    if set(slot_ids) != set(should_ids):
+        raise RuntimeError(demand["id"] + ": positive slots do not match should_recommend")
+    if len(set(slot_names)) != len(slot_names) or not set(slot_names) <= set(labeling.SLOT_ORDER):
+        raise RuntimeError(demand["id"] + ": positive slot names are invalid or duplicated")
+    for row in slots:
+        company_id = row.get("company_id")
+        if not isinstance(row.get("slot"), str) or not row["slot"]:
+            raise RuntimeError(demand["id"] + ": positive slot has no slot name")
+        if not isinstance(row.get("reason"), str) or not row["reason"].strip():
+            raise RuntimeError(demand["id"] + ": positive slot has no reason")
+        company = by_id[company_id]
+        coverage = len(required & labeling.effective_capabilities(company, supply_caps))
+        if coverage < labeling.POSITIVE_MIN_COVERAGE:
             raise RuntimeError(
-                f"{demand['id']}: only {len(eligible)} eligible capability-matched companies"
+                demand["id"] + ": positive covers fewer than two required capabilities: " + company_id
             )
-        eligible.sort(key=lambda company: (-annotation_score(demand, company), company["id"]))
-        should = eligible[:6]
-        should_ids = {company["id"] for company in should}
-        rejected_pool = [
-            company for company in candidate_pool if company["id"] not in should_ids
-        ]
-        rejected = rejected_pool[:2]
-        demand["should_recommend"] = [company["id"] for company in should]
-        demand["rejected_company_ids"] = [company["id"] for company in rejected]
-        negatives = [
-            {"company_id": company["id"], "reason": "rejected"}
-            for company in rejected
-        ]
-        excluded = [
-            company
-            for company in active_supply_companies
-            if company not in should
-            and company["id"] not in demand["rejected_company_ids"]
-            and (not company["accepting"] or conflict(requester, company))
-        ]
-        excluded.sort(key=lambda company: (-annotation_score(demand, company), company["id"]))
-        for company in excluded[:2]:
-            reason = "not_accepting" if not company["accepting"] else "conflict"
-            negatives.append({"company_id": company["id"], "reason": reason})
-        demand["should_not_recommend"] = negatives
+
+    negative_ids = [row.get("company_id") for row in negatives]
+    if len(set(negative_ids)) != 4:
+        raise RuntimeError(demand["id"] + ": frozen negatives must have four unique ids")
+    if set(should_ids) & set(negative_ids):
+        raise RuntimeError(demand["id"] + ": frozen positives and negatives overlap")
+    rejected_negative_ids = {
+        row["company_id"] for row in negatives if row.get("reason") == "rejected"
+    }
+    if rejected_negative_ids != set(rejected_ids):
+        raise RuntimeError(demand["id"] + ": rejected_company_ids does not match rejected negatives")
+    for row in negatives:
+        company_id = row.get("company_id")
+        reason = row.get("reason")
+        if company_id not in by_id:
+            raise RuntimeError(demand["id"] + ": frozen negative id is unknown")
+        if reason not in {"rejected", "not_accepting", "conflict"}:
+            raise RuntimeError(demand["id"] + ": frozen negative reason is invalid")
+        if reason == "not_accepting" and by_id[company_id]["accepting"]:
+            raise RuntimeError(demand["id"] + ": not_accepting label is wrong for " + company_id)
+        if reason == "conflict" and not fixture_spec.conflict(requester, by_id[company_id]):
+            raise RuntimeError(demand["id"] + ": conflict label is wrong for " + company_id)
+
+
+def build_demands(
+    companies: list[dict], supplies: list[dict], annotations: dict[str, dict]
+) -> list[dict]:
+    _, _, base_demands = fixture_spec.build_fixture()
+    demands = []
+    for demand in base_demands:
+        record = annotations.get(demand["id"])
+        if record is None:
+            raise RuntimeError("no frozen annotation for " + demand["id"])
+        eligible_ids = set(
+            fixture_spec.eligible_pool(
+                companies, supplies, demand["requester_company_id"]
+            )
+        )
+        validate_annotation_record(demand, record, companies, supplies, eligible_ids)
+        demand = dict(demand)
+        demand["should_recommend"] = list(record["should_recommend"])
+        demand["rejected_company_ids"] = list(record["rejected_company_ids"])
+        demand["should_not_recommend"] = [dict(row) for row in record["should_not_recommend"]]
         demands.append(demand)
     return demands
 
 
 def main() -> None:
     DATA.mkdir(parents=True, exist_ok=True)
-    companies = build_companies()
-    supplies = build_supplies(companies)
-    demands = build_demands(companies, supplies)
+    companies, supplies, _ = fixture_spec.build_fixture()
+    annotations = load_annotations()
+    demands = build_demands(companies, supplies, annotations)
     files = {
         "companies.json": {"schema_version": 1, "companies": companies},
         "supplies.json": {"schema_version": 1, "supplies": supplies},
