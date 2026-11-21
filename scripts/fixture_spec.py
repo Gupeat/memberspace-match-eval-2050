@@ -96,7 +96,7 @@ COMPANY_ROWS = [
     ("c003", "青石法务", ["legal", "finance", "consulting"], ["finance"], "north", "large", True),
     ("c004", "远帆财务", ["finance", "legal", "it"], ["finance"], "west", "medium", True),
     ("c005", "拾光影像", ["photography", "media", "design"], ["culture"], "central", "small", False),
-    ("c006", "栖梧人力", ["hr", "training", "consulting"], ["education"], "east", "medium", True),
+    ("c006", "栖梧咨询", ["legal", "finance", "consulting", "hr"], ["education"], "east", "large", True),
     ("c007", "澜图科技", ["it", "consulting", "design"], ["tech"], "south", "large", True),
     ("c008", "禾木培训", ["training", "consulting", "hr"], ["education"], "north", "small", True),
     ("c009", "南北物流", ["logistics", "translation", "event_planning"], ["logistics"], "west", "medium", True),

@@ -29,7 +29,7 @@ python scripts/label_sensitivity.py
 
 第 2 轮审核的 blocker 是“标签由 v2 同系数公式生成，排序器在评自己”。本轮不是改文档措辞，而是重写夹具与标注，并修掉数据层缺陷：
 
-1. **手写企业、确定性派生供给与需求**：40 家企业的名称、能力卡、行业、区域、容量、冲突关系由 `scripts/fixture_spec.py` 逐家手写，能力卡与名称语义一致（青石法务=legal/finance/consulting，松间餐饮=catering/venue/event_planning 等），16 个能力全部出现；30 条供给由企业列表派生（覆盖 c001–c029 + c032，s009/s018/s028 为 paused）；60 条需求按 8 种类型和 2–3 个能力变体确定性生成。每需求 required 2–3 个，preferred 1–2 个；本数据可出现 3/3 覆盖（57 条正例），不再是上一版“最多 2/3”。
+1. **手写企业、确定性派生供给与需求**：40 家企业的名称、能力卡、行业、区域、容量、冲突关系由 `scripts/fixture_spec.py` 逐家手写，能力卡与名称语义一致（青石法务=legal/finance/consulting，松间餐饮=catering/venue/event_planning 等），16 个能力全部出现；30 条供给由企业列表派生（覆盖 c001–c029 + c032，s009/s018/s028 为 paused）；60 条需求按 8 种类型和 2–3 个能力变体确定性生成。每需求 required 2–3 个，preferred 1–2 个；本数据可出现 3/3 覆盖（113 条正例），不再是上一版“最多 2/3”。
 2. **六编辑槽位**：`scripts/labeling.py` 的 capability_lead / case_strength / responsiveness / industry_fit / regional_fit / capacity_fit 各用主信号词典序选人；全程无加权和。槽位可以弃权，因此每条需求 1–6 个正例，而不是强行凑满 6 个。
 3. **两个真正的新信号**：`data/editorial-signals.json` 的 `verified_cases`、`response_days`、`max_response_days` 只给标注用，评测器从不读取；capability_lead 用 IDF 稀缺度密度，不是评测器的覆盖比例。行业、区域、产能三个槽位是对评测器也使用的业务事实的**另一种编辑口径**，不声称是独立信号。
 4. **可复算、可复现**：`scripts/manual_review.py` 用同一 `labeling` 逐条重放六槽位与四负例；`tests/test_labeling.py` 做 golden hash、逐条重放、任意权重重跑后数据逐字节不变；`scripts/label_sensitivity.py` 做随机化基线；`scripts/weight_grid.py` 枚举 1771 组四特征权重；`docs/LABEL-BASELINE.md` 披露结果。
@@ -66,7 +66,7 @@ scripts/
   label_sensitivity.py   标签随机化基线
   weight_grid.py         1771 组四特征权重枚举
   run_acceptance.py      AC1–AC6 验收对照
-tests/                   66 个单元/集成测试
+tests/                   68 个单元/集成测试
 docs/                    评测边界、复核指南、rework 证据
 artifacts/               报告、验收、复核包；history/ 为历史存档
 ```
@@ -100,10 +100,10 @@ artifacts/               报告、验收、复核包；history/ 为历史存档
 
 | 项 | 值 |
 | --- | ---: |
-| 应推荐正例 | 186 |
+| 应推荐正例 | 190 |
 | 不应推荐负例 | 240 |
-| 正例覆盖 | 3/3 = 57；2/3 = 129；1/3 = 0 |
-| 每需求正例数 | 1 条=7；2 条=8；3 条=27；4 条=9；5 条=8；6 条=1 |
+| 正例覆盖 | 3/3 = 113；2/3 = 77；1/3 = 0 |
+| 每需求正例数 | 1 条=7；2 条=11；3 条=21；4 条=11；5 条=6；6 条=4 |
 
 可推荐底线是“至少覆盖两个 required capability”。这既是业务口径，也是本轮对上一版“只命中一个能力也算正例”的修正；它不读取 v1/v2 权重，但会系统性影响指标，详见 `docs/EVALUATION-LIMITS.md`。
 
@@ -144,41 +144,43 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 | 需求条数 | 60 | 60 |
 | 覆盖需求类型数 | 8 | 8 |
 | Hit@5 | 1.000000 | 1.000000 |
-| NDCG@10 | 0.894126 | 0.970246 |
+| NDCG@10 | 0.890098 | 0.965123 |
 | 硬过滤违规数 | 0 | 0 |
 | 理由可追溯率 | 1.000000 | 1.000000 |
-| 前 5 名 HHI | 0.049556 | 0.050844 |
-| 前 5 名最高公司占比 | 0.080000 | 0.083333 |
+| 前 5 名 HHI | 0.051467 | 0.053333 |
+| 前 5 名最高公司占比 | 0.083333 | 0.096667 |
 | 覆盖公司数 | 23 | 23 |
 
-对比结论：v2 − v1 = **+0.076120**；compare 报告的“退步（左−右）”= -0.076120，未超过 0.02 的退步阈值；两个版本违规均为 0；退出码为 0。逐需求看，v2 在 31 条上更好、29 条持平、0 条更差，最大提升 +0.5。详见 `artifacts/report-compare.md`。
+对比结论：v2 − v1 = **+0.075025**；compare 报告的“退步（左−右）”= -0.075025，未超过 0.02 的退步阈值；两个版本违规均为 0；退出码为 0。逐需求看，v2 在 31 条上更好、28 条持平、1 条更差，最大提升 +0.5。详见 `artifacts/report-compare.md`。
 
 这些数字是合成夹具上的回归结果，不是线上效果估计。
 
-## 标签敏感度：+0.076120 不是“v2 更好”的证明
+## 标签敏感度：+0.075025 不是“v2 更好”的证明
 
 固定负例、硬过滤和排序，按每条需求实际正例数随机替换，跑 500 个种子：
 
 | 抽样池 | 中位 v2−v1 | v2>v1 | 实际标签百分位 |
 | --- | ---: | ---: | ---: |
-| qualified（覆盖 ≥2，与正式标签同底线） | +0.076281 | 500/500 | 47.2 |
-| covered（覆盖 ≥1） | +0.026651 | 491/500 | 100.0 |
-| 全部 eligible（无底线） | +0.000717 | 256/500 | 100.0 |
+| qualified（覆盖 ≥2，与正式标签同底线） | +0.075438 | 500/500 | 41.0 |
+| covered（覆盖 ≥1） | +0.023730 | 484/500 | 100.0 |
+| 全部 eligible（无底线） | -0.000253 | 247/500 | 100.0 |
 
-保留“覆盖 ≥2”时，随机标签几乎都会让 v2 略高；实际标签的 +0.076120 位于第 47.2 百分位，说明本标签集没有被调成偏向 v2。去掉底线后优势基本消失（256/500），所以这个差值不能解释成 v2 的泛化优势。完整方法、数字和限制见 `docs/LABEL-BASELINE.md`；复现命令 `python scripts/label_sensitivity.py`。
+保留“覆盖 ≥2”时，随机标签几乎都会让 v2 略高；实际标签的 +0.075025 位于第 41.0 百分位，说明本标签集没有被调成偏向 v2。去掉底线后优势基本消失（247/500），所以这个差值不能解释成 v2 的泛化优势。完整方法、数字和限制见 `docs/LABEL-BASELINE.md`；复现命令 `python scripts/label_sensitivity.py`。
 
 ## 权重网格：独立性边界
 
-`scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的全部 1771 组权重。结果：存在一组权重（capability 0.60 / industry 0.10 / region 0.15 / capacity 0.15），使每需求 top6 覆盖全部 186 个正例；best NDCG@10=0.999187。v1/v2 的 top6 正例召回分别为 170/186、180/186。
+`scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的全部 1771 组权重。结果：网格内最好的权重也只能让 **58/60** 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190）；best NDCG@10=0.996243。v1/v2 的 top6 正例召回分别为 169/190、180/190。
 
-因此本仓库只声称“标签不由 v1/v2 权重生成”，**不声称标签与评测特征空间正交**。标签与评测器共享企业能力、行业、区域、容量这些业务事实；独立性证据见下一节。
+这不是“网格不够密”，而是结构性的：d052 有 6 个正例，其中 c022 的特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 在 capability 上严格更高、其余三项相同，因此**任何非负四特征权重**都会把 c006 排在 c022 之前。若 c022 进入 top6，c006 也必然进入 top6，再加上另外 5 个正例就是 7 个候选，6 个槽位装不下。所以没有任何非负四特征权重能让每条需求的 top6 覆盖全部 190 个正例；`tests/test_label_independence.py` 对全部 1771 组网格做了穷举断言，`scripts/weight_grid.py` 把该支配反例写入 `artifacts/weight-grid.json` 的 `dominance_witnesses` 字段。
+
+标签仍与评测器共享企业能力、行业、区域、容量这些业务事实，因此**不声称与业务事实无关**；能声称的是“标签不由 v1/v2 权重生成，且其 top6 集合不能被任何非负四特征权重完整复现”。
 
 ## 独立性证据与边界
 
 - **静态**：`tests/test_dataset.py` 用 AST 检查 generator、builder、labeling、fixture 不导入 `match_eval` 或 `weights`。
 - **行为**：`tests/test_labeling.py` 在临时目录写入任意 v1/v2 权重，重跑 builder + generator，四个 `data/*.json` 与基线逐字节相同。
+- **支配反例**：`tests/test_label_independence.py` 对 d052 的 c006→c022 做逐特征断言，并穷举 1771 组权重证明 d052 的 6 个正例不可能全部进入 top6。
 - **新信号**：案例数与响应天数只存在于 `data/editorial-signals.json`，评测器从不读取；只有这两个槽位是评测器没有的信号，其余三个槽位（行业、区域、产能）是同一业务事实的不同编辑口径。
-- **网格披露**：如上一节，四特征加权和可以覆盖标签，故不能把“top6 不完全一致”当作独立性证明。
 
 ## 退出码
 
@@ -193,7 +195,7 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 
 ## 验收
 
-`artifacts/ACCEPTANCE.md` 记录 AC1–AC6 的命令、退出码、证据和五个数据文件的 sha256。当前全量测试 **66 passed**；验收运行 `all_passed True`。
+`artifacts/ACCEPTANCE.md` 记录 AC1–AC6 的命令、退出码、证据和五个数据文件的 sha256。当前全量测试 **68 passed**；验收运行 `all_passed True`。
 
 | AC | 证据 |
 | --- | --- |
@@ -202,21 +204,21 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 | AC3 | `--no-hard-filter` 诊断 222 个违规，退出码 2 |
 | AC4 | `artifacts/report-compare.md`，v1/v2 对比，verdict=pass |
 | AC5 | 正式评测违规 0、理由可追溯率 1.0（v1 与 v2 均跑） |
-| AC6 | 全量测试 66 passed |
+| AC6 | 全量测试 68 passed |
 
 逐条命令与期望输出见 `docs/REVIEW-GUIDE.md`。历史轮次存档在 `artifacts/history/`，数字已过期，不要引用。
 
 ## 人工复核状态
 
-`scripts/manual_review.py` 用同一 `labeling` 重放六槽位和四负例，生成 `artifacts/manual-review.json`、`artifacts/manual-review.csv`、`docs/MANUAL-REVIEW.md`：60 条需求 / 186 个正例 / 240 个负例，0 个标签缺陷、0 个检查失败、0 个重放不一致。默认状态是 **pending-human-signoff**；只有同时传 `--reviewer` 与 `--attest` 才写 `human-reviewed`。签字前不能称为“人工标注已完成”。
+`scripts/manual_review.py` 用同一 `labeling` 重放六槽位和四负例，生成 `artifacts/manual-review.json`、`artifacts/manual-review.csv`、`docs/MANUAL-REVIEW.md`：60 条需求 / 190 个正例 / 240 个负例，0 个标签缺陷、0 个检查失败、0 个重放不一致。默认状态是 **pending-human-signoff**；只有同时传 `--reviewer` 与 `--attest` 才写 `human-reviewed`。签字前不能称为“人工标注已完成”。
 
-v2 top6 精确等于标签集只在“该需求恰好 6 个正例”时有意义：本数据只有 1 条这样的需求，因此是 1/1；v2 top6 覆盖全部标签为 54/60，交集总数 180/186。186 个正例全部落在 v2 全量排名前 10 内（中位第 2，最差第 8），所以 NDCG 与 top6 集合的差异来自位置权重与集合口径，不是标签缺陷。
+v2 top6 精确等于标签集只在“该需求恰好 6 个正例”时有意义：本数据有 4 条这样的需求，因此是 2/4；v2 top6 覆盖全部标签为 51/60，交集总数 180/190。190 个正例全部落在 v2 全量排名前 10 内（中位第 2，最差第 8），所以 NDCG 与 top6 集合的差异来自位置权重与集合口径，不是标签缺陷。
 
 ## 限制
 
 - 合成数据规模有限，标注是规则生成的编辑式合成标签，不代表真实业务分布；复核包尚无人类签字。
 - 标签不由 v1/v2 权重生成，但仍与企业能力/行业/区域/容量这些业务事实相关；不能据此声称 v2 在真实数据上更好。
-- 保留“覆盖 ≥2”的业务底线会系统性抬高 v2；去掉底线后 v2 在随机 eligible 标签中只赢 256/500，差值中位 +0.000717。该限制已在 README、`docs/EVALUATION-LIMITS.md`、`docs/LABEL-BASELINE.md` 中披露。
+- 保留“覆盖 ≥2”的业务底线会系统性抬高 v2；去掉底线后 v2 在随机 eligible 标签中只赢 247/500，差值中位 -0.000253。该限制已在 README、`docs/EVALUATION-LIMITS.md`、`docs/LABEL-BASELINE.md` 中披露。
 - 没有真实企业库、联系人、金额和线上反馈；不接入生产 AI 队列。
 - 只支持单机离线 JSON；没有数据库、网络和外部服务依赖。
 - 集中度是观察指标，当前 v2 的 HHI 略高，不代表线上一定更集中。

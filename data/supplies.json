@@ -84,17 +84,17 @@
     {
       "id": "s006",
       "company_id": "c006",
-      "title": "栖梧人力 · 标准服务包",
-      "summary": "栖梧人力提供的人才招聘、企业培训服务包，当前开放对接。虚构供给，仅用于离线评测。",
+      "title": "栖梧咨询 · 标准服务包",
+      "summary": "栖梧咨询提供的法律服务、财务顾问服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "training"
+        "legal",
+        "finance"
       ],
       "industries": [
         "education"
       ],
       "region": "east",
-      "capacity": "medium",
+      "capacity": "large",
       "status": "active"
     },
     {

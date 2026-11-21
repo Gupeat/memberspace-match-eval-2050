@@ -11,11 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 
 GOLDEN = {
-    "companies.json": "fafade43c7142f2ed1a1e91d4565f2e75a5afb390540ed5dea8d0c6e18c2a07d",
-    "supplies.json": "1e51c471d11058cb7c34a1da263d7cb1499675ea503bf23af3f71b621c87ec31",
-    "demands.json": "15637e438652ea574bef71db66429f311a4f400345c46b722e31b92fd2c26d6f",
-    "annotations.json": "c42a743699c38cf77942279c52ecefb506b39c8ecec6a8603bdbe1700ed8d1ce",
-    "editorial-signals.json": "e77329acc3e157e625e87876eaadc3aa23cadd079f71bb7e6a887565b0960dd1",
+    "companies.json": "a508c4942d3311e8e987b1afd70463bdca5962a29431c5785cb7bc79eb954b47",
+    "supplies.json": "c29391996dc5d3692761e451f621ac6886e9c3834aaa84c4071d2c76550738fe",
+    "demands.json": "956da350a2f20501b1e0af3fc4b519da287ab34407ee57c7e9ceceb2b714aa31",
+    "annotations.json": "4694fac72d7fc9691a0df6e19c341e05a4f2b8d2f795fd01110b94405a35ef88",
+    "editorial-signals.json": "bf8491c6ef1d20e1fe21e0343e98c429c629526718cd5c43e1ec426d7276d032",
 }
 
 

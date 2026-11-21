@@ -10,7 +10,7 @@
 | 供给条目 | 30 |
 | 其中活跃供给 | 27 |
 | 需求条目 | 60 |
-| 应推荐标注数 | 186 |
+| 应推荐标注数 | 190 |
 | 不应推荐标注数 | 240 |
 
 ## 权重版本
@@ -31,11 +31,11 @@
 | 需求条数 | 60 | 至少 50 |
 | 覆盖需求类型数 | 8 | 统计脚本输出 |
 | Hit@5 | 1.000000 | 有至少一个应推荐进入前 5 的需求占比 |
-| NDCG@10 | 0.894126 | 二值相关性，应推荐=1 |
+| NDCG@10 | 0.890098 | 二值相关性，应推荐=1 |
 | 硬过滤违规数 | 0 | 目标 0；大于 0 时退出码非 0 |
 | 理由可追溯率 | 1.000000 | 目标 1.000000 |
-| 前 5 名集中度 HHI | 0.049556 | 所有需求前 5 名公司分布 |
-| 前 5 名最高公司占比 | 0.080000 | 观察值，不设硬门槛 |
+| 前 5 名集中度 HHI | 0.051467 | 所有需求前 5 名公司分布 |
+| 前 5 名最高公司占比 | 0.083333 | 观察值，不设硬门槛 |
 | 前 5 名覆盖公司数 | 23 | 观察值 |
 
 ## 需求类型覆盖
@@ -97,7 +97,7 @@
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c006 | 0.7500 | capabilities=consulting,hr,training; industry=no; region=yes; capacity=yes; supplies=s006 | 应推荐 * |
+| 1 | c006 | 0.6000 | capabilities=consulting,hr; industry=no; region=yes; capacity=yes; supplies=s006 | 应推荐 * |
 | 2 | c008 | 0.5500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s008 | 应推荐 * |
 | 3 | c017 | 0.5500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s017 | 应推荐 * |
 | 4 | c013 | 0.5000 | capabilities=consulting; industry=yes; region=no; capacity=yes; supplies=s013 | 未标注 |

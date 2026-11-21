@@ -92,18 +92,19 @@
     },
     {
       "id": "c006",
-      "name": "栖梧人力",
-      "summary": "栖梧人力是虚构的教育领域会员企业，位于华东，提供人才招聘、企业培训、管理咨询服务；仅用于离线评测。",
+      "name": "栖梧咨询",
+      "summary": "栖梧咨询是虚构的教育领域会员企业，位于华东，提供法律服务、财务顾问、管理咨询、人才招聘服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "training",
-        "consulting"
+        "legal",
+        "finance",
+        "consulting",
+        "hr"
       ],
       "industries": [
         "education"
       ],
       "region": "east",
-      "capacity": "medium",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": []
     },

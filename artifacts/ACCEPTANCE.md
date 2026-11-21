@@ -1,6 +1,6 @@
 # 验收对照报告
 
-- 生成时间：2026-11-21T07:27:57Z
+- 生成时间：2026-11-21T10:40:16Z
 - 结论：全部通过
 - 运行目录：.
 
@@ -9,21 +9,21 @@
 | 编号 | 验收项 | 结果 | 证据 |
 | --- | --- | --- | --- |
 | AC1 | 评测集需求条数 >= 50，统计脚本输出覆盖需求类型数 | PASS | demands=60; demand_type_count=8 |
-| AC2 | 每个指标函数都有单元测试 | PASS | 14 passed in 0.08s |
+| AC2 | 每个指标函数都有单元测试 | PASS | 14 passed in 0.09s |
 | AC3 | 硬过滤违规数 > 0 时退出码非 0 | PASS | exit=2; hard_filter_violations=222 |
 | AC4 | 两个权重版本的对比示例报告 | PASS | report=artifacts/report-compare.md; verdict=pass |
 | AC5 | 正式评测硬过滤违规为 0，理由可追溯率为 1.0 | PASS | v1 violations=0, trace=1.0; v2 violations=0, trace=1.0 |
-| AC6 | 全量单元测试通过 | PASS | 66 passed in 1.30s |
+| AC6 | 全量单元测试通过 | PASS | 68 passed in 1.79s |
 
 ## 数据哈希（sha256）
 
 | 文件 | sha256 |
 | --- | --- |
-| data/companies.json | fafade43c7142f2ed1a1e91d4565f2e75a5afb390540ed5dea8d0c6e18c2a07d |
-| data/supplies.json | 1e51c471d11058cb7c34a1da263d7cb1499675ea503bf23af3f71b621c87ec31 |
-| data/demands.json | 15637e438652ea574bef71db66429f311a4f400345c46b722e31b92fd2c26d6f |
-| data/annotations.json | c42a743699c38cf77942279c52ecefb506b39c8ecec6a8603bdbe1700ed8d1ce |
-| data/editorial-signals.json | e77329acc3e157e625e87876eaadc3aa23cadd079f71bb7e6a887565b0960dd1 |
+| data/companies.json | a508c4942d3311e8e987b1afd70463bdca5962a29431c5785cb7bc79eb954b47 |
+| data/supplies.json | c29391996dc5d3692761e451f621ac6886e9c3834aaa84c4071d2c76550738fe |
+| data/demands.json | 956da350a2f20501b1e0af3fc4b519da287ab34407ee57c7e9ceceb2b714aa31 |
+| data/annotations.json | 4694fac72d7fc9691a0df6e19c341e05a4f2b8d2f795fd01110b94405a35ef88 |
+| data/editorial-signals.json | bf8491c6ef1d20e1fe21e0343e98c429c629526718cd5c43e1ec426d7276d032 |
 
 ## 命令与退出码
 
