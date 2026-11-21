@@ -4,17 +4,17 @@
     {
       "id": "c001",
       "name": "晨星会务",
-      "summary": "虚构会员企业，提供晨星会务相关服务。",
+      "summary": "晨星会务是虚构的文创领域会员企业，位于华东，提供活动策划、场地运营、餐饮服务服务；仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing",
-        "venue"
+        "venue",
+        "catering"
       ],
       "industries": [
-        "tech"
+        "culture"
       ],
       "region": "east",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": [
         "c011"
@@ -23,101 +23,11 @@
     {
       "id": "c002",
       "name": "云杉品牌",
-      "summary": "虚构会员企业，提供云杉品牌相关服务。",
+      "summary": "云杉品牌是虚构的零售领域会员企业，位于华南，提供品牌营销、视觉设计、媒体传播服务；仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "design",
-        "finance",
-        "media"
-      ],
-      "industries": [
-        "finance"
-      ],
-      "region": "south",
-      "capacity": "medium",
-      "accepting": true,
-      "conflicts_with": []
-    },
-    {
-      "id": "c003",
-      "name": "青石法务",
-      "summary": "虚构会员企业，提供青石法务相关服务。",
-      "capabilities": [
-        "consulting",
-        "hr",
-        "it",
-        "logistics"
-      ],
-      "industries": [
-        "manufacturing"
-      ],
-      "region": "north",
-      "capacity": "large",
-      "accepting": true,
-      "conflicts_with": []
-    },
-    {
-      "id": "c004",
-      "name": "远帆财务",
-      "summary": "虚构会员企业，提供远帆财务相关服务。",
-      "capabilities": [
-        "av",
-        "training",
-        "translation"
-      ],
-      "industries": [
-        "education"
-      ],
-      "region": "west",
-      "capacity": "small",
-      "accepting": true,
-      "conflicts_with": [
-        "c022"
-      ]
-    },
-    {
-      "id": "c005",
-      "name": "拾光影像",
-      "summary": "虚构会员企业，提供拾光影像相关服务。",
-      "capabilities": [
-        "event_planning",
         "marketing",
-        "venue"
-      ],
-      "industries": [
-        "healthcare"
-      ],
-      "region": "central",
-      "capacity": "medium",
-      "accepting": false,
-      "conflicts_with": []
-    },
-    {
-      "id": "c006",
-      "name": "栖梧人力",
-      "summary": "虚构会员企业，提供栖梧人力相关服务。",
-      "capabilities": [
-        "consulting",
         "design",
-        "finance",
         "media"
-      ],
-      "industries": [
-        "culture"
-      ],
-      "region": "east",
-      "capacity": "large",
-      "accepting": true,
-      "conflicts_with": []
-    },
-    {
-      "id": "c007",
-      "name": "澜图科技",
-      "summary": "虚构会员企业，提供澜图科技相关服务。",
-      "capabilities": [
-        "hr",
-        "it",
-        "logistics"
       ],
       "industries": [
         "retail"
@@ -128,19 +38,106 @@
       "conflicts_with": []
     },
     {
-      "id": "c008",
-      "name": "禾木培训",
-      "summary": "虚构会员企业，提供禾木培训相关服务。",
+      "id": "c003",
+      "name": "青石法务",
+      "summary": "青石法务是虚构的金融领域会员企业，位于华北，提供法律服务、财务顾问、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "legal",
+        "finance",
+        "consulting"
       ],
       "industries": [
-        "energy"
+        "finance"
       ],
       "region": "north",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c004",
+      "name": "远帆财务",
+      "summary": "远帆财务是虚构的金融领域会员企业，位于西部，提供财务顾问、法律服务、软件与数据服务；仅用于离线评测。",
+      "capabilities": [
+        "finance",
+        "legal",
+        "it"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "west",
       "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": [
+        "c022"
+      ]
+    },
+    {
+      "id": "c005",
+      "name": "拾光影像",
+      "summary": "拾光影像是虚构的文创领域会员企业，位于华中，提供摄影记录、媒体传播、视觉设计服务；仅用于离线评测。",
+      "capabilities": [
+        "photography",
+        "media",
+        "design"
+      ],
+      "industries": [
+        "culture"
+      ],
+      "region": "central",
+      "capacity": "small",
+      "accepting": false,
+      "conflicts_with": []
+    },
+    {
+      "id": "c006",
+      "name": "栖梧人力",
+      "summary": "栖梧人力是虚构的教育领域会员企业，位于华东，提供人才招聘、企业培训、管理咨询服务；仅用于离线评测。",
+      "capabilities": [
+        "hr",
+        "training",
+        "consulting"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "east",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c007",
+      "name": "澜图科技",
+      "summary": "澜图科技是虚构的科技领域会员企业，位于华南，提供软件与数据、管理咨询、视觉设计服务；仅用于离线评测。",
+      "capabilities": [
+        "it",
+        "consulting",
+        "design"
+      ],
+      "industries": [
+        "tech"
+      ],
+      "region": "south",
+      "capacity": "large",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
+      "id": "c008",
+      "name": "禾木培训",
+      "summary": "禾木培训是虚构的教育领域会员企业，位于华北，提供企业培训、管理咨询、人才招聘服务；仅用于离线评测。",
+      "capabilities": [
+        "training",
+        "consulting",
+        "hr"
+      ],
+      "industries": [
+        "education"
+      ],
+      "region": "north",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": [
         "c034"
@@ -149,31 +146,31 @@
     {
       "id": "c009",
       "name": "南北物流",
-      "summary": "虚构会员企业，提供南北物流相关服务。",
+      "summary": "南北物流是虚构的物流领域会员企业，位于西部，提供会务物流、语言翻译、活动策划服务；仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing",
-        "venue"
+        "logistics",
+        "translation",
+        "event_planning"
       ],
       "industries": [
         "logistics"
       ],
       "region": "west",
-      "capacity": "large",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c010",
       "name": "译林翻译",
-      "summary": "虚构会员企业，提供译林翻译相关服务。",
+      "summary": "译林翻译是虚构的文创领域会员企业，位于华中，提供语言翻译、媒体传播、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance",
-        "media"
+        "translation",
+        "media",
+        "consulting"
       ],
       "industries": [
-        "real_estate"
+        "culture"
       ],
       "region": "central",
       "capacity": "small",
@@ -183,15 +180,14 @@
     {
       "id": "c011",
       "name": "山海策划",
-      "summary": "虚构会员企业，提供山海策划相关服务。",
+      "summary": "山海策划是虚构的文创领域会员企业，位于华东，提供活动策划、管理咨询、品牌营销服务；仅用于离线评测。",
       "capabilities": [
+        "event_planning",
         "consulting",
-        "hr",
-        "it",
-        "logistics"
+        "marketing"
       ],
       "industries": [
-        "tech"
+        "culture"
       ],
       "region": "east",
       "capacity": "medium",
@@ -203,34 +199,34 @@
     {
       "id": "c012",
       "name": "沐光设计",
-      "summary": "虚构会员企业，提供沐光设计相关服务。",
+      "summary": "沐光设计是虚构的零售领域会员企业，位于华南，提供视觉设计、媒体传播、摄影记录服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "design",
+        "media",
+        "photography"
       ],
       "industries": [
-        "finance"
+        "retail"
       ],
       "region": "south",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c013",
       "name": "澄明咨询",
-      "summary": "虚构会员企业，提供澄明咨询相关服务。",
+      "summary": "澄明咨询是虚构的金融领域会员企业，位于华北，提供管理咨询、财务顾问、法律服务服务；仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing",
-        "venue"
+        "consulting",
+        "finance",
+        "legal"
       ],
       "industries": [
-        "manufacturing"
+        "finance"
       ],
       "region": "north",
-      "capacity": "small",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": [
         "c029"
@@ -239,15 +235,14 @@
     {
       "id": "c014",
       "name": "松间餐饮",
-      "summary": "虚构会员企业，提供松间餐饮相关服务。",
+      "summary": "松间餐饮是虚构的医疗健康领域会员企业，位于西部，提供餐饮服务、场地运营、活动策划服务；仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "design",
-        "finance",
-        "media"
+        "catering",
+        "venue",
+        "event_planning"
       ],
       "industries": [
-        "education"
+        "healthcare"
       ],
       "region": "west",
       "capacity": "medium",
@@ -257,86 +252,85 @@
     {
       "id": "c015",
       "name": "海盐传播",
-      "summary": "虚构会员企业，提供海盐传播相关服务。",
+      "summary": "海盐传播是虚构的文创领域会员企业，位于华中，提供媒体传播、品牌营销、活动策划服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it",
-        "logistics"
+        "media",
+        "marketing",
+        "event_planning"
       ],
       "industries": [
-        "healthcare"
+        "culture"
       ],
       "region": "central",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c016",
       "name": "白露公关",
-      "summary": "虚构会员企业，提供白露公关相关服务。",
+      "summary": "白露公关是虚构的零售领域会员企业，位于华东，提供品牌营销、活动策划、媒体传播服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "marketing",
+        "event_planning",
+        "media"
       ],
       "industries": [
-        "culture"
+        "retail"
       ],
       "region": "east",
-      "capacity": "small",
-      "accepting": true,
+      "capacity": "medium",
+      "accepting": false,
       "conflicts_with": []
     },
     {
       "id": "c017",
       "name": "苍梧教育",
-      "summary": "虚构会员企业，提供苍梧教育相关服务。",
+      "summary": "苍梧教育是虚构的教育领域会员企业，位于华南，提供企业培训、管理咨询、人才招聘服务；仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing",
-        "venue"
+        "training",
+        "consulting",
+        "hr"
       ],
       "industries": [
-        "retail"
+        "education"
       ],
       "region": "south",
-      "capacity": "medium",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c018",
       "name": "星野健康",
-      "summary": "虚构会员企业，提供星野健康相关服务。",
+      "summary": "星野健康是虚构的医疗健康领域会员企业，位于华北，提供活动策划、餐饮服务、场地运营服务；仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance",
-        "media"
+        "event_planning",
+        "catering",
+        "venue"
       ],
       "industries": [
-        "energy"
+        "healthcare"
       ],
       "region": "north",
-      "capacity": "large",
-      "accepting": false,
+      "capacity": "small",
+      "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c019",
       "name": "溪谷文化",
-      "summary": "虚构会员企业，提供溪谷文化相关服务。",
+      "summary": "溪谷文化是虚构的文创领域会员企业，位于西部，提供视觉设计、活动策划、媒体传播服务；仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "hr",
-        "it",
-        "logistics"
+        "design",
+        "event_planning",
+        "media"
       ],
       "industries": [
-        "logistics"
+        "culture"
       ],
       "region": "west",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": [
         "c037"
@@ -345,31 +339,31 @@
     {
       "id": "c020",
       "name": "暮山零售",
-      "summary": "虚构会员企业，提供暮山零售相关服务。",
+      "summary": "暮山零售是虚构的零售领域会员企业，位于华中，提供品牌营销、会务物流、视觉设计服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "marketing",
+        "logistics",
+        "design"
       ],
       "industries": [
-        "real_estate"
+        "retail"
       ],
       "region": "central",
-      "capacity": "medium",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c021",
       "name": "长风能源",
-      "summary": "虚构会员企业，提供长风能源相关服务。",
+      "summary": "长风能源是虚构的能源领域会员企业，位于华东，提供管理咨询、财务顾问、法律服务服务；仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing",
-        "venue"
+        "consulting",
+        "finance",
+        "legal"
       ],
       "industries": [
-        "tech"
+        "energy"
       ],
       "region": "east",
       "capacity": "large",
@@ -379,18 +373,17 @@
     {
       "id": "c022",
       "name": "元野地产",
-      "summary": "虚构会员企业，提供元野地产相关服务。",
+      "summary": "元野地产是虚构的地产领域会员企业，位于华南，提供视觉设计、财务顾问、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "consulting",
         "design",
         "finance",
-        "media"
+        "consulting"
       ],
       "industries": [
-        "finance"
+        "real_estate"
       ],
       "region": "south",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": [
         "c004"
@@ -399,121 +392,119 @@
     {
       "id": "c023",
       "name": "清越制造",
-      "summary": "虚构会员企业，提供清越制造相关服务。",
+      "summary": "清越制造是虚构的制造领域会员企业，位于华北，提供会务物流、软件与数据、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
+        "logistics",
         "it",
-        "logistics"
+        "consulting"
       ],
       "industries": [
         "manufacturing"
       ],
       "region": "north",
-      "capacity": "medium",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c024",
       "name": "知微数据",
-      "summary": "虚构会员企业，提供知微数据相关服务。",
+      "summary": "知微数据是虚构的科技领域会员企业，位于西部，提供软件与数据、管理咨询、财务顾问服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "it",
+        "consulting",
+        "finance"
       ],
       "industries": [
-        "education"
+        "tech"
       ],
       "region": "west",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c025",
       "name": "半山活动",
-      "summary": "虚构会员企业，提供半山活动相关服务。",
+      "summary": "半山活动是虚构的文创领域会员企业，位于华中，提供活动策划、场地运营、视听技术服务；仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing",
-        "venue"
+        "venue",
+        "av"
       ],
       "industries": [
-        "healthcare"
+        "culture"
       ],
       "region": "central",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c026",
       "name": "竹影视觉",
-      "summary": "虚构会员企业，提供竹影视觉相关服务。",
+      "summary": "竹影视觉是虚构的文创领域会员企业，位于华东，提供摄影记录、视觉设计、媒体传播服务；仅用于离线评测。",
       "capabilities": [
-        "consulting",
+        "photography",
         "design",
-        "finance",
         "media"
       ],
       "industries": [
         "culture"
       ],
       "region": "east",
-      "capacity": "medium",
-      "accepting": true,
-      "conflicts_with": []
-    },
-    {
-      "id": "c027",
-      "name": "安澜保险",
-      "summary": "虚构会员企业，提供安澜保险相关服务。",
-      "capabilities": [
-        "consulting",
-        "hr",
-        "it",
-        "logistics"
-      ],
-      "industries": [
-        "retail"
-      ],
-      "region": "south",
-      "capacity": "large",
-      "accepting": true,
-      "conflicts_with": []
-    },
-    {
-      "id": "c028",
-      "name": "一苇咨询",
-      "summary": "虚构会员企业，提供一苇咨询相关服务。",
-      "capabilities": [
-        "av",
-        "training",
-        "translation"
-      ],
-      "industries": [
-        "energy"
-      ],
-      "region": "north",
       "capacity": "small",
       "accepting": false,
       "conflicts_with": []
     },
     {
+      "id": "c027",
+      "name": "安澜保险",
+      "summary": "安澜保险是虚构的金融领域会员企业，位于华南，提供财务顾问、法律服务、管理咨询服务；仅用于离线评测。",
+      "capabilities": [
+        "finance",
+        "legal",
+        "consulting"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "south",
+      "capacity": "large",
+      "accepting": false,
+      "conflicts_with": []
+    },
+    {
+      "id": "c028",
+      "name": "一苇咨询",
+      "summary": "一苇咨询是虚构的金融领域会员企业，位于华北，提供管理咨询、企业培训、人才招聘服务；仅用于离线评测。",
+      "capabilities": [
+        "consulting",
+        "training",
+        "hr"
+      ],
+      "industries": [
+        "finance"
+      ],
+      "region": "north",
+      "capacity": "medium",
+      "accepting": true,
+      "conflicts_with": []
+    },
+    {
       "id": "c029",
       "name": "南枝旅行",
-      "summary": "虚构会员企业，提供南枝旅行相关服务。",
+      "summary": "南枝旅行是虚构的物流领域会员企业，位于西部，提供活动策划、语言翻译、会务物流服务；仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing",
-        "venue"
+        "translation",
+        "logistics"
       ],
       "industries": [
         "logistics"
       ],
       "region": "west",
-      "capacity": "medium",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": [
         "c013"
@@ -522,85 +513,85 @@
     {
       "id": "c030",
       "name": "西窗印刷",
-      "summary": "虚构会员企业，提供西窗印刷相关服务。",
+      "summary": "西窗印刷是虚构的制造领域会员企业，位于华中，提供媒体传播、视觉设计、品牌营销服务；仅用于离线评测。",
       "capabilities": [
+        "media",
         "design",
-        "finance",
-        "media"
+        "marketing"
       ],
       "industries": [
-        "real_estate"
+        "manufacturing"
       ],
       "region": "central",
-      "capacity": "large",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c031",
       "name": "东篱安保",
-      "summary": "虚构会员企业，提供东篱安保相关服务。",
+      "summary": "东篱安保是虚构的地产领域会员企业，位于华东，提供活动策划、会务物流、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it",
-        "logistics"
+        "event_planning",
+        "logistics",
+        "consulting"
       ],
       "industries": [
-        "tech"
+        "real_estate"
       ],
       "region": "east",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c032",
       "name": "北岸会展",
-      "summary": "虚构会员企业，提供北岸会展相关服务。",
+      "summary": "北岸会展是虚构的零售领域会员企业，位于华南，提供活动策划、场地运营、餐饮服务服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "event_planning",
+        "venue",
+        "catering"
       ],
       "industries": [
-        "finance"
+        "retail"
       ],
       "region": "south",
-      "capacity": "medium",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c033",
       "name": "林间茶事",
-      "summary": "虚构会员企业，提供林间茶事相关服务。",
+      "summary": "林间茶事是虚构的医疗健康领域会员企业，位于华北，提供餐饮服务、场地运营、活动策划服务；仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing",
-        "venue"
+        "catering",
+        "venue",
+        "event_planning"
       ],
       "industries": [
-        "manufacturing"
+        "healthcare"
       ],
       "region": "north",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c034",
       "name": "云上软件",
-      "summary": "虚构会员企业，提供云上软件相关服务。",
+      "summary": "云上软件是虚构的科技领域会员企业，位于西部，提供软件与数据、视觉设计、管理咨询服务；仅用于离线评测。",
       "capabilities": [
+        "it",
         "design",
-        "finance",
-        "media"
+        "consulting"
       ],
       "industries": [
-        "education"
+        "tech"
       ],
       "region": "west",
-      "capacity": "small",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": [
         "c008"
@@ -609,51 +600,51 @@
     {
       "id": "c035",
       "name": "石桥广告",
-      "summary": "虚构会员企业，提供石桥广告相关服务。",
+      "summary": "石桥广告是虚构的制造领域会员企业，位于华中，提供品牌营销、媒体传播、视觉设计服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it",
-        "logistics"
+        "marketing",
+        "media",
+        "design"
       ],
       "industries": [
-        "healthcare"
+        "manufacturing"
       ],
       "region": "central",
-      "capacity": "medium",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c036",
       "name": "江畔摄影",
-      "summary": "虚构会员企业，提供江畔摄影相关服务。",
+      "summary": "江畔摄影是虚构的文创领域会员企业，位于华东，提供摄影记录、媒体传播、视觉设计服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "photography",
+        "media",
+        "design"
       ],
       "industries": [
         "culture"
       ],
       "region": "east",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c037",
       "name": "花间礼仪",
-      "summary": "虚构会员企业，提供花间礼仪相关服务。",
+      "summary": "花间礼仪是虚构的地产领域会员企业，位于华南，提供活动策划、餐饮服务、场地运营服务；仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing",
+        "catering",
         "venue"
       ],
       "industries": [
-        "retail"
+        "real_estate"
       ],
       "region": "south",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": [
         "c019"
@@ -662,51 +653,51 @@
     {
       "id": "c038",
       "name": "木铎学院",
-      "summary": "虚构会员企业，提供木铎学院相关服务。",
+      "summary": "木铎学院是虚构的教育领域会员企业，位于华北，提供企业培训、管理咨询、人才招聘服务；仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance",
-        "media"
+        "training",
+        "consulting",
+        "hr"
       ],
       "industries": [
-        "energy"
+        "education"
       ],
       "region": "north",
-      "capacity": "medium",
+      "capacity": "large",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c039",
       "name": "风铃翻译",
-      "summary": "虚构会员企业，提供风铃翻译相关服务。",
+      "summary": "风铃翻译是虚构的文创领域会员企业，位于西部，提供语言翻译、媒体传播、管理咨询服务；仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it",
-        "logistics"
+        "translation",
+        "media",
+        "consulting"
       ],
       "industries": [
-        "logistics"
+        "culture"
       ],
       "region": "west",
-      "capacity": "large",
+      "capacity": "small",
       "accepting": true,
       "conflicts_with": []
     },
     {
       "id": "c040",
       "name": "月湖康养",
-      "summary": "虚构会员企业，提供月湖康养相关服务。",
+      "summary": "月湖康养是虚构的医疗健康领域会员企业，位于华中，提供餐饮服务、活动策划、场地运营服务；仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training",
-        "translation"
+        "catering",
+        "event_planning",
+        "venue"
       ],
       "industries": [
-        "real_estate"
+        "healthcare"
       ],
       "region": "central",
-      "capacity": "small",
+      "capacity": "medium",
       "accepting": true,
       "conflicts_with": []
     }

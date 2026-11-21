@@ -10,7 +10,7 @@
 | 供给条目 | 30 |
 | 其中活跃供给 | 27 |
 | 需求条目 | 60 |
-| 应推荐标注数 | 360 |
+| 应推荐标注数 | 186 |
 | 不应推荐标注数 | 240 |
 
 ## 权重版本
@@ -30,13 +30,13 @@
 | --- | ---: | --- |
 | 需求条数 | 60 | 至少 50 |
 | 覆盖需求类型数 | 8 | 统计脚本输出 |
-| Hit@5 | 1.0000 | 有至少一个应推荐进入前 5 的需求占比 |
-| NDCG@10 | 0.8361 | 二值相关性，应推荐=1 |
-| 硬过滤违规数 | 206 | 目标 0；大于 0 时退出码非 0 |
-| 理由可追溯率 | 1.0000 | 目标 1.0000 |
-| 前 5 名集中度 HHI | 0.0413 | 所有需求前 5 名公司分布 |
-| 前 5 名最高公司占比 | 0.0867 | 观察值，不设硬门槛 |
-| 前 5 名覆盖公司数 | 40 | 观察值 |
+| Hit@5 | 1.000000 | 有至少一个应推荐进入前 5 的需求占比 |
+| NDCG@10 | 0.818828 | 二值相关性，应推荐=1 |
+| 硬过滤违规数 | 222 | 目标 0；大于 0 时退出码非 0 |
+| 理由可追溯率 | 1.000000 | 目标 1.000000 |
+| 前 5 名集中度 HHI | 0.035911 | 所有需求前 5 名公司分布 |
+| 前 5 名最高公司占比 | 0.056667 | 观察值，不设硬门槛 |
+| 前 5 名覆盖公司数 | 37 | 观察值 |
 
 ## 需求类型覆盖
 
@@ -59,7 +59,7 @@
 | --- | ---: |
 | conflict | 21 |
 | no_active_supply | 775 |
-| not_accepting | 180 |
+| not_accepting | 240 |
 | rejected | 120 |
 | self | 60 |
 
@@ -69,42 +69,42 @@
 
 ### d001 · 活动执行需求 01
 
-类型：event；需求方：c001；可推荐标注：c021, c025, c009, c013, c017, c029
+类型：event；需求方：c001；可推荐标注：c025, c014, c032
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c001 | 0.8167 | capabilities=event_planning,venue; industry=yes; region=yes; capacity=yes; supplies=s001 | 未标注 |
-| 2 | c021 | 0.8167 | capabilities=event_planning,venue; industry=yes; region=yes; capacity=yes; supplies=s021 | 应推荐 * |
-| 3 | c005 | 0.7167 | capabilities=event_planning,venue; industry=yes; region=no; capacity=yes; supplies=s005 | 未标注 |
+| 1 | c032 | 1.0000 | capabilities=catering,event_planning,venue; industry=yes; region=yes; capacity=yes; supplies=s030 | 应推荐 * |
+| 2 | c001 | 0.9000 | capabilities=catering,event_planning,venue; industry=yes; region=no; capacity=yes; supplies=s001 | 未标注 |
+| 3 | c037 | 0.7500 | capabilities=catering,event_planning,venue; industry=no; region=yes; capacity=yes; supplies=none | 未标注 |
 | 4 | c025 | 0.7167 | capabilities=event_planning,venue; industry=yes; region=no; capacity=yes; supplies=s025 | 应推荐 * |
-| 5 | c009 | 0.4667 | capabilities=event_planning,venue; industry=no; region=no; capacity=yes; supplies=s009 | 应推荐 * |
+| 5 | c014 | 0.6500 | capabilities=catering,event_planning,venue; industry=no; region=no; capacity=yes; supplies=s014 | 应推荐 * |
 
 ### d002 · 品牌营销需求 02
 
-类型：marketing；需求方：c002；可推荐标注：c006, c014, c022, c026, c025, c017
+类型：marketing；需求方：c002；可推荐标注：c020, c019, c012, c015
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c002 | 0.5667 | capabilities=design,media; industry=no; region=yes; capacity=yes; supplies=s002 | 未标注 |
-| 2 | c005 | 0.5333 | capabilities=marketing; industry=yes; region=no; capacity=yes; supplies=s005 | 未标注 |
-| 3 | c006 | 0.4667 | capabilities=design,media; industry=no; region=no; capacity=yes; supplies=s006 | 应推荐 * |
-| 4 | c014 | 0.4667 | capabilities=design,media; industry=no; region=no; capacity=yes; supplies=s014 | 应推荐 * |
-| 5 | c018 | 0.4667 | capabilities=design,media; industry=no; region=no; capacity=yes; supplies=s018 | 未标注 |
+| 1 | c019 | 0.7167 | capabilities=design,media; industry=yes; region=yes; capacity=no; supplies=s019 | 应推荐 * |
+| 2 | c005 | 0.6167 | capabilities=design,media; industry=yes; region=no; capacity=no; supplies=s005 | 未标注 |
+| 3 | c015 | 0.6167 | capabilities=marketing,media; industry=yes; region=no; capacity=no; supplies=s015 | 应推荐 * |
+| 4 | c026 | 0.6167 | capabilities=design,media; industry=yes; region=no; capacity=no; supplies=s026 | 未标注 |
+| 5 | c036 | 0.6167 | capabilities=design,media; industry=yes; region=no; capacity=no; supplies=none | 未标注 |
 
 ### d003 · 人才招聘需求 03
 
-类型：hiring；需求方：c003；可推荐标注：c019, c027, c011, c006, c008, c012
+类型：hiring；需求方：c003；可推荐标注：c008, c017, c006
 
 | 排名 | 公司 | 分数 | 理由摘要 | 标注 |
 | ---: | --- | ---: | --- | --- |
-| 1 | c019 | 0.6167 | capabilities=consulting,hr; industry=yes; region=no; capacity=no; supplies=s019 | 应推荐 * |
-| 2 | c003 | 0.5667 | capabilities=consulting,hr; industry=no; region=yes; capacity=yes; supplies=s003 | 未标注 |
-| 3 | c039 | 0.5333 | capabilities=hr; industry=yes; region=no; capacity=yes; supplies=none | 未标注 |
-| 4 | c027 | 0.4667 | capabilities=consulting,hr; industry=no; region=no; capacity=yes; supplies=s027 | 应推荐 * |
-| 5 | c011 | 0.3667 | capabilities=consulting,hr; industry=no; region=no; capacity=no; supplies=s011 | 应推荐 * |
+| 1 | c028 | 0.9000 | capabilities=consulting,hr,training; industry=yes; region=no; capacity=yes; supplies=none | 未标注 |
+| 2 | c006 | 0.7500 | capabilities=consulting,hr,training; industry=no; region=yes; capacity=yes; supplies=s006 | 应推荐 * |
+| 3 | c008 | 0.6500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s008 | 应推荐 * |
+| 4 | c017 | 0.6500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=s017 | 应推荐 * |
+| 5 | c038 | 0.6500 | capabilities=consulting,hr,training; industry=no; region=no; capacity=yes; supplies=none | 未标注 |
 
 ## 结论
 
 硬过滤违规目标为 0；理由可追溯率目标为 1.0000；本报告只用于离线评测，不写入生产 AI 队列、不触发对外联系、不涉及金额。
 
-复现命令：python -m match_eval evaluate --weights v2 --report artifacts/report-v2.md
+复现命令：python -m match_eval evaluate --weights v2 --report artifacts/diagnostic-no-filter.md --no-hard-filter

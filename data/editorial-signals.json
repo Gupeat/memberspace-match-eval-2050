@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "note": "Editorial-only signals used by scripts/labeling.py. The evaluator never reads this file. verified_cases is a curated delivery-record count; response_days is a curated median response time; max_response_days is the request's stated tolerance.",
+  "companies": {
+    "c001": {
+      "verified_cases": 12,
+      "response_days": 2
+    },
+    "c002": {
+      "verified_cases": 7,
+      "response_days": 4
+    },
+    "c003": {
+      "verified_cases": 14,
+      "response_days": 1
+    },
+    "c004": {
+      "verified_cases": 9,
+      "response_days": 3
+    },
+    "c005": {
+      "verified_cases": 6,
+      "response_days": 5
+    },
+    "c006": {
+      "verified_cases": 11,
+      "response_days": 2
+    },
+    "c007": {
+      "verified_cases": 10,
+      "response_days": 3
+    },
+    "c008": {
+      "verified_cases": 8,
+      "response_days": 4
+    },
+    "c009": {
+      "verified_cases": 7,
+      "response_days": 3
+    },
+    "c010": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c011": {
+      "verified_cases": 9,
+      "response_days": 2
+    },
+    "c012": {
+      "verified_cases": 6,
+      "response_days": 4
+    },
+    "c013": {
+      "verified_cases": 13,
+      "response_days": 2
+    },
+    "c014": {
+      "verified_cases": 10,
+      "response_days": 1
+    },
+    "c015": {
+      "verified_cases": 7,
+      "response_days": 4
+    },
+    "c016": {
+      "verified_cases": 6,
+      "response_days": 3
+    },
+    "c017": {
+      "verified_cases": 8,
+      "response_days": 4
+    },
+    "c018": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c019": {
+      "verified_cases": 6,
+      "response_days": 4
+    },
+    "c020": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c021": {
+      "verified_cases": 11,
+      "response_days": 2
+    },
+    "c022": {
+      "verified_cases": 8,
+      "response_days": 3
+    },
+    "c023": {
+      "verified_cases": 9,
+      "response_days": 3
+    },
+    "c024": {
+      "verified_cases": 10,
+      "response_days": 2
+    },
+    "c025": {
+      "verified_cases": 8,
+      "response_days": 4
+    },
+    "c026": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c027": {
+      "verified_cases": 9,
+      "response_days": 3
+    },
+    "c028": {
+      "verified_cases": 12,
+      "response_days": 2
+    },
+    "c029": {
+      "verified_cases": 7,
+      "response_days": 4
+    },
+    "c030": {
+      "verified_cases": 6,
+      "response_days": 4
+    },
+    "c031": {
+      "verified_cases": 8,
+      "response_days": 3
+    },
+    "c032": {
+      "verified_cases": 9,
+      "response_days": 2
+    },
+    "c033": {
+      "verified_cases": 7,
+      "response_days": 3
+    },
+    "c034": {
+      "verified_cases": 10,
+      "response_days": 2
+    },
+    "c035": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c036": {
+      "verified_cases": 6,
+      "response_days": 4
+    },
+    "c037": {
+      "verified_cases": 8,
+      "response_days": 3
+    },
+    "c038": {
+      "verified_cases": 7,
+      "response_days": 4
+    },
+    "c039": {
+      "verified_cases": 5,
+      "response_days": 5
+    },
+    "c040": {
+      "verified_cases": 7,
+      "response_days": 4
+    }
+  },
+  "demands": {
+    "d001": {
+      "max_response_days": 3
+    },
+    "d002": {
+      "max_response_days": 4
+    },
+    "d003": {
+      "max_response_days": 2
+    },
+    "d004": {
+      "max_response_days": 5
+    },
+    "d005": {
+      "max_response_days": 3
+    },
+    "d006": {
+      "max_response_days": 4
+    },
+    "d007": {
+      "max_response_days": 5
+    },
+    "d008": {
+      "max_response_days": 2
+    },
+    "d009": {
+      "max_response_days": 3
+    },
+    "d010": {
+      "max_response_days": 4
+    },
+    "d011": {
+      "max_response_days": 4
+    },
+    "d012": {
+      "max_response_days": 2
+    },
+    "d013": {
+      "max_response_days": 5
+    },
+    "d014": {
+      "max_response_days": 3
+    },
+    "d015": {
+      "max_response_days": 4
+    },
+    "d016": {
+      "max_response_days": 5
+    },
+    "d017": {
+      "max_response_days": 2
+    },
+    "d018": {
+      "max_response_days": 3
+    },
+    "d019": {
+      "max_response_days": 4
+    },
+    "d020": {
+      "max_response_days": 5
+    },
+    "d021": {
+      "max_response_days": 3
+    },
+    "d022": {
+      "max_response_days": 4
+    },
+    "d023": {
+      "max_response_days": 2
+    },
+    "d024": {
+      "max_response_days": 5
+    },
+    "d025": {
+      "max_response_days": 3
+    },
+    "d026": {
+      "max_response_days": 4
+    },
+    "d027": {
+      "max_response_days": 5
+    },
+    "d028": {
+      "max_response_days": 2
+    },
+    "d029": {
+      "max_response_days": 3
+    },
+    "d030": {
+      "max_response_days": 4
+    },
+    "d031": {
+      "max_response_days": 4
+    },
+    "d032": {
+      "max_response_days": 2
+    },
+    "d033": {
+      "max_response_days": 5
+    },
+    "d034": {
+      "max_response_days": 3
+    },
+    "d035": {
+      "max_response_days": 4
+    },
+    "d036": {
+      "max_response_days": 5
+    },
+    "d037": {
+      "max_response_days": 2
+    },
+    "d038": {
+      "max_response_days": 3
+    },
+    "d039": {
+      "max_response_days": 4
+    },
+    "d040": {
+      "max_response_days": 5
+    },
+    "d041": {
+      "max_response_days": 3
+    },
+    "d042": {
+      "max_response_days": 4
+    },
+    "d043": {
+      "max_response_days": 2
+    },
+    "d044": {
+      "max_response_days": 5
+    },
+    "d045": {
+      "max_response_days": 3
+    },
+    "d046": {
+      "max_response_days": 4
+    },
+    "d047": {
+      "max_response_days": 5
+    },
+    "d048": {
+      "max_response_days": 2
+    },
+    "d049": {
+      "max_response_days": 3
+    },
+    "d050": {
+      "max_response_days": 4
+    },
+    "d051": {
+      "max_response_days": 4
+    },
+    "d052": {
+      "max_response_days": 2
+    },
+    "d053": {
+      "max_response_days": 5
+    },
+    "d054": {
+      "max_response_days": 3
+    },
+    "d055": {
+      "max_response_days": 4
+    },
+    "d056": {
+      "max_response_days": 5
+    },
+    "d057": {
+      "max_response_days": 2
+    },
+    "d058": {
+      "max_response_days": 3
+    },
+    "d059": {
+      "max_response_days": 4
+    },
+    "d060": {
+      "max_response_days": 5
+    }
+  }
+}

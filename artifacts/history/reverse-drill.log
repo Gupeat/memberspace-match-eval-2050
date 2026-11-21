@@ -23,7 +23,7 @@ DETECTED yes EXIT 1
 OUT     def test_ndcg_binary_relevance_ignores_unlabeled():
 OUT >       assert ndcg_at_k(["x", "a"], {"a"}, k=2) == pytest.approx(1.0 / math.log2(3))
 OUT E       assert 0.0 == 0.6309297535714575 ± 6.3e-07
-OUT E         
+OUT E
 OUT E         comparison failed
 OUT E         Obtained: 0.0
 OUT E         Expected: 0.6309297535714575 ± 6.3e-07
@@ -48,4 +48,5 @@ OUT {"demand_count": 60, "demand_type_count": 8, "hard_filter_violations": 265, 
 OUT =========================== short test summary info ===========================
 OUT FAILED tests/test_cli.py::test_cli_violations_exit_nonzero - AssertionError: ...
 OUT 1 failed in 0.38s
+
 

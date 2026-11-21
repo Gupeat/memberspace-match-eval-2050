@@ -1,0 +1,70 @@
+{
+  "step": 0.05,
+  "grid_size": 1771,
+  "grid_size_expected": 1771,
+  "best_top6_covers_all": {
+    "weights": {
+      "capability": 0.6,
+      "industry": 0.1,
+      "region": 0.15,
+      "capacity": 0.15
+    },
+    "ndcg_at_10": 0.980459,
+    "top6_exact": 1,
+    "top6_exact_denominator": 1,
+    "top6_covers_all": 60,
+    "positive_total": 186,
+    "overlap_total": 186,
+    "positive_recall": 1.0
+  },
+  "best_positive_recall": {
+    "weights": {
+      "capability": 0.6,
+      "industry": 0.1,
+      "region": 0.15,
+      "capacity": 0.15
+    },
+    "ndcg_at_10": 0.980459,
+    "top6_exact": 1,
+    "top6_exact_denominator": 1,
+    "top6_covers_all": 60,
+    "positive_total": 186,
+    "overlap_total": 186,
+    "positive_recall": 1.0
+  },
+  "best_ndcg": {
+    "weights": {
+      "capability": 0.7,
+      "industry": 0.1,
+      "region": 0.1,
+      "capacity": 0.1
+    },
+    "ndcg_at_10": 0.999187,
+    "top6_exact": 1,
+    "top6_exact_denominator": 1,
+    "top6_covers_all": 60,
+    "positive_total": 186,
+    "overlap_total": 186,
+    "positive_recall": 1.0
+  },
+  "named_weights": {
+    "v1": {
+      "ndcg_at_10": 0.894126,
+      "top6_exact": 1,
+      "top6_exact_denominator": 1,
+      "top6_covers_all": 48,
+      "positive_total": 186,
+      "overlap_total": 170,
+      "positive_recall": 0.913978
+    },
+    "v2": {
+      "ndcg_at_10": 0.970246,
+      "top6_exact": 1,
+      "top6_exact_denominator": 1,
+      "top6_covers_all": 54,
+      "positive_total": 186,
+      "overlap_total": 180,
+      "positive_recall": 0.967742
+    }
+  }
+}

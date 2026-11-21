@@ -75,7 +75,12 @@ def main(argv: list[str] | None = None) -> int:
                 apply_hard_filters=not args.no_hard_filter,
                 top_k=args.top_k,
             )
-            report = render_evaluation(result, dataset)
+            report = render_evaluation(
+                result,
+                dataset,
+                report_path=args.report,
+                apply_hard_filters=not args.no_hard_filter,
+            )
             target = _write_report(args.report, report)
             print(json.dumps({"report": str(target), **_summary(result)}, ensure_ascii=False, sort_keys=True))
             return 2 if result.metrics["hard_filter_violations"] > 0 else 0
@@ -84,7 +89,7 @@ def main(argv: list[str] | None = None) -> int:
             right_weights = load_weights(args.weights_b)
             left = evaluate(dataset, left_weights, top_k=args.top_k)
             right = evaluate(dataset, right_weights, top_k=args.top_k)
-            report = render_compare(left, right, dataset)
+            report = render_compare(left, right, dataset, report_path=args.report)
             target = _write_report(args.report, report)
             regression = left.metrics["ndcg_at_10"] - right.metrics["ndcg_at_10"]
             payload = {

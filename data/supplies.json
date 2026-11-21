@@ -5,45 +5,45 @@
       "id": "s001",
       "company_id": "c001",
       "title": "晨星会务 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "晨星会务提供的活动策划、场地运营服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing"
+        "venue"
       ],
       "industries": [
-        "tech"
+        "culture"
       ],
       "region": "east",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s002",
       "company_id": "c002",
       "title": "云杉品牌 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "云杉品牌提供的品牌营销、视觉设计服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
+        "marketing",
         "design"
       ],
       "industries": [
-        "finance"
+        "retail"
       ],
       "region": "south",
-      "capacity": "medium",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s003",
       "company_id": "c003",
       "title": "青石法务 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "青石法务提供的法律服务、财务顾问服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "hr"
+        "legal",
+        "finance"
       ],
       "industries": [
-        "manufacturing"
+        "finance"
       ],
       "region": "north",
       "capacity": "large",
@@ -53,125 +53,125 @@
       "id": "s004",
       "company_id": "c004",
       "title": "远帆财务 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "远帆财务提供的财务顾问、法律服务服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "finance",
+        "legal"
       ],
       "industries": [
-        "education"
+        "finance"
       ],
       "region": "west",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s005",
       "company_id": "c005",
       "title": "拾光影像 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "拾光影像提供的摄影记录、媒体传播服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing"
+        "photography",
+        "media"
       ],
       "industries": [
-        "healthcare"
+        "culture"
       ],
       "region": "central",
-      "capacity": "medium",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s006",
       "company_id": "c006",
       "title": "栖梧人力 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "栖梧人力提供的人才招聘、企业培训服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "design"
+        "hr",
+        "training"
       ],
       "industries": [
-        "culture"
+        "education"
       ],
       "region": "east",
-      "capacity": "large",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s007",
       "company_id": "c007",
       "title": "澜图科技 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "澜图科技提供的软件与数据、管理咨询服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "it",
+        "consulting"
       ],
       "industries": [
-        "retail"
+        "tech"
       ],
       "region": "south",
-      "capacity": "small",
+      "capacity": "large",
       "status": "active"
     },
     {
       "id": "s008",
       "company_id": "c008",
       "title": "禾木培训 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "禾木培训提供的企业培训、管理咨询服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "training",
+        "consulting"
       ],
       "industries": [
-        "energy"
+        "education"
       ],
       "region": "north",
-      "capacity": "medium",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s009",
       "company_id": "c009",
       "title": "南北物流 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "南北物流提供的会务物流、语言翻译服务包，当前暂停对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing"
+        "logistics",
+        "translation"
       ],
       "industries": [
         "logistics"
       ],
       "region": "west",
-      "capacity": "large",
-      "status": "active"
+      "capacity": "medium",
+      "status": "paused"
     },
     {
       "id": "s010",
       "company_id": "c010",
       "title": "译林翻译 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "译林翻译提供的语言翻译、媒体传播服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "translation",
+        "media"
       ],
       "industries": [
-        "real_estate"
+        "culture"
       ],
       "region": "central",
       "capacity": "small",
-      "status": "paused"
+      "status": "active"
     },
     {
       "id": "s011",
       "company_id": "c011",
       "title": "山海策划 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "山海策划提供的活动策划、管理咨询服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "hr"
+        "event_planning",
+        "consulting"
       ],
       "industries": [
-        "tech"
+        "culture"
       ],
       "region": "east",
       "capacity": "medium",
@@ -181,45 +181,45 @@
       "id": "s012",
       "company_id": "c012",
       "title": "沐光设计 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "沐光设计提供的视觉设计、媒体传播服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "design",
+        "media"
       ],
       "industries": [
-        "finance"
+        "retail"
       ],
       "region": "south",
-      "capacity": "large",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s013",
       "company_id": "c013",
       "title": "澄明咨询 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "澄明咨询提供的管理咨询、财务顾问服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing"
+        "consulting",
+        "finance"
       ],
       "industries": [
-        "manufacturing"
+        "finance"
       ],
       "region": "north",
-      "capacity": "small",
+      "capacity": "large",
       "status": "active"
     },
     {
       "id": "s014",
       "company_id": "c014",
       "title": "松间餐饮 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "松间餐饮提供的餐饮服务、场地运营服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "design"
+        "catering",
+        "venue"
       ],
       "industries": [
-        "education"
+        "healthcare"
       ],
       "region": "west",
       "capacity": "medium",
@@ -229,109 +229,109 @@
       "id": "s015",
       "company_id": "c015",
       "title": "海盐传播 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "海盐传播提供的媒体传播、品牌营销服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "hr",
-        "it"
+        "media",
+        "marketing"
       ],
       "industries": [
-        "healthcare"
+        "culture"
       ],
       "region": "central",
-      "capacity": "large",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s016",
       "company_id": "c016",
       "title": "白露公关 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "白露公关提供的品牌营销、活动策划服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "marketing",
+        "event_planning"
       ],
       "industries": [
-        "culture"
+        "retail"
       ],
       "region": "east",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s017",
       "company_id": "c017",
       "title": "苍梧教育 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "苍梧教育提供的企业培训、管理咨询服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing"
+        "training",
+        "consulting"
       ],
       "industries": [
-        "retail"
+        "education"
       ],
       "region": "south",
-      "capacity": "medium",
+      "capacity": "large",
       "status": "active"
     },
     {
       "id": "s018",
       "company_id": "c018",
       "title": "星野健康 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "星野健康提供的活动策划、餐饮服务服务包，当前暂停对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "event_planning",
+        "catering"
       ],
       "industries": [
-        "energy"
+        "healthcare"
       ],
       "region": "north",
-      "capacity": "large",
-      "status": "active"
+      "capacity": "small",
+      "status": "paused"
     },
     {
       "id": "s019",
       "company_id": "c019",
       "title": "溪谷文化 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "溪谷文化提供的视觉设计、活动策划服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "hr"
+        "design",
+        "event_planning"
       ],
       "industries": [
-        "logistics"
+        "culture"
       ],
       "region": "west",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s020",
       "company_id": "c020",
       "title": "暮山零售 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "暮山零售提供的品牌营销、会务物流服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "marketing",
+        "logistics"
       ],
       "industries": [
-        "real_estate"
+        "retail"
       ],
       "region": "central",
-      "capacity": "medium",
-      "status": "paused"
+      "capacity": "small",
+      "status": "active"
     },
     {
       "id": "s021",
       "company_id": "c021",
       "title": "长风能源 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "长风能源提供的管理咨询、财务顾问服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "event_planning",
-        "marketing"
+        "consulting",
+        "finance"
       ],
       "industries": [
-        "tech"
+        "energy"
       ],
       "region": "east",
       "capacity": "large",
@@ -341,93 +341,93 @@
       "id": "s022",
       "company_id": "c022",
       "title": "元野地产 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "元野地产提供的视觉设计、财务顾问服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "design"
-      ],
-      "industries": [
+        "design",
         "finance"
       ],
+      "industries": [
+        "real_estate"
+      ],
       "region": "south",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s023",
       "company_id": "c023",
       "title": "清越制造 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "清越制造提供的会务物流、软件与数据服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "hr",
+        "logistics",
         "it"
       ],
       "industries": [
         "manufacturing"
       ],
       "region": "north",
-      "capacity": "medium",
+      "capacity": "large",
       "status": "active"
     },
     {
       "id": "s024",
       "company_id": "c024",
       "title": "知微数据 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "知微数据提供的软件与数据、管理咨询服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
-        "training"
+        "it",
+        "consulting"
       ],
       "industries": [
-        "education"
+        "tech"
       ],
       "region": "west",
-      "capacity": "large",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s025",
       "company_id": "c025",
       "title": "半山活动 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "半山活动提供的活动策划、场地运营服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing"
+        "venue"
       ],
       "industries": [
-        "healthcare"
+        "culture"
       ],
       "region": "central",
-      "capacity": "small",
+      "capacity": "medium",
       "status": "active"
     },
     {
       "id": "s026",
       "company_id": "c026",
       "title": "竹影视觉 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "竹影视觉提供的摄影记录、视觉设计服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
+        "photography",
         "design"
       ],
       "industries": [
         "culture"
       ],
       "region": "east",
-      "capacity": "medium",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s027",
       "company_id": "c027",
       "title": "安澜保险 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "安澜保险提供的财务顾问、法律服务服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "consulting",
-        "hr"
+        "finance",
+        "legal"
       ],
       "industries": [
-        "retail"
+        "finance"
       ],
       "region": "south",
       "capacity": "large",
@@ -437,49 +437,49 @@
       "id": "s028",
       "company_id": "c028",
       "title": "一苇咨询 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "一苇咨询提供的管理咨询、企业培训服务包，当前暂停对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "av",
+        "consulting",
         "training"
       ],
       "industries": [
-        "energy"
+        "finance"
       ],
       "region": "north",
-      "capacity": "small",
-      "status": "active"
+      "capacity": "medium",
+      "status": "paused"
     },
     {
       "id": "s029",
       "company_id": "c029",
       "title": "南枝旅行 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "summary": "南枝旅行提供的活动策划、语言翻译服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
         "event_planning",
-        "marketing"
+        "translation"
       ],
       "industries": [
         "logistics"
       ],
       "region": "west",
-      "capacity": "medium",
+      "capacity": "small",
       "status": "active"
     },
     {
       "id": "s030",
-      "company_id": "c030",
-      "title": "西窗印刷 · 标准服务包",
-      "summary": "虚构供给条目，仅用于离线评测。",
+      "company_id": "c032",
+      "title": "北岸会展 · 标准服务包",
+      "summary": "北岸会展提供的活动策划、场地运营服务包，当前开放对接。虚构供给，仅用于离线评测。",
       "capabilities": [
-        "design",
-        "finance"
+        "event_planning",
+        "venue"
       ],
       "industries": [
-        "real_estate"
+        "retail"
       ],
-      "region": "central",
+      "region": "south",
       "capacity": "large",
-      "status": "paused"
+      "status": "active"
     }
   ]
 }

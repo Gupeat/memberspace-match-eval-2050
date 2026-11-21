@@ -25,6 +25,19 @@ def test_compare_report_has_both_versions_and_verdict(dataset, weights_v1, weigh
     assert "v1" in report and "v2" in report
 
 
+def test_diagnostic_report_reproduces_its_own_command(dataset, weights_v2):
+    result = evaluate(dataset, weights_v2, apply_hard_filters=False)
+    report = render_evaluation(
+        result,
+        dataset,
+        report_path="artifacts/diagnostic-no-filter.md",
+        apply_hard_filters=False,
+    )
+    assert "--no-hard-filter" in report
+    assert "--report artifacts/diagnostic-no-filter.md" in report
+    assert "artifacts/report-v2.md" not in report
+
+
 def test_render_is_deterministic(dataset, weights_v2):
     result = evaluate(dataset, weights_v2)
     first = render_evaluation(result, dataset)

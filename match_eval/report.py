@@ -16,17 +16,22 @@ def _metric_rows(result: EvaluationResult) -> list[str]:
         "| --- | ---: | --- |",
         "| 需求条数 | " + str(metrics["demand_count"]) + " | 至少 50 |",
         "| 覆盖需求类型数 | " + str(metrics["demand_type_count"]) + " | 统计脚本输出 |",
-        "| Hit@5 | " + f"{metrics['hit_at_5']:.4f}" + " | 有至少一个应推荐进入前 5 的需求占比 |",
-        "| NDCG@10 | " + f"{metrics['ndcg_at_10']:.4f}" + " | 二值相关性，应推荐=1 |",
+        "| Hit@5 | " + f"{metrics['hit_at_5']:.6f}" + " | 有至少一个应推荐进入前 5 的需求占比 |",
+        "| NDCG@10 | " + f"{metrics['ndcg_at_10']:.6f}" + " | 二值相关性，应推荐=1 |",
         "| 硬过滤违规数 | " + str(metrics["hard_filter_violations"]) + " | 目标 0；大于 0 时退出码非 0 |",
-        "| 理由可追溯率 | " + f"{metrics['rationale_traceability']:.4f}" + " | 目标 1.0000 |",
-        "| 前 5 名集中度 HHI | " + f"{concentration['hhi']:.4f}" + " | 所有需求前 5 名公司分布 |",
-        "| 前 5 名最高公司占比 | " + f"{concentration['top1_share']:.4f}" + " | 观察值，不设硬门槛 |",
+        "| 理由可追溯率 | " + f"{metrics['rationale_traceability']:.6f}" + " | 目标 1.000000 |",
+        "| 前 5 名集中度 HHI | " + f"{concentration['hhi']:.6f}" + " | 所有需求前 5 名公司分布 |",
+        "| 前 5 名最高公司占比 | " + f"{concentration['top1_share']:.6f}" + " | 观察值，不设硬门槛 |",
         "| 前 5 名覆盖公司数 | " + str(concentration["unique_companies"]) + " | 观察值 |",
     ]
 
 
-def render_evaluation(result: EvaluationResult, dataset: Dataset) -> str:
+def render_evaluation(
+    result: EvaluationResult,
+    dataset: Dataset,
+    report_path: str | None = None,
+    apply_hard_filters: bool = True,
+) -> str:
     stats = result.dataset_stats
     lines = [
         "# 匹配排序离线评测报告（" + result.weights.name + "）",
@@ -120,7 +125,8 @@ def render_evaluation(result: EvaluationResult, dataset: Dataset) -> str:
             "本报告只用于离线评测，不写入生产 AI 队列、不触发对外联系、不涉及金额。",
             "",
             "复现命令：python -m match_eval evaluate --weights " + result.weights.name
-            + " --report artifacts/report-" + result.weights.name + ".md",
+            + " --report " + (report_path or ("artifacts/report-" + result.weights.name + ".md")).replace("\\", "/")
+            + ("" if apply_hard_filters else " --no-hard-filter"),
             "",
         ]
     )
@@ -131,6 +137,7 @@ def render_compare(
     left: EvaluationResult,
     right: EvaluationResult,
     dataset: Dataset,
+    report_path: str | None = None,
 ) -> str:
     left_metrics = left.metrics
     right_metrics = right.metrics
@@ -155,20 +162,21 @@ def render_compare(
         "",
         "| 指标 | " + left.weights.name + " | " + right.weights.name + " | 差值（右-左） |",
         "| --- | ---: | ---: | ---: |",
-        "| Hit@5 | " + f"{left_metrics['hit_at_5']:.4f}" + " | " + f"{right_metrics['hit_at_5']:.4f}"
-        + " | " + f"{right_metrics['hit_at_5'] - left_metrics['hit_at_5']:+.4f}" + " |",
-        "| NDCG@10 | " + f"{left_metrics['ndcg_at_10']:.4f}" + " | " + f"{right_metrics['ndcg_at_10']:.4f}"
-        + " | " + f"{right_metrics['ndcg_at_10'] - left_metrics['ndcg_at_10']:+.4f}" + " |",
+        "| Hit@5 | " + f"{left_metrics['hit_at_5']:.6f}" + " | " + f"{right_metrics['hit_at_5']:.6f}"
+        + " | " + f"{right_metrics['hit_at_5'] - left_metrics['hit_at_5']:+.6f}" + " |",
+        "| NDCG@10 | " + f"{left_metrics['ndcg_at_10']:.6f}" + " | " + f"{right_metrics['ndcg_at_10']:.6f}"
+        + " | " + f"{right_metrics['ndcg_at_10'] - left_metrics['ndcg_at_10']:+.6f}" + " |",
         "| 硬过滤违规数 | " + str(left_metrics["hard_filter_violations"]) + " | "
         + str(right_metrics["hard_filter_violations"]) + " | "
         + str(right_metrics["hard_filter_violations"] - left_metrics["hard_filter_violations"]) + " |",
-        "| 理由可追溯率 | " + f"{left_metrics['rationale_traceability']:.4f}" + " | "
-        + f"{right_metrics['rationale_traceability']:.4f}" + " | "
-        + f"{right_metrics['rationale_traceability'] - left_metrics['rationale_traceability']:+.4f}" + " |",
+        "| 理由可追溯率 | " + f"{left_metrics['rationale_traceability']:.6f}" + " | "
+        + f"{right_metrics['rationale_traceability']:.6f}" + " | "
+        + f"{right_metrics['rationale_traceability'] - left_metrics['rationale_traceability']:+.6f}" + " |",
         "",
         "## 判定",
         "",
-        "- NDCG@10 退步（左-右）：" + f"{regression:+.4f}" + "；允许退步上限 0.0200。",
+        "- NDCG@10 变化（右-左）：" + f"{right_metrics['ndcg_at_10'] - left_metrics['ndcg_at_10']:+.6f}"
+        + "；退步判定（左-右）：" + f"{regression:+.6f}" + "；允许退步上限 0.020000。",
         "- 硬过滤违规：" + str(left_metrics["hard_filter_violations"]) + " / " + str(right_metrics["hard_filter_violations"]) + "；目标均为 0。",
     ]
     if right_metrics["hard_filter_violations"] > 0:
@@ -190,6 +198,7 @@ def render_compare(
         lines.append("| " + demand_type + " | " + str(count) + " |")
     lines.append("")
     lines.append("对比命令：python -m match_eval compare --weights-a " + left.weights.name
-                 + " --weights-b " + right.weights.name + " --report artifacts/report-compare.md")
+                 + " --weights-b " + right.weights.name + " --report "
+                 + (report_path or "artifacts/report-compare.md").replace("\\", "/"))
     lines.append("")
     return "\n".join(lines)

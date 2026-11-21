@@ -49,6 +49,7 @@ def evaluate(
         raise ValueError("top_k must be at least 10 for NDCG@10")
     context = build_filter_context(dataset)
     stats = dataset_stats(dataset)
+    companies = {company.id: company for company in dataset.companies}
     rankings: dict[str, list[dict[str, Any]]] = {}
     per_demand: dict[str, dict[str, Any]] = {}
     hit_scores: list[float] = []
@@ -74,7 +75,12 @@ def evaluate(
         total_violations += violations
         hit = hit_at_k(ranked_ids, demand.should_recommend, k=5)
         ndcg = ndcg_at_k(ranked_ids, demand.should_recommend, k=10)
-        trace = rationale_traceability(ranked)
+        trace = rationale_traceability(
+            ranked,
+            context=context,
+            demand=demand,
+            companies=companies,
+        )
         hit_scores.append(hit)
         ndcg_scores.append(ndcg)
         trace_scores.append(trace)
