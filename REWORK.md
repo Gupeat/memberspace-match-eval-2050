@@ -63,12 +63,18 @@ data-level review, so this round rebuilds the fixture and the labeling method.
 - `scripts/weight_grid.py` enumerates all 1771 non-negative four-feature weights at 0.05
   steps. The best weight in the grid covers only 58/60 demands (capability 0.65 / industry
   0.00 / region 0.15 / capacity 0.20; positive recall 188/190), with best NDCG@10=0.996243.
-  This is not a grid-resolution issue: in d052 the unlabelled but eligible c006 strictly
-  dominates the labelled c022 (capability 1.0 vs 2/3; industry, region and capacity equal),
-  so any non-negative weight ranks c006 above c022; if c022 enters top6, c006 must too, and
-  six positives plus c006 need seven slots. The repository therefore claims "labels are not
-  generated from v1/v2 weights, and their top6 set cannot be reproduced by any non-negative
-  four-feature weight", but not orthogonality with the evaluator's business facts.
+  This is not a grid-resolution issue; there are two structural failures, not one:
+  in d052 the unlabelled but eligible c006 strictly dominates the labelled c022
+  (capability 1.0 vs 2/3; industry, region and capacity equal), so any non-negative weight
+  ranks c006 above c022; if c022 enters top6, c006 must too, and six positives plus c006
+  need seven slots. d036 has five positives; c003/c006/c013/c021 have capability 1.0 and
+  strictly beat c004/c024 at 2/3, while c022's region lead (or the company_id tie-break when
+  capability and region weights are zero) leaves no six-slot arrangement containing all five.
+  `artifacts/weight-grid.json` records both in `failed_demands` (best_covered, missing and
+  extra candidates), and `tests/test_label_independence.py` asserts d036 and d052 over the
+  full grid. The repository therefore claims "labels are not generated from v1/v2 weights,
+  and their top6 set cannot be reproduced by any non-negative four-feature weight", but not
+  orthogonality with the evaluator's business facts.
 
 ## Current results
 
@@ -135,6 +141,7 @@ systematically raises v2 under random label sets with the same floor. The actual
 is not tuned to v2, but that still does not make 0.965123 a generalization result.
 `case_strength` uses company-level case counts, not capability-specific cases. The labels
 share company capability, industry, region and capacity facts with the evaluator; no
-non-negative four-feature weight can cover every demand's top6 (best 58/60, witness d052),
+non-negative four-feature weight can cover every demand's top6 (best 58/60; d052 and d036 are
+the two structural failures),
 but that is not the same as independence from those business facts. See
 `data/ANNOTATION.md`, `docs/LABEL-BASELINE.md` and `docs/EVALUATION-LIMITS.md`.

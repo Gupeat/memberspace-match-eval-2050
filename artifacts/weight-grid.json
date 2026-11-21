@@ -85,5 +85,55 @@
         "capacity": 1.0
       }
     }
+  ],
+  "failed_demands": [
+    {
+      "demand_id": "d036",
+      "positive_count": 5,
+      "best_covered": 4,
+      "best_weights": {
+        "capability": 0.05,
+        "industry": 0.0,
+        "region": 0.0,
+        "capacity": 0.95
+      },
+      "covered_positives": [
+        "c003",
+        "c004",
+        "c013",
+        "c022"
+      ],
+      "missing_positives": [
+        "c024"
+      ],
+      "extra_candidates": [
+        "c006",
+        "c021"
+      ]
+    },
+    {
+      "demand_id": "d052",
+      "positive_count": 6,
+      "best_covered": 5,
+      "best_weights": {
+        "capability": 0.05,
+        "industry": 0.0,
+        "region": 0.0,
+        "capacity": 0.95
+      },
+      "covered_positives": [
+        "c003",
+        "c004",
+        "c013",
+        "c021",
+        "c022"
+      ],
+      "missing_positives": [
+        "c024"
+      ],
+      "extra_candidates": [
+        "c006"
+      ]
+    }
   ]
 }

@@ -81,7 +81,10 @@
 1. **静态**：`tests/test_dataset.py` 用 AST 检查 `generate_dataset.py`、`build_annotations.py`、`labeling.py`、`fixture_spec.py` 不导入 `match_eval` 或 `weights`；`tests/test_labeling.py` 断言 builder 产物中没有 `annotation_score`。
 2. **行为**：`tests/test_labeling.py` 在临时目录写入任意 v1/v2 权重（0.123/0.456/0.789/0.321），重跑 builder + generator，四个 `data/*.json` 与基线逐字节相同。权重变化不会改变标签。
 3. **新信号**：案例数与响应天数只存在于 `data/editorial-signals.json`，评测器从不读取；它们直接影响两个槽位和多个 tie-break。行业、区域、产能三个槽位是对评测器也使用的业务事实的不同编辑口径，不是新信号。
-4. **支配反例**：`scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的全部 **1771** 组权重；网格内最好的权重也只能让 58/60 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190），best NDCG@10=0.996243。原因是结构性的：d052 有 6 个正例，其中 c022 的四特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 在 capability 上严格更高、其余三项相同，因此**任何非负四特征权重**都会把 c006 排在 c022 之前；若 c022 进入 top6，c006 也必然进入，再加另外 5 个正例需要 7 个位置。该反例写入 `artifacts/weight-grid.json` 的 `dominance_witnesses`，并由 `tests/test_label_independence.py` 穷举全部网格断言。据此能声称“标签的 top6 集合不能被任何非负四特征权重完整复现”，但仍**不声称**与业务事实正交。
+4. **结构性失败（d052 与 d036）**：`scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的全部 **1771** 组权重；网格内最好的权重也只能让 58/60 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190），best NDCG@10=0.996243。失败的是两条：
+   - **d052**：6 个正例，其中 c022 的四特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 严格支配 c022，任何非负权重都会把 c006 排在 c022 前；若 c022 进入 top6，c006 也必然进入，再加另外 5 个正例需要 7 个位置。
+   - **d036**：5 个正例 c003,c004,c013,c022,c024；c003/c006/c013/c021 的 capability 都是 1，严格高于 c004/c024 的 2/3；c022 的 region=1。capability 权重>0 时，c022 要么排在 c004/c024 前（五个候选抢两个槽），要么排在后面（c022 被挤出）；capability=0 时 c023 的 industry=1 或 c022 等的 region=1 先占位，全零权重按 company_id 也会挤出 c024。因此 d036 对任何非负四特征权重同样不可覆盖。
+   `artifacts/weight-grid.json` 的 `failed_demands` 记录两条的 best_covered、missing_positives、extra_candidates，d052 的逐特征支配另写入 `dominance_witnesses`；`tests/test_label_independence.py` 穷举全部网格并断言 d036/d052。据此能声称“标签的 top6 集合不能被任何非负四特征权重完整复现”，但仍**不声称**与业务事实正交。
 
 ## 标签敏感度（随机化基线）
 

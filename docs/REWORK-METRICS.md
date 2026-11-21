@@ -75,7 +75,7 @@ python -m match_eval compare --weights-a v1 --weights-b v2 --report artifacts/re
 - 逐需求：v2 更好 31 条、持平 28 条、更差 1 条。
 - 标签独立性：本版标签由 `scripts/labeling.py` 的六个编辑槽位生成，纯词典序、无加权和，不读 v1/v2；capability_lead 用 IDF 稀缺密度，案例/响应信号只存在于 `data/editorial-signals.json`。
 - v2 top6 与标签集合：精确一致 **2/4**（只有 4 条需求恰有 6 个正例），覆盖全部标签 **51/60**，交集 **180/190**；190 个正例全部落在 v2 全量前 10（中位 2、最差 8）。NDCG 按位置加权、top6 是集合，二者不矛盾。
-- 独立性边界：`scripts/weight_grid.py` 枚举 1771 组四特征权重；网格内最好的权重也只能让 **58/60** 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190），best NDCG@10=0.996243（0.80/0.05/0.00/0.15）。这是结构性的：d052 的未标注、硬过滤合格候选 c006（capability 1.0 / industry 0 / region 0 / capacity 1）严格支配正例 c022（capability 2/3 / industry 0 / region 0 / capacity 1）；任何非负权重都会把 c006 排在 c022 前，若 c022 进 top6 则 c006 也进，再加另外 5 个正例需要 7 个位置。因此能声称“top6 标签集合不能被任何非负四特征权重完整复现”，但不声称与业务事实正交。`tests/test_label_independence.py` 穷举 1771 组权重断言，`artifacts/weight-grid.json` 的 `dominance_witnesses` 记录该反例。
+- 独立性边界：`scripts/weight_grid.py` 枚举 1771 组四特征权重；网格内最好的权重也只能让 **58/60** 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190），best NDCG@10=0.996243（0.80/0.05/0.00/0.15）。失败的是两条：d052（c006 逐特征支配 c022，top6 需要 7 个位置）和 d036（5 个正例，c003/c006/c013/c021 的 capability=1 高于 c004/c024 的 2/3；c022/c023 的 region/industry 领先或全零权重按 company_id 排列都会挤出 c024）。因此能声称“top6 标签集合不能被任何非负四特征权重完整复现”，但不声称与业务事实正交。`tests/test_label_independence.py` 穷举 1771 组权重断言 d036/d052，`artifacts/weight-grid.json` 的 `failed_demands` 记录两条失败，d052 另在 `dominance_witnesses`。
 - `+0.075025` 必须与随机化基线一起读：与正式标签同底线（覆盖 ≥2）时随机标签中位 +0.075438、v2 胜 500/500，实际标签第 41.0 百分位；覆盖 ≥1 时中位 +0.023730、484/500；去掉底线时中位 -0.000253、v2 仅胜 247/500。详见 `docs/LABEL-BASELINE.md`。
 
 ## 6. 复核与验收

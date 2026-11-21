@@ -72,6 +72,47 @@ def measure(dataset, context, labels, weights: Weights) -> dict:
     }
 
 
+def coverage_by_demand(dataset, context, labels, vectors) -> dict[str, dict]:
+    """Track the best top-6 coverage each demand can reach over the grid.
+
+    d036 and d052 are structural failures: no grid weight covers all their
+    positives, and both are explained in the documentation.  The report below
+    records the best weight, the missing positive(s), and the extra candidate(s)
+    that displace them so a reviewer can reproduce the failure.
+    """
+    best = {
+        demand.id: {
+            "demand_id": demand.id,
+            "positive_count": len(labels[demand.id]),
+            "best_covered": 0,
+            "best_weights": None,
+            "covered_positives": [],
+            "missing_positives": sorted(labels[demand.id]),
+            "extra_candidates": [],
+        }
+        for demand in dataset.demands
+    }
+    for vector in vectors:
+        weights = Weights(name="grid", description="grid", values=vector)
+        for demand in dataset.demands:
+            positive = set(labels[demand.id])
+            ranked = rank_demand(dataset, demand, weights, top_k=6, context=context)
+            top6 = {row["company_id"] for row in ranked}
+            covered = positive & top6
+            row = best[demand.id]
+            if len(covered) > row["best_covered"]:
+                row.update(
+                    {
+                        "best_covered": len(covered),
+                        "best_weights": dict(vector),
+                        "covered_positives": sorted(covered),
+                        "missing_positives": sorted(positive - top6),
+                        "extra_candidates": sorted(top6 - positive),
+                    }
+                )
+    return best
+
+
 def dominance_witnesses(dataset, context, annotations) -> list[dict]:
     """Find unlabeled qualified candidates that strictly dominate a positive.
 
@@ -144,6 +185,12 @@ def main() -> int:
     for name in ("v1", "v2"):
         named[name] = measure(dataset, context, labels, load_weights(name))
 
+    coverage = coverage_by_demand(dataset, context, labels, vectors)
+    failed_demands = sorted(
+        (row for row in coverage.values() if row["best_covered"] < row["positive_count"]),
+        key=lambda row: row["demand_id"],
+    )
+
     payload = {
         "step": 1 / STEP,
         "grid_size": len(vectors),
@@ -153,6 +200,7 @@ def main() -> int:
         "best_ndcg": best_ndcg,
         "named_weights": named,
         "dominance_witnesses": dominance_witnesses(dataset, context, annotations),
+        "failed_demands": failed_demands,
     }
     out = ROOT / "artifacts" / "weight-grid.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -164,6 +212,20 @@ def main() -> int:
         print("best_positive_recall", best_recall["positive_recall"], best_recall["weights"])
         print("best_ndcg", best_ndcg["ndcg_at_10"], best_ndcg["weights"])
         print("dominance_witnesses", len(payload["dominance_witnesses"]))
+        print("failed_demands", len(payload["failed_demands"]))
+        for row in payload["failed_demands"]:
+            print(
+                "  ",
+                row["demand_id"],
+                "covered",
+                row["best_covered"],
+                "/",
+                row["positive_count"],
+                "missing",
+                row["missing_positives"],
+                "extra",
+                row["extra_candidates"],
+            )
         for name, row in named.items():
             print(name, row)
         print("wrote", out)

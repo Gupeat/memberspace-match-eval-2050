@@ -22,14 +22,16 @@ The labels are no longer produced by any v1/v2 weighted formula:
 - `tests/test_dataset.py` uses AST import checks; `tests/test_labeling.py` has golden hashes,
   replays all 60 demands, and rewrites weights to arbitrary values, reruns builder+generator,
   and asserts the four data files are byte-identical. `tests/test_label_independence.py`
-  replays the d052 dominance witness and exhausts all 1771 grid weights.
+  replays the d052 dominance witness and exhausts all 1771 grid weights for d036 and d052.
 - `data/ANNOTATION.md` and `docs/LABEL-BASELINE.md` document the method, the independence
   evidence and its limits. A 1771-weight grid over the evaluator's four features cannot make
-  every demand's top6 cover all positives: the best weight reaches 58/60. In d052 the
-  unlabelled, eligible c006 strictly dominates the labelled c022 on the four features
-  (capability 1.0 vs 2/3; industry, region and capacity equal), so any non-negative weight
-  ranks c006 first and the six positives plus c006 need seven slots. Labels are therefore
-  not generated from v1/v2 weights and their top6 set cannot be reproduced by any
+  every demand's top6 cover all positives: the best weight reaches 58/60, and the two
+  structural failures are d052 and d036. In d052 the unlabelled, eligible c006 strictly
+  dominates the labelled c022 (capability 1.0 vs 2/3; industry, region and capacity equal),
+  so c006 must appear whenever c022 does and six positives plus c006 need seven slots. In
+  d036 five positives coexist with four capability-1.0 companies that beat c004/c024 at 2/3,
+  while c022's region lead or the company_id tie-break also displaces c024. Labels are
+  therefore not generated from v1/v2 weights and their top6 set cannot be reproduced by any
   non-negative four-feature weight, though they still share the evaluator's business facts.
 
 Reports are regenerated: v1 NDCG@10=0.890098, v2=0.965123, v2-v1=+0.075025,

@@ -86,12 +86,14 @@ repository root with Python 3.11+; there are no network or third-party runtime d
 - `scripts/weight_grid.py` enumerates all 1771 non-negative four-feature weights at 0.05
   steps. The best weight in the grid covers 58/60 demands (capability 0.65 / industry 0.00 /
   region 0.15 / capacity 0.20; positive recall 188/190), best NDCG@10=0.996243. This is not a
-  grid-resolution issue: in d052 the unlabelled but eligible c006 has features
-  capability 1.0 / industry 0 / region 0 / capacity 1, while the labelled c022 has
-  capability 2/3 / industry 0 / region 0 / capacity 1. c006 strictly dominates c022, so any
-  non-negative four-feature weight ranks c006 above c022; if c022 enters top6, c006 must too,
-  and six positives plus c006 need seven slots. `tests/test_label_independence.py` asserts
-  this over all 1771 grid weights and `artifacts/weight-grid.json` records the witness.
+  grid-resolution issue; there are two structural failures. In d052 the unlabelled but
+  eligible c006 strictly dominates the labelled c022 (capability 1.0 vs 2/3; industry, region
+  and capacity equal), so c006 must appear whenever c022 does and six positives plus c006
+  need seven slots. In d036 five positives coexist with c003/c006/c013/c021 at capability
+  1.0 versus c004/c024 at 2/3; c022's region lead (or the company_id tie-break when capability
+  and region weights are zero) leaves no six-slot arrangement. `tests/test_label_independence.py`
+  asserts both over all 1771 grid weights and `artifacts/weight-grid.json` records both in
+  `failed_demands`.
   Therefore the claim is "no non-negative four-feature weight can reproduce every demand's
   top6 label set", not full orthogonality with the business facts.
 - v2 top6 exact agreement is 2/4 (only demands with six positives can be exact),
