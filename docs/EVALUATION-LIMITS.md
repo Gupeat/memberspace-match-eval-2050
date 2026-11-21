@@ -21,7 +21,10 @@
 - **只有两个真正的新信号**：`data/editorial-signals.json` 的 `verified_cases`、`response_days`、`max_response_days` 不在 `match_eval` 的读取路径中，分别支撑 case_strength 与 responsiveness。行业、区域、产能三个槽位是对评测器也使用的业务事实的不同编辑口径，不声称是独立信号。
 - **共享业务事实，但 top6 集合不可由四特征权重复现**：标签仍然使用企业能力、行业、区域、容量这些评测器也使用的字段。`scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的 **1771** 组权重；网格内最好的权重也只能让 **58/60** 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190），best NDCG@10=0.996243。
 
-  这不是网格密度问题。d052 有 6 个正例，其中 c022 的四特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 在 capability 上严格更高、其余三项相同，因此**任何非负四特征权重**都会把 c006 排在 c022 之前；若 c022 进入 top6，c006 也必然进入，再加另外 5 个正例需要 7 个位置。所以没有任何非负四特征权重能让每条需求的 top6 覆盖全部 190 个正例。`tests/test_label_independence.py` 穷举 1771 组权重断言这一点，`artifacts/weight-grid.json` 的 `dominance_witnesses` 记录该反例。
+  这不是网格密度问题，而是两条结构性失败：
+  - **d052**：6 个正例，c022 的四特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 严格支配 c022，任何非负权重都会把 c006 排在 c022 前；若 c022 进入 top6，c006 也必然进入，再加另外 5 个正例需要 7 个位置。
+  - **d036**：5 个正例 c003,c004,c013,c022,c024；c003/c006/c013/c021 的 capability 都是 1，严格高于 c004/c024 的 2/3；c022 的 region=1。capability>0 时，c022 要么排在 c004/c024 前（五个候选抢两个槽），要么排在后面（c022 被挤出）；capability=0 时 c023 的 industry=1 或 c022 等的 region=1 先占位，全零权重按 company_id 也会挤出 c024。
+  所以没有任何非负四特征权重能让每条需求的 top6 覆盖全部 190 个正例。`tests/test_label_independence.py` 穷举 1771 组权重断言 d036/d052，`artifacts/weight-grid.json` 的 `failed_demands` 记录两条失败，d052 的逐特征支配另在 `dominance_witnesses`。
 
   因此能声称的是“标签不由 v1/v2 权重生成，且 top6 标签集合不能被任何非负四特征权重完整复现”；不能声称“与业务事实无关”。
 - **案例数的边界**：`case_strength` 的 `verified_cases` 是公司级案例数，没有按能力或行业拆分。它表示“该公司有交付记录”，不表示“该公司在本次 required capabilities 上有记录”。

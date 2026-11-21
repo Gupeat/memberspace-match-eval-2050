@@ -171,7 +171,12 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 
 `scripts/weight_grid.py` 枚举 0.05 步长、四权重非负且和为 1 的全部 1771 组权重。结果：网格内最好的权重也只能让 **58/60** 条需求的 top6 覆盖全部正例（capability 0.65 / industry 0.00 / region 0.15 / capacity 0.20；正例召回 188/190）；best NDCG@10=0.996243。v1/v2 的 top6 正例召回分别为 169/190、180/190。
 
-这不是“网格不够密”，而是结构性的：d052 有 6 个正例，其中 c022 的特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 在 capability 上严格更高、其余三项相同，因此**任何非负四特征权重**都会把 c006 排在 c022 之前。若 c022 进入 top6，c006 也必然进入 top6，再加上另外 5 个正例就是 7 个候选，6 个槽位装不下。所以没有任何非负四特征权重能让每条需求的 top6 覆盖全部 190 个正例；`tests/test_label_independence.py` 对全部 1771 组网格做了穷举断言，`scripts/weight_grid.py` 把该支配反例写入 `artifacts/weight-grid.json` 的 `dominance_witnesses` 字段。
+这不是“网格不够密”，而是两条结构性失败，文档不能只写 d052：
+
+- **d052**：6 个正例，其中 c022 的特征是 capability 2/3、industry 0、region 0、capacity 1；未标注但硬过滤合格的 c006 是 capability 3/3、industry 0、region 0、capacity 1。c006 在 capability 上严格更高、其余三项相同，因此**任何非负四特征权重**都会把 c006 排在 c022 之前。若 c022 进入 top6，c006 也必然进入，再加上另外 5 个正例就是 7 个候选，6 个槽位装不下。
+- **d036**：5 个正例 c003,c004,c013,c022,c024。c003/c006/c013/c021 的 capability 都是 1，严格高于 c004/c024 的 2/3；c022 的 region=1。capability 权重>0 时，c022 要么排在 c004/c024 前（连同四家 capability=1 公司，六个槽位放不下 5 个正例），要么排在后面（c022 被挤出）；capability=0 时，c023 的 industry=1 或 c022 等的 region=1 先占位，全零权重按 company_id 排列也会挤出 c024。因此 d036 对任何非负四特征权重同样不可覆盖。
+
+所以没有任何非负四特征权重能让每条需求的 top6 覆盖全部 190 个正例；`tests/test_label_independence.py` 对 d036/d052 和全部 1771 组网格做了穷举断言，`scripts/weight_grid.py` 把两条失败写入 `artifacts/weight-grid.json` 的 `failed_demands`（含 best_covered、missing_positives、extra_candidates），d052 的逐特征支配还写入 `dominance_witnesses`。
 
 标签仍与评测器共享企业能力、行业、区域、容量这些业务事实，因此**不声称与业务事实无关**；能声称的是“标签不由 v1/v2 权重生成，且其 top6 集合不能被任何非负四特征权重完整复现”。
 
@@ -179,7 +184,7 @@ v2（能力增强版）：capability 0.55、industry 0.25、region 0.10、capaci
 
 - **静态**：`tests/test_dataset.py` 用 AST 检查 generator、builder、labeling、fixture 不导入 `match_eval` 或 `weights`。
 - **行为**：`tests/test_labeling.py` 在临时目录写入任意 v1/v2 权重，重跑 builder + generator，四个 `data/*.json` 与基线逐字节相同。
-- **支配反例**：`tests/test_label_independence.py` 对 d052 的 c006→c022 做逐特征断言，并穷举 1771 组权重证明 d052 的 6 个正例不可能全部进入 top6。
+- **结构性失败**：`tests/test_label_independence.py` 对 d052 的 c006→c022 做逐特征断言，并对 d036（5 正例）与 d052（6 正例）穷举 1771 组权重，证明两者都不可能全部进入 top6；`artifacts/weight-grid.json` 的 `failed_demands` 记录 best_covered、缺失正例与多余候选。
 - **新信号**：案例数与响应天数只存在于 `data/editorial-signals.json`，评测器从不读取；只有这两个槽位是评测器没有的信号，其余三个槽位（行业、区域、产能）是同一业务事实的不同编辑口径。
 
 ## 退出码

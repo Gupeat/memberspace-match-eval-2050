@@ -112,7 +112,7 @@ python -m pytest tests/test_dataset.py tests/test_labeling.py tests/test_label_i
 4. `tests/test_labeling.py` 在临时目录改写 v1/v2 权重后重跑 builder+generator，四个数据文件逐字节不变；
 5. `scripts/manual_review.py` 用同一 `labeling` 重放六槽位，覆盖 60 条需求 / 430 个标签，输出 0 缺陷、0 重放不一致、pending-human-signoff；
 6. `scripts/label_sensitivity.py` 的随机化基线：与正式标签同一“覆盖 ≥2”底线时，随机标签中位 +0.075438、v2 胜 500/500，实际标签在第 41.0 百分位；覆盖 ≥1 时中位 +0.023730、484/500；去掉底线时中位 -0.000253、v2 仅 247/500。实际 +0.075025 因此不是泛化证据。
-7. `scripts/weight_grid.py` 枚举 1771 组四特征权重；网格内最好的权重也只能让 58/60 条需求的 top6 覆盖全部正例。d052 的未标注候选 c006 逐特征支配正例 c022，因此任何非负权重都无法让该需求的 6 个正例全进 top6；`tests/test_label_independence.py` 对此穷举断言。能声称“top6 标签集合不能被任何非负四特征权重完整复现”，但不声称与业务事实正交。
+7. `scripts/weight_grid.py` 枚举 1771 组四特征权重；网格内最好的权重也只能让 58/60 条需求的 top6 覆盖全部正例。失败的两条是 d052 和 d036：d052 的未标注候选 c006 逐特征支配正例 c022；d036 的 5 个正例被 c003/c006/c013/c021（capability=1）与 c022/c023（region/industry 领先）或 company_id 平局挤出。`tests/test_label_independence.py` 对两条穷举断言；`artifacts/weight-grid.json` 的 `failed_demands` 记录 best_covered/missing/extra。能声称“top6 标签集合不能被任何非负四特征权重完整复现”，但不声称与业务事实正交。
 
 完整口径见 `data/ANNOTATION.md` 与 `docs/LABEL-BASELINE.md`。
 
